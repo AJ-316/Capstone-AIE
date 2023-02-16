@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Initial Commit.">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/Canvas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/Input.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/Window.java" afterDir="false" />
+    <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Cleaning up code.">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/flatlaf_3_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/AbstractWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolsPackage/AbstractTool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolsPackage/LineDrawer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolsPackage/Pencil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolsPackage/Toolbar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/WindowMenuBar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/WindowsMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/icons/pencil.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/icons/pencil_pressed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/icons/pencil_rollover.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Capstone-AIE.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Capstone-AIE.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/Canvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MainFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,10 +32,17 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$USER_HOME$/.jdks/openjdk-19.0.1/lib/src.zip!/java.desktop/java/awt/Menu.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$USER_HOME$/.jdks/openjdk-19.0.1/lib/src.zip!/java.desktop/java/awt/event/KeyEvent.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.jdks/openjdk-19.0.1/lib/src.zip!/java.desktop/javax/swing/Action.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -40,10 +57,20 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "D:/PROgraming/IdeaProjects/AJP_Microproject",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="AssertionExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AssertionExample" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.AIE.Main" />
       <module name="Capstone-AIE" />
@@ -57,9 +84,41 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main2 (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main2" />
+      <module name="Capstone-AIE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main2 (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main2" />
+      <module name="Capstone-AIE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main2" />
+      <module name="Capstone-AIE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.AssertionExample" />
+      <item itemvalue="Application.Main2" />
+      <item itemvalue="Application.Main2 (1)" />
+      <item itemvalue="Application.Main2 (2)" />
+      <item itemvalue="Application.Main" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main2" />
+        <item itemvalue="Application.Main2 (2)" />
+        <item itemvalue="Application.Main2 (1)" />
+        <item itemvalue="Application.AssertionExample" />
       </list>
     </recent_temporary>
   </component>
@@ -79,7 +138,21 @@
       <option name="project" value="LOCAL" />
       <updated>1676530892388</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Separate Input thread Added.&#10;Did not think about how would I update the components.&#10;Unnecessary addition. (Could be useful in future)">
+      <created>1676547562960</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1676547562960</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Cleaning up code.">
+      <created>1676547612694</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1676547612694</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -96,6 +169,13 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Initial Commit." />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit." />
+    <MESSAGE value="Separate Input thread Added.&#10;Did not think about how would I update the components.&#10;Unnecessary addition. (Could be useful in future)" />
+    <MESSAGE value="Cleaning up code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaning up code." />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Capstone_AIE$Main.ic" NAME="Main Coverage Results" MODIFIED="1676551975326" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.AIE.*</FILTER>
+    </SUITE>
   </component>
 </project>

@@ -1,9 +1,10 @@
 package com.AIE;
 
+import com.AIE.WindowPackage.ToolsPackage.Toolbar;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.Arrays;
@@ -18,16 +19,10 @@ public class Canvas extends JPanel {
         super(new BorderLayout());
         this.scale = 1;
         setBackground(Color.yellow);
-        addMouseMotionListener(new MouseAdapter(){
-            @Override
-            public void mouseMoved(MouseEvent e) {
-                System.out.println("x: " + e.getX() + ", y:" + e.getY());
-            }
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                changePixelColor(e.getX(), e.getY(), 0xffff0000);
-            }
-        });
+
+        MouseAdapter adapter = new Toolbar.CanvasToolInteraction(this);
+        addMouseListener(adapter);
+        addMouseMotionListener(adapter);
     }
 
     public void createNewImage(int width, int height) {
@@ -37,20 +32,22 @@ public class Canvas extends JPanel {
         Arrays.fill(pixels, 0xffffffff);
     }
 
-    public void changePixelColor(int x, int y, int color) {
+    public void changePixelColor(int x, int y) {
         x = (int)(x/scale);
         y = (int)(y/scale);
 
         if(x >= image.getWidth() || x < 0 || y >= image.getHeight() || y < 0)
             return;
-
         try {
-            pixels[x + y*image.getWidth()] = color;
-            repaint(); //TODO: inefficient if called this method in loop
+            pixels[x + y*image.getWidth()] = 0xff000000; //TODO: Black Color
         } catch (IndexOutOfBoundsException e) {
             //TODO: "throws"
             System.err.println("x: " + x + ", y: " + y + " = " + (x + y*image.getWidth()) + "/" + pixels.length);
         }
+    }
+
+    public void updateCanvas() {
+        repaint();
     }
 
     public void setScale(int scale) {
