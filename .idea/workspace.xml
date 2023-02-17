@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Cleaning...">
+    <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Removed unnecessary MainFrame singleton">
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/CanvasManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MainFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +35,7 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Adding_Tools" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -157,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676570590217</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Removed unnecessary MainFrame singleton">
+      <created>1676625748317</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1676625748317</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -171,7 +181,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="Image_Saving_and_Loading" />
                       </list>
                     </value>
                   </entry>
@@ -215,7 +225,8 @@
     <MESSAGE value="Cleaning up code." />
     <MESSAGE value="Added AbstractWindow and AbstractTool.&#10;Followed with ToolBar and Pencil.&#10;Canvas uses an Anonymous listener class - Toolbar.CanvasToolInteraction which passes all the events from canvas to AbstractTool's children.&#10;Added MenuBar for MainFrame (previously called Window class)" />
     <MESSAGE value="Added AbstractWindow and AbstractTool.&#10;Followed with ToolBar and Pencil.&#10;Canvas uses an Anonymous listener class - Toolbar.CanvasToolInteraction which passes all the events from canvas to AbstractTool's children.&#10;Added MenuBar for MainFrame (previously called Window class)&#10;&#10;Above Mentioned Tool-Canvas Interaction was done after WindowsMenu's HashMap&lt;Window name, AbstractWindow&gt; and the static String name in AbstractWindow children" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added AbstractWindow and AbstractTool.&#10;Followed with ToolBar and Pencil.&#10;Canvas uses an Anonymous listener class - Toolbar.CanvasToolInteraction which passes all the events from canvas to AbstractTool's children.&#10;Added MenuBar for MainFrame (previously called Window class)&#10;&#10;Above Mentioned Tool-Canvas Interaction was done after WindowsMenu's HashMap&lt;Window name, AbstractWindow&gt; and the static String name in AbstractWindow children" />
+    <MESSAGE value="Removed unnecessary MainFrame singleton" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed unnecessary MainFrame singleton" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Capstone_AIE$Main.ic" NAME="Main Coverage Results" MODIFIED="1676551975326" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
