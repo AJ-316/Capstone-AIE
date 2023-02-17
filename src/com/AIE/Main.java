@@ -6,12 +6,12 @@ public class Main {
 
     public static void main(String[] args) {
 
-        MainFrame.init(1280, 720);
+        MainFrame mainFrame = new MainFrame(1280, 720);
         Canvas canvas = new Canvas();
         canvas.createNewImage(100, 100);
         canvas.setScale(5);
-        MainFrame.instance.addCanvas(canvas);
-        MainFrame.instance.createWindow();
+        mainFrame.addCanvas(canvas);
+        mainFrame.createWindow();
     }
 
 }

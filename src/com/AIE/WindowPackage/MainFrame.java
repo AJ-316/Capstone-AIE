@@ -16,17 +16,12 @@ import java.util.Objects;
 public class MainFrame extends JFrame {
 
     // TODO: Will need to remove instance and clean up the code so singletons are not needed
-    public static MainFrame instance;
     private static ArrayList<Canvas> canvasList;
     public static int currentCanvasIndex;
     public static int SCREEN_WIDTH;
     public static int SCREEN_HEIGHT;
 
-    public static void init(int width, int height) {
-        instance = new MainFrame(width, height);
-    }
-
-    private MainFrame(int width, int height) {
+    public MainFrame(int width, int height) {
         setLookAndFeel();
 
         SCREEN_WIDTH = width;
@@ -60,9 +55,9 @@ public class MainFrame extends JFrame {
         setCurrentCanvas(currentCanvasIndex);
     }
 
-    public static void setCurrentCanvas(int i) {
-        instance.remove(canvasList.get(currentCanvasIndex));
-        instance.add(canvasList.get(i));
+    public void setCurrentCanvas(int i) {
+        remove(canvasList.get(currentCanvasIndex));
+        add(canvasList.get(i));
         currentCanvasIndex = i;
     }
 
@@ -73,11 +68,6 @@ public class MainFrame extends JFrame {
 
     public void createWindow() {
         this.setVisible(true);
-    }
-
-    //TODO: Need other way to implement changing cursor for every tool or action
-    public void changeCursor(Cursor cursor) {
-        setCursor(cursor);
     }
 
     public static ImageIcon loadImage(String file, float scale) {

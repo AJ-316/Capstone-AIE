@@ -31,9 +31,7 @@ public abstract class AbstractTool extends JRadioButton implements ItemListener 
     public void itemStateChanged(ItemEvent e) {
         if(e.getStateChange() == ItemEvent.DESELECTED)
             return;
-
-        if(MainFrame.instance != null)
-            MainFrame.instance.setCursor(cursor);
+        // Change cursor
 
         toolSelected();
     }
