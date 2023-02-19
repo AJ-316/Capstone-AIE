@@ -17,7 +17,6 @@ public class WindowsMenu extends JMenu {
         addWindow(Toolbar.NAME, toolbar);
     }
 
-
     private void addWindow(String name, AbstractWindow window) {
         windows.put(name, window);
         JMenuItem item = new JMenuItem(name);

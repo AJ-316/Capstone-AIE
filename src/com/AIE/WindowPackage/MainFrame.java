@@ -1,6 +1,6 @@
 package com.AIE.WindowPackage;
 
-import com.AIE.Canvas;
+import com.AIE.CanvasManager;
 import com.AIE.Main;
 import com.formdev.flatlaf.FlatDarculaLaf;
 
@@ -9,15 +9,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 
 public class MainFrame extends JFrame {
 
     // TODO: Will need to remove instance and clean up the code so singletons are not needed
-    private static ArrayList<Canvas> canvasList;
-    public static int currentCanvasIndex;
+    public static CanvasManager CANVAS_MANAGER;
+    public static Container PANE;
     public static int SCREEN_WIDTH;
     public static int SCREEN_HEIGHT;
 
@@ -26,18 +24,19 @@ public class MainFrame extends JFrame {
 
         SCREEN_WIDTH = width;
         SCREEN_HEIGHT = height;
-        canvasList = new ArrayList<>();
+
+        CANVAS_MANAGER = new CanvasManager();
+        PANE = getContentPane();
+        PANE.setBackground(new Color(0x303031));
+        new WindowMenuBar(this);
 
         this.setSize(width, height);
-        this.setLayout(null);
+        this.setLayout(new BorderLayout());
         this.setResizable(true);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        getContentPane().setBackground(new Color(0x303031));
-
-        new WindowMenuBar(this);
+        this.add(CANVAS_MANAGER, BorderLayout.CENTER);
     }
-
     private void setLookAndFeel() {
         FlatDarculaLaf.setup();
         try {
@@ -47,26 +46,8 @@ public class MainFrame extends JFrame {
         }
     }
 
-    public void addCanvas(Canvas... canvasesToAdd) {
-        canvasList.addAll(Arrays.asList(canvasesToAdd));
-
-        currentCanvasIndex = canvasesToAdd.length-1;
-
-        setCurrentCanvas(currentCanvasIndex);
-    }
-
-    public void setCurrentCanvas(int i) {
-        remove(canvasList.get(currentCanvasIndex));
-        add(canvasList.get(i));
-        currentCanvasIndex = i;
-    }
-
-    //TODO: For future use
-    public static Canvas getCurrentCanvas() {
-        return canvasList.get(currentCanvasIndex);
-    }
-
     public void createWindow() {
+        //Finalizing JFrame
         this.setVisible(true);
     }
 
