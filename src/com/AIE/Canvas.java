@@ -1,5 +1,8 @@
 package com.AIE;
 
+import com.AIE.WindowPackage.ColorChannelSlider;
+import com.AIE.WindowPackage.MainFrame;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -35,6 +38,7 @@ public class Canvas extends JPanel {
         this.width = width;
         this.height = height;
         setScale(1);
+        setLocation(MainFrame.SCREEN_WIDTH/2 - width, MainFrame.SCREEN_HEIGHT/2 - height);
         Arrays.fill(pixels, 0xffffffff);
     }
 
@@ -46,7 +50,7 @@ public class Canvas extends JPanel {
         if(x >= image.getWidth() || x < 0 || y >= image.getHeight() || y < 0)
             return;
         System.out.println(x + y*image.getWidth());
-        pixels[x + y*image.getWidth()] = 0xff000000; //TODO: Black Color
+        pixels[x + y*image.getWidth()] = ColorChannelSlider.getColor().getRGB(); //TODO: Black Color
     }
     /*
     xB:0, yB:0, x:0, y:0, scale:1.0, multiplier: x[1.0],y[1.0]

@@ -15,6 +15,9 @@ public class WindowsMenu extends JMenu {
 
         Toolbar toolbar = new Toolbar(mainFrame);
         addWindow(Toolbar.NAME, toolbar);
+
+        ColorPallet colorPallet = new ColorPallet(mainFrame);
+        addWindow(ColorPallet.NAME, colorPallet);
     }
 
     private void addWindow(String name, AbstractWindow window) {

@@ -18,7 +18,6 @@ public class MainFrame extends JFrame {
     public static Container PANE;
     public static int SCREEN_WIDTH;
     public static int SCREEN_HEIGHT;
-
     public MainFrame(int width, int height) {
         setLookAndFeel();
 
