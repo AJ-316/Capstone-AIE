@@ -27,6 +27,14 @@ public class MutableColor extends Color {
         setValue();
     }
 
+    public void setRGB(int hex) {
+        this.value = hex;
+        rgbaI[R] = getRed();
+        rgbaI[G] = getGreen();
+        rgbaI[B] = getBlue();
+        rgbaI[A] = 255;
+    }
+
     public void set(MutableColor color) {
         setRGB(color.rgbaI[R], color.rgbaI[G], color.rgbaI[B]);
     }
@@ -47,7 +55,7 @@ public class MutableColor extends Color {
         setValue();
     }
 
-
+    @Override
     public int getRGB() {
         return value;
     }

@@ -10,30 +10,30 @@ import java.util.ArrayList;
 public abstract class ColorSlider extends JPanel {
 
     private static final ArrayList<ColorSlider> allSliders = new ArrayList<>();
-    private static final int PREFERRED_WIDTH = 75;
+    private static final int PREFERRED_WIDTH = 100;
     private static final int PREFERRED_HEIGHT = 30;
     protected ColorSliderUI ui;
     protected JSlider slider;
     protected JTextField inputField;
-    protected int max;
+    protected JLabel label;
 
-    protected void init(ColorSliderUI ui, int max) {
-        this.max = max;
+    protected void init(ColorSliderUI ui, int maxVal, int defaultVal, String text) {
         this.ui = ui;
         SliderUpdate sliderUpdate = new SliderUpdate();
         InputFieldUpdate inputFieldUpdate = new InputFieldUpdate();
 
-        this.slider = new JSlider(0, max, 0);
+        this.label = new JLabel(text, SwingConstants.RIGHT);
+        this.slider = new JSlider(0, maxVal, defaultVal);
         this.slider.setUI(ui);
         this.slider.addMouseListener(sliderUpdate);
         this.slider.addMouseMotionListener(sliderUpdate);
         this.slider.setPreferredSize(new Dimension(PREFERRED_WIDTH, PREFERRED_HEIGHT));
         this.inputField = new JTextField(3);
-        this.inputField.setText(String.valueOf(slider.getValue()));
+        this.inputField.setText(String.valueOf(defaultVal));
         this.inputField.getDocument().addDocumentListener(inputFieldUpdate);
-
         setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
 
+        add(label);
         add(slider);
         add(inputField);
 
@@ -45,10 +45,13 @@ public abstract class ColorSlider extends JPanel {
         inputField.setText(String.valueOf(slider.getValue()));
     }
 
-    protected void updateAll(String invoker) {
+    public static void updateAll(String invoker) {
         for(ColorSlider colorSlider : allSliders) {
             colorSlider.update(invoker);
         }
+
+        ColorPallet.colorPickerWheel.updateColorPicker();
+        ColorPallet.hexInput.update(invoker);
     }
 
     private class InputFieldUpdate implements DocumentListener {

@@ -10,39 +10,43 @@ public class HSVSlider extends ColorSlider {
     public static HSVSlider create(int channelID) {
         switch (channelID) {
             case 0 -> {
-                hue = new HSVSlider(360, new HueSliderUI());
-                hue.slider.setName("hue");
+                hue = new HSVSlider("H:", 360, 0, new HueSliderUI());
+                hue.slider.setName("hsv");
                 return hue;
             }
             case 1 -> {
-                saturation = new HSVSlider(100, new SaturationSliderUI());
-                saturation.slider.setName("saturation");
+                saturation = new HSVSlider("S:", 100, 100, new SaturationSliderUI());
+                saturation.slider.setName("hsv");
                 return saturation;
             }
             case 2 -> {
-                value = new HSVSlider(100, new ValueSliderUI());
-                value.slider.setName("value");
+                value = new HSVSlider("V:", 100, 100, new ValueSliderUI());
+                value.slider.setName("hsv");
                 return value;
             }
         }
         return null;
     }
 
-    private HSVSlider(int max, ColorSliderUI colorSliderUI) {
-        init(colorSliderUI, max);
+    private HSVSlider(String text, int maxVal, int defaultVal, ColorSliderUI colorSliderUI) {
+        init(colorSliderUI, maxVal, defaultVal, text);
     }
 
     @Override
     protected void update(String name) {
-        if(name.equals(ColorChannelSlider.red.slider.getName()) ||
-                name.equals(ColorChannelSlider.green.slider.getName()) ||
-                name.equals(ColorChannelSlider.blue.slider.getName())) {
-            System.out.println(name);
+        if(name.equals("rgb") || name.equals("hex")) {
             hue.slider.setValue(calculateHue());
             saturation.slider.setValue(calculateSaturation());
             value.slider.setValue(calculateValue());
         }
         super.update(name);
+    }
+
+    public static void setHSV(int hue, int saturation, int value) {
+        HSVSlider.hue.slider.setValue(hue);
+        HSVSlider.saturation.slider.setValue(saturation);
+        HSVSlider.value.slider.setValue(value);
+        updateAll("hsv");
     }
 
     private int calculateValue() {

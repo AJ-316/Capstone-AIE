@@ -2,19 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Added ColorSliders - RGG,HSV&#10;ColorSlider is JSlider with custom UI, and color functionalities.&#10;Including MutableColor for saving object creation/deletion time/memory.">
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorChannelSlider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPallet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorSlider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorSliderUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/HSVSlider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MutableColor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPickerWheel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/HEXInput.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/Canvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/CanvasToolInteraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasToolInteraction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolsPackage/Toolbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolsPackage/Toolbar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/WindowsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/WindowsMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorChannelSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorChannelSlider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPallet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPallet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorSlider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorSliderUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorSliderUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/HSVSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/HSVSlider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MutableColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MutableColor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,11 +69,12 @@
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.AIE.WindowPackage" />
       <recent name="com.AIE" />
     </key>
   </component>
@@ -159,7 +156,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676813792103</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added ColorSliders - RGG,HSV&#10;ColorSlider is JSlider with custom UI, and color functionalities.&#10;Including MutableColor for saving object creation/deletion time/memory.">
+      <created>1676972964907</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1676972964907</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -173,7 +177,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="ColorPallete" />
+                        <option value="ColorPallet" />
                       </list>
                     </value>
                   </entry>
@@ -224,7 +228,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Capstone_AIE$VerifierTest.ic" NAME="VerifierTest Coverage Results" MODIFIED="1676969542696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Capstone_AIE$Main.ic" NAME="Main Coverage Results" MODIFIED="1676972577670" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Capstone_AIE$Main.ic" NAME="Main Coverage Results" MODIFIED="1677136951806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.AIE.*</FILTER>
     </SUITE>
   </component>

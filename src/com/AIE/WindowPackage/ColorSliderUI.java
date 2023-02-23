@@ -14,6 +14,8 @@ public class ColorSliderUI extends BasicSliderUI {
     private final int[] thumbPointsY = new int[3];
     private static final int thumbOffset = 7;
     private static final int UNIVERSAL_SIZE = 20;
+    private static final BasicStroke trackStroke = new BasicStroke(0.6f);
+    private static final BasicStroke thumbStroke = new BasicStroke(1);
 
     protected BasicSliderUI.TrackListener createTrackListener(JSlider slider) {
         return new ColorTrackListener();
@@ -45,20 +47,12 @@ public class ColorSliderUI extends BasicSliderUI {
 
     @Override
     public void paintThumb(Graphics g) {
+        ((Graphics2D) g).setStroke(thumbStroke);
         updateThumbPoints();
-
         g.setColor(Color.black);
         g.fillPolygon(thumbPointsX, thumbPointsY, thumbPointsX.length);
         g.setColor(Color.white);
         g.drawPolygon(thumbPointsX, thumbPointsY, thumbPointsX.length);
-
-//        int[] thumbPointsX = new int[]{thumbRect.x, thumbRect.x+UNIVERSAL_SIZE/4, thumbRect.x+UNIVERSAL_SIZE/2};
-//        int[] thumbPointsY = new int[]{thumbRect.y+UNIVERSAL_SIZE+2, thumbRect.y+UNIVERSAL_SIZE/2+2, thumbRect.y+UNIVERSAL_SIZE+2};
-//        g.setColor(Color.black);
-//        g.fillPolygon(thumbPointsX, thumbPointsY, thumbPointsX.length);
-//        g.setColor(Color.white);
-//        g.drawRect(thumbRect.x, thumbRect.y, thumbRect.width, thumbRect.height);
-//        g.drawPolygon(thumbPointsX, thumbPointsY, thumbPointsX.length);
     }
 
     public class ColorTrackListener extends BasicSliderUI.TrackListener {
@@ -140,5 +134,8 @@ public class ColorSliderUI extends BasicSliderUI {
     @Override
     public void paintTrack(Graphics g) {
         g.fillRect(trackRect.x, trackRect.y+UNIVERSAL_SIZE/4, trackRect.width, trackRect.height/2);
+        g.setColor(Color.white);
+        ((Graphics2D) g).setStroke(trackStroke);
+        g.drawRect(trackRect.x, trackRect.y+UNIVERSAL_SIZE/4, trackRect.width, trackRect.height/2);
     }
 }

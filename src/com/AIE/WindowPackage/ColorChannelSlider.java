@@ -11,35 +11,32 @@ public class ColorChannelSlider extends ColorSlider {
     public static ColorChannelSlider create(int channelID) {
         switch (channelID) {
             case 0 -> {
-                red = new ColorChannelSlider(channelID);
-                red.slider.setName("red");
+                red = new ColorChannelSlider("R:", channelID, 255);
+                red.slider.setName("rgb");
                 return red;
             }
             case 1 -> {
-                green = new ColorChannelSlider(channelID);
-                green.slider.setName("green");
+                green = new ColorChannelSlider("G:", channelID, 0);
+                green.slider.setName("rgb");
                 return green;
             }
             case 2 -> {
-                blue = new ColorChannelSlider(channelID);
-                blue.slider.setName("blue");
+                blue = new ColorChannelSlider("B:", channelID, 0);
+                blue.slider.setName("rgb");
                 return blue;
             }
         }
         return null;
     }
 
-    private ColorChannelSlider(int channelID) {
+    private ColorChannelSlider(String text, int channelID, int defaultVal) {
         this.channelID = channelID;
-        init(new ChannelSliderUI(), 255);
+        init(new ChannelSliderUI(), 255, defaultVal, text);
     }
 
     @Override
     protected void update(String name) {
-        if(name.equals(HSVSlider.hue.slider.getName()) ||
-                name.equals(HSVSlider.saturation.slider.getName()) ||
-                name.equals(HSVSlider.value.slider.getName())) {
-            System.out.println(name);
+        if(name.equals("hsv")) {
             Color c = HSVSlider.getHSVToRGB(null, HSVSlider.hue.getValue(), HSVSlider.saturation.getValue(), HSVSlider.value.getValue());
             red.slider.setValue(c.getRed());
             green.slider.setValue(c.getGreen());
@@ -60,6 +57,15 @@ public class ColorChannelSlider extends ColorSlider {
                 channelID == 1 ? amt : green.getValue(),
                 channelID == 2 ? amt : blue.getValue());
         return color;
+    }
+
+    public static void setColor(int hex) {
+        System.out.println(Integer.toHexString(hex));
+        color.setRGB(hex);
+        red.slider.setValue(color.getRed());
+        green.slider.setValue(color.getGreen());
+        blue.slider.setValue(color.getBlue());
+        updateAll("hex");
     }
 
     private class ChannelSliderUI extends ColorSliderUI {
