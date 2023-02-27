@@ -50,21 +50,22 @@ public class MainFrame extends JFrame {
         this.setVisible(true);
     }
 
-    public static ImageIcon loadImage(String file, float scale) {
+    public static BufferedImage loadImage(String file) {
         try {
-            BufferedImage img = ImageIO.read(
+            return ImageIO.read(
                     Objects.requireNonNull(
-                            Main.class.getResource(file + ".png")));
-            System.out.println("Successfully Loaded[image]: " + Main.class.getResource(file + ".png"));
-            return new ImageIcon(img.getScaledInstance(
-                    (int)(img.getWidth()*scale),
-                    (int)(img.getHeight()*scale),
-                    BufferedImage.SCALE_SMOOTH));
+                            Main.class.getResource("resources/" + file + ".png")));
         } catch (IOException e) {
-            System.out.println("/" + file + ".png");
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        return null;
+    }
+
+    public static ImageIcon loadImage(String file, float scale) {
+        BufferedImage img = loadImage(file);
+        return new ImageIcon(img.getScaledInstance(
+                (int)(img.getWidth()*scale),
+                (int)(img.getHeight()*scale),
+                BufferedImage.SCALE_SMOOTH));
     }
 
 }

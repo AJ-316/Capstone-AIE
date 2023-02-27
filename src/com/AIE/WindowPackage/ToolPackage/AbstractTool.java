@@ -1,4 +1,4 @@
-package com.AIE.WindowPackage.ToolsPackage;
+package com.AIE.WindowPackage.ToolPackage;
 
 import com.AIE.Canvas;
 import com.AIE.WindowPackage.MainFrame;

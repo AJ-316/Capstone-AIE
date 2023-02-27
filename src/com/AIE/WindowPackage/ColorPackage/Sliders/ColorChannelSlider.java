@@ -1,4 +1,6 @@
-package com.AIE.WindowPackage;
+package com.AIE.WindowPackage.ColorPackage.Sliders;
+
+import com.AIE.WindowPackage.ColorPackage.MutableColor;
 
 import java.awt.*;
 
@@ -60,12 +62,19 @@ public class ColorChannelSlider extends ColorSlider {
     }
 
     public static void setColor(int hex) {
-        System.out.println(Integer.toHexString(hex));
         color.setRGB(hex);
         red.slider.setValue(color.getRed());
         green.slider.setValue(color.getGreen());
         blue.slider.setValue(color.getBlue());
         updateAll("hex");
+    }
+
+    public static void setColor(MutableColor newColor) {
+        color.set(newColor);
+        red.slider.setValue(color.getRed());
+        green.slider.setValue(color.getGreen());
+        blue.slider.setValue(color.getBlue());
+        updateAll("rgb");
     }
 
     private class ChannelSliderUI extends ColorSliderUI {

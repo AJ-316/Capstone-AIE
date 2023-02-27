@@ -1,4 +1,6 @@
-package com.AIE.WindowPackage;
+package com.AIE.WindowPackage.ColorPackage.Sliders;
+
+import com.AIE.WindowPackage.ColorPackage.Sliders.ColorChannelSlider;
 
 import javax.swing.SwingUtilities;
 import javax.swing.JPanel;
@@ -6,7 +8,6 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import java.awt.Graphics;
 import java.awt.FlowLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -38,13 +39,6 @@ public class HEXInput extends JPanel {
 
         inputUpdate.updateHex(Integer.toHexString(
                 ColorChannelSlider.getColor().getRGB()).substring(2).toUpperCase());
-    }
-
-    //TODO TEMPORARY
-    @Override
-    public void paint(Graphics g) {
-        super.paint(g);
-//        g.drawLine(65, getHeight()-5, getWidth() - 65, getHeight()-5);
     }
 
     private class InputUpdate extends FocusAdapter implements DocumentListener, ActionListener {

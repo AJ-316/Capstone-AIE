@@ -1,4 +1,6 @@
-package com.AIE.WindowPackage;
+package com.AIE.WindowPackage.ColorPackage.Sliders;
+
+import com.AIE.WindowPackage.ColorPackage.MutableColor;
 
 import java.awt.*;
 

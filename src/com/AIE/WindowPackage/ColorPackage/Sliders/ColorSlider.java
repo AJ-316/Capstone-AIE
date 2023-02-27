@@ -1,4 +1,7 @@
-package com.AIE.WindowPackage;
+package com.AIE.WindowPackage.ColorPackage.Sliders;
+
+import com.AIE.WindowPackage.ColorPackage.Brush;
+import com.AIE.WindowPackage.ColorPackage.ColorPalette;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -50,8 +53,9 @@ public abstract class ColorSlider extends JPanel {
             colorSlider.update(invoker);
         }
 
-        ColorPallet.colorPickerWheel.updateColorPicker();
-        ColorPallet.hexInput.update(invoker);
+        ColorPalette.colorPickerWheel.updateColorPicker();
+        ColorPalette.hexInput.update(invoker);
+        Brush.getSelected().setColor(ColorChannelSlider.getColor());
     }
 
     private class InputFieldUpdate implements DocumentListener {
@@ -108,6 +112,10 @@ public abstract class ColorSlider extends JPanel {
 
     public int getValue() {
         return slider.getValue();
+    }
+    
+    public float getUnitValue() {
+        return slider.getValue()/(float)slider.getMaximum();
     }
 
 }

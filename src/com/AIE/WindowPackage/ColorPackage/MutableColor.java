@@ -1,4 +1,4 @@
-package com.AIE.WindowPackage;
+package com.AIE.WindowPackage.ColorPackage;
 
 import java.awt.*;
 

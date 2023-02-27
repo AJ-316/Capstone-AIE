@@ -1,28 +1,30 @@
-package com.AIE.WindowPackage;
+package com.AIE.WindowPackage.ColorPackage;
 
-import javax.imageio.ImageIO;
+import com.AIE.WindowPackage.ColorPackage.Sliders.HSVSlider;
+import com.AIE.WindowPackage.MainFrame;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 public class ColorPickerWheel extends JPanel {
 
-    private static final BasicStroke bs = new BasicStroke(2);
+    private static final BasicStroke pickerStroke = new BasicStroke(2);
     private static final int IMAGE_SIZE = 1024;
     private static final int DRAW_SIZE = 175;
     private static final int PANEL_SIZE_OFFSET = 25;
+    private static final double RADIUS = DRAW_SIZE/2.0;
+    private static final double D_THETA = 6.283185307179586;
     private final int[] row;
 
     private final Picker picker;
     private final BufferedImage image;
 
-    public ColorPickerWheel() {
+    public ColorPickerWheel(int x, int y) {
         super(null);
-        setPreferredSize(new Dimension(DRAW_SIZE+PANEL_SIZE_OFFSET*2, DRAW_SIZE+PANEL_SIZE_OFFSET*2));
+        setBounds(x, y, DRAW_SIZE+PANEL_SIZE_OFFSET*2, DRAW_SIZE+PANEL_SIZE_OFFSET*2);
         setOpaque(false);
 
         picker = new Picker(10);
@@ -31,12 +33,7 @@ public class ColorPickerWheel extends JPanel {
 
         generateColorWheel();
         updateColorPicker();
-
-        try {
-            applyGrayscaleMaskToAlpha(image, ImageIO.read(new File("mask.png")));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        applyGrayscaleMaskToAlpha(image, MainFrame.loadImage("color_palette/mask"));
 
         PickerUpdate pickerUpdate = new PickerUpdate();
         addMouseListener(pickerUpdate);
@@ -46,50 +43,61 @@ public class ColorPickerWheel extends JPanel {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        ((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        g.setColor(Color.white);
-        g.drawOval(PANEL_SIZE_OFFSET, PANEL_SIZE_OFFSET, DRAW_SIZE, DRAW_SIZE);
+        g2d.setStroke(pickerStroke);
+        g2d.setColor(Color.white);
+        g2d.drawOval(PANEL_SIZE_OFFSET, PANEL_SIZE_OFFSET, DRAW_SIZE, DRAW_SIZE);
 
-        g.drawImage(this.image, PANEL_SIZE_OFFSET, PANEL_SIZE_OFFSET, DRAW_SIZE, DRAW_SIZE, null);
+        g2d.drawImage(this.image, PANEL_SIZE_OFFSET, PANEL_SIZE_OFFSET, DRAW_SIZE, DRAW_SIZE, null);
 
-        g.setColor(HSVSlider.getHSVToRGB(picker.color, HSVSlider.hue.getValue(), HSVSlider.saturation.getValue(), 100));
+        g2d.setColor(HSVSlider.getHSVToRGB(picker.color, HSVSlider.hue.getValue(), HSVSlider.saturation.getValue(), 100));
+        g2d.fillOval(picker.x, picker.y, picker.size, picker.size);
 
-        g.fillOval(picker.x, picker.y, picker.size, picker.size);
-        ((Graphics2D) g).setStroke(bs);
+        g2d.setColor(Color.white);
+        g2d.drawOval(picker.x, picker.y, picker.size, picker.size);
 
-        g.setColor(Color.white);
-        g.drawOval(picker.x, picker.y, picker.size, picker.size);
+        g2d.setColor(Color.black);
+        g2d.setStroke(new BasicStroke(1));
+        g2d.drawOval(picker.x-1, picker.y-1, picker.size+2, picker.size+2);
     }
 
     public void updateColorPicker() {
-        double theta = HSVSlider.hue.getValue()/360f * 2.0f * 3.141592653589793;
-        if (theta < 0.0) theta += 6.283185307179586;
-        final double r = HSVSlider.saturation.getValue()/100f * DRAW_SIZE /2.0;
-        picker.setPos((int)(r * Math.cos(theta) + 0.5 + DRAW_SIZE /2.0), (int)(r * Math.sin(theta) + 0.5 + DRAW_SIZE /2.0f));
+        double theta = D_THETA;
+        if(HSVSlider.hue != null)
+            theta *= HSVSlider.hue.getUnitValue();
+
+        if (theta < 0.0) theta += D_THETA;
+
+        double rad = RADIUS;
+        if(HSVSlider.saturation != null)
+            rad *= HSVSlider.saturation.getUnitValue();
+
+        picker.setPos((int)(rad * Math.cos(theta) + 0.5f + RADIUS), (int)(rad * Math.sin(theta) + 0.5f + RADIUS));
         repaint();
     }
 
     private void generateColorWheel() {
-        final double dTheta = 6.283185307179586;
-        final float radius = row.length / 2.0f;
-        for(int y = 0; y < row.length; ++y) {
-            final float y2 = y - row.length / 2.0f;
+        final float radius = IMAGE_SIZE/2.0f;
 
-            for(int x = 0; x < row.length; ++x) {
-                final float x2 = x - row.length / 2.0f;
+        for(int y = 0; y < IMAGE_SIZE; ++y) {
+            final float y2 = y - radius;
+
+            for(int x = 0; x < IMAGE_SIZE; ++x) {
+                final float x2 = x - radius;
 
                 final double r = Math.sqrt(x2 * x2 + y2 * y2);
                 if (r > radius) {
-                    row[x] = 0xffff0000;
+                    row[x] = 0xffffffff;
                     continue;
                 }
 
                 row[x] = Color.HSBtoRGB(
-                        (float) (Math.atan2(y2, x2) / dTheta),
+                        (float) (Math.atan2(y2, x2) / D_THETA),
                         (float) (r / radius), 1);
             }
-            image.getRaster().setDataElements(0, y, row.length, 1, this.row);
+            image.getRaster().setDataElements(0, y, IMAGE_SIZE, 1, row);
         }
     }
 
@@ -127,13 +135,15 @@ public class ColorPickerWheel extends JPanel {
     private class PickerUpdate extends MouseAdapter {
         @Override
         public void mousePressed(MouseEvent e) {
-            final Point p = e.getPoint();
-            p.translate(-(getWidth()/2 - DRAW_SIZE/2), -(getHeight()/2 - DRAW_SIZE/2));
+            if(SwingUtilities.isRightMouseButton(e)) Brush.selectBrush(1);
+            else if(SwingUtilities.isLeftMouseButton(e)) Brush.selectBrush(0);
 
-            final double radius = DRAW_SIZE/2.0;
-            final double x = (p.getX()) - DRAW_SIZE/2.0;
-            final double y = (p.getY()) - DRAW_SIZE/2.0;
-            double r = Math.min(1.0, Math.sqrt(x * x + y * y) / radius);
+            final Point p = e.getPoint();
+            p.translate((int) -(getWidth()/2 - RADIUS), (int) -(getHeight()/2 - RADIUS));
+
+            final double x = p.getX() - RADIUS;
+            final double y = p.getY() - RADIUS;
+            double r = Math.min(1.0, Math.sqrt(x * x + y * y) / RADIUS);
             double theta = (Math.atan2(1-x, y) / 6.283185307179586 + 0.25) * 360;
             if(theta < 0) theta += 360;
             HSVSlider.setHSV((int)(theta), (int)(r*100), HSVSlider.value.getValue());

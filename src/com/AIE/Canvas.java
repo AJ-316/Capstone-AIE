@@ -1,6 +1,6 @@
 package com.AIE;
 
-import com.AIE.WindowPackage.ColorChannelSlider;
+import com.AIE.WindowPackage.ColorPackage.Brush;
 import com.AIE.WindowPackage.MainFrame;
 
 import javax.swing.*;
@@ -15,6 +15,7 @@ public class Canvas extends JPanel {
     private int[] pixels;
     private float scale;
     private float width, height;
+    private int brushType;
 
     public Canvas() {
         super();
@@ -49,22 +50,15 @@ public class Canvas extends JPanel {
         System.out.println("x:"+x+", y:"+y+", scale:"+scale+", multiplier: x["+scale+"],y["+scale+"]");
         if(x >= image.getWidth() || x < 0 || y >= image.getHeight() || y < 0)
             return;
+
         System.out.println(x + y*image.getWidth());
-        pixels[x + y*image.getWidth()] = ColorChannelSlider.getColor().getRGB(); //TODO: Black Color
+        pixels[x + y*image.getWidth()] = Brush.getBrush(brushType).getColor().getRGB();
     }
-    /*
-    xB:0, yB:0, x:0, y:0, scale:1.0, multiplier: x[1.0],y[1.0]
-    index = 0
 
-    xB:5, yB:1, x:5, y:1, scale:1.0, multiplier: x[1.0],y[1.0]
-    index = 4005
+    public void setBrushType(int brushType) {
+        this.brushType = brushType;
+    }
 
-    xB:6, yB:4, x:6, y:4, scale:1.0, multiplier: x[1.0],y[1.0]
-    index = 16006
-
-    xB:1, yB:2, x:1, y:2, scale:1.0, multiplier: x[1.0],y[1.0]
-    index = 8001
-    * */
     public void updateCanvas() {
         repaint();
     }
