@@ -1,90 +1,91 @@
 package com.AIE.WindowPackage.ColorPackage.Sliders;
 
-import com.AIE.WindowPackage.ColorPackage.Sliders.ColorChannelSlider;
+import com.AIE.WindowPackage.ColorPackage.ColorPalette;
+import com.AIE.WindowPackage.ColorPackage.MutableColor;
+import com.AIE.WindowPackage.ColorPackage.PaletteElement;
 
-import javax.swing.SwingUtilities;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
+import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import java.awt.FlowLayout;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
+import java.awt.*;
+import java.awt.event.*;
 
-public class HEXInput extends JPanel {
+public class HEXInput extends JPanel implements PaletteElement, DocumentListener, ActionListener, FocusListener {
+    private static final int PREFERRED_WIDTH = 80;
+    private static final int PREFERRED_HEIGHT = 26;
+    private String lastTyped;
+    private final MutableColor color = new MutableColor(0,0,0);
     private final JTextField inputField;
-    private final InputUpdate inputUpdate;
+    private final static String ELEMENT_NAME = "hex";
 
-    public HEXInput(){
+    public HEXInput() {
         super(new FlowLayout(FlowLayout.CENTER, 55, 0));
-        setPreferredSize(new Dimension(295, 40));
-        inputField = new JTextField();
-        inputField.setPreferredSize(new Dimension(80, 26));
-        inputField.setText("FF0000");
-        inputUpdate = new InputUpdate();
-        inputField.getDocument().addDocumentListener(inputUpdate);
-        inputField.addFocusListener(inputUpdate);
-        inputField.addActionListener(inputUpdate);
         add(new JLabel("Hex:"));
+
+        inputField = new JTextField();
+        inputField.setPreferredSize(new Dimension(PREFERRED_WIDTH, PREFERRED_HEIGHT));
+        inputField.getDocument().addDocumentListener(this);
+        inputField.addFocusListener(this);
+        inputField.addActionListener(this);
+        updateHex("FF0000");
         add(inputField);
+
+        ColorPalette.ELEMENTS.add(this);
     }
 
-    public void update(String invoker) {
-        if(invoker.equals("hex"))
+    @Override
+    public void updateElement(MutableColor color, String invoker) {
+        if(invoker.equals(ELEMENT_NAME))
             return;
 
-        inputUpdate.updateHex(Integer.toHexString(
-                ColorChannelSlider.getColor().getRGB()).substring(2).toUpperCase());
+        updateHex(Integer.toHexString(
+                color.getRGB()).substring(2).toUpperCase());
     }
 
-    private class InputUpdate extends FocusAdapter implements DocumentListener, ActionListener {
-        private String lastTyped = inputField.getText();
+    public void updateHex(String hex) {
+        inputField.setText(hex.toUpperCase());
+        lastTyped = inputField.getText();
+    }
 
-        public void updateHex(String hex) {
-            inputField.setText(hex.toUpperCase());
+    private void verifyHex() {
+        if(inputField.getText().matches("^([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$") &&
+                inputField.getText().length() == 6) {
+            inputField.setText(inputField.getText().toUpperCase());
             lastTyped = inputField.getText();
+            color.setRGB(Integer.decode("0x"+lastTyped));
+            ColorPalette.update(color, ELEMENT_NAME);
+        } else {
+            inputField.setText(lastTyped);
         }
-
-        private void verifyHex() {
-            if(inputField.getText().matches("^([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$") &&
-                    inputField.getText().length() == 6) {
-                inputField.setText(inputField.getText().toUpperCase());
-                lastTyped = inputField.getText();
-                ColorChannelSlider.setColor(Integer.decode("0x"+lastTyped));
-            } else {
-                inputField.setText(lastTyped);
-            }
-        }
-        private void verifyLength() {
-            if(inputField.getText().length() > 6) {
-                if(inputField.getText().startsWith("#")) {
-                    inputField.setText(inputField.getText().substring(1));
-                    return;
-                }
-                inputField.setText(lastTyped);
-            }
-        }
-        @Override
-        public void insertUpdate(DocumentEvent e) {
-            Runnable doVerify = this::verifyLength;
-            SwingUtilities.invokeLater(doVerify);
-        }
-        @Override
-        public void focusLost(FocusEvent e) {
-            verifyHex();
-        }
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            verifyHex();
-        }
-        @Override
-        public void removeUpdate(DocumentEvent e) {}
-        @Override
-        public void changedUpdate(DocumentEvent e) {}
     }
+    private void verifyLength() {
+        if(inputField.getText().length() > 6) {
+            if(inputField.getText().startsWith("#")) {
+                inputField.setText(inputField.getText().substring(1));
+                return;
+            }
+            inputField.setText(lastTyped);
+        }
+    }
+    @Override
+    public void insertUpdate(DocumentEvent e) {
+        Runnable doVerify = this::verifyLength;
+        SwingUtilities.invokeLater(doVerify);
+    }
+
+    @Override
+    public void focusLost(FocusEvent e) {
+        verifyHex();
+    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        verifyHex();
+    }
+    @Override
+    public void focusGained(FocusEvent e) {}
+    @Override
+    public void removeUpdate(DocumentEvent e) {}
+    @Override
+    public void changedUpdate(DocumentEvent e) {}
 
 }

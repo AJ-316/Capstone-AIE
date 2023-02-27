@@ -1,4 +1,4 @@
-package com.AIE.WindowPackage.ColorPackage.Sliders;
+package com.AIE.WindowPackage.ColorPackage.Sliders.UI;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicSliderUI;

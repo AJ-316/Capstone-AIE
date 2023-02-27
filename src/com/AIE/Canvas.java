@@ -1,6 +1,6 @@
 package com.AIE;
 
-import com.AIE.WindowPackage.ColorPackage.Brush;
+import com.AIE.WindowPackage.ColorPackage.ColorPalette;
 import com.AIE.WindowPackage.MainFrame;
 
 import javax.swing.*;
@@ -52,7 +52,7 @@ public class Canvas extends JPanel {
             return;
 
         System.out.println(x + y*image.getWidth());
-        pixels[x + y*image.getWidth()] = Brush.getBrush(brushType).getColor().getRGB();
+        pixels[x + y*image.getWidth()] = ColorPalette.getBrush(brushType).getColor().getRGB();
     }
 
     public void setBrushType(int brushType) {

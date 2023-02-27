@@ -55,6 +55,14 @@ public class MutableColor extends Color {
         setValue();
     }
 
+    public void setRGB(float r, float g, float b) {
+        rgbaI[R] = (int) (r*255+0.5f);
+        rgbaI[G] = (int) (g*255+0.5f);
+        rgbaI[B] = (int) (b*255+0.5f);
+        testColorValueRange(rgbaI[R],rgbaI[G],rgbaI[B],255);
+        setValue();
+    }
+
     @Override
     public int getRGB() {
         return value;
@@ -71,6 +79,44 @@ public class MutableColor extends Color {
 
     public String toString() {
         return "[r:" + rgbaI[R] + ", g:" + rgbaI[G] + ", b:" + rgbaI[B]+"]";
+    }
+
+    private float getMax() {
+        return Math.max(getRed()/255f, Math.max(getGreen()/255f, getBlue()/255f));
+    }
+
+    private float getMin() {
+        return Math.min(getRed()/255f, Math.min(getGreen()/255f, getBlue()/255f));
+    }
+
+    public int toValue() {
+        return (int) (getMax() * 100);
+    }
+
+    public int toSaturation() {
+        float max = getMax();
+        return max == 0 ? 0 : (int) ((max - getMin()) / max * 100);
+    }
+
+    public int toHue() {
+        float max = getMax();
+        float min = getMin();
+
+        float diff = max - min;
+
+        if (diff == 0)
+            return 0;
+
+        float red = getRed()/255f;
+        float green = getGreen()/255f;
+        float blue = getBlue()/255f;
+
+        int resultHue =
+                max == red   ? (int) (( ((green -  blue)  / diff) % 6) * 60) :
+                max == green ? (int) ((  (blue  -   red)  / diff  + 2) * 60) :
+                               (int) ((  (red   - green)  / diff  + 4) * 60);
+
+        return resultHue < 0 ? resultHue + 360 : resultHue;
     }
 
     /*
