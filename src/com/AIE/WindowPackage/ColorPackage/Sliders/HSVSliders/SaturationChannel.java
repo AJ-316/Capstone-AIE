@@ -2,10 +2,10 @@ package com.AIE.WindowPackage.ColorPackage.Sliders.HSVSliders;
 
 import com.AIE.WindowPackage.ColorPackage.ColorPalette;
 import com.AIE.WindowPackage.ColorPackage.MutableColor;
-import com.AIE.WindowPackage.ColorPackage.Sliders.CSlider;
+import com.AIE.WindowPackage.ColorPackage.Sliders.ColorSlider;
 import com.AIE.WindowPackage.ColorPackage.Sliders.UI.SaturationChannelUI;
 
-public class SaturationChannel extends CSlider {
+public class SaturationChannel extends ColorSlider {
     public SaturationChannel() {
         super("hsv", "S:", 100, 100, new SaturationChannelUI());
     }

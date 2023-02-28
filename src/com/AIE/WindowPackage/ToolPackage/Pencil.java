@@ -10,8 +10,6 @@ public class Pencil extends AbstractTool {
 
     public Pencil() {
         super("icons/pencil", new Cursor(Cursor.HAND_CURSOR));
-        lineDrawer = new LineDrawer();
-
         setBorder(BorderFactory.createTitledBorder("Pencil"));
         setBorderPainted(true);
     }
@@ -23,25 +21,23 @@ public class Pencil extends AbstractTool {
 
     @Override
     public void pressed(Canvas canvas, MouseEvent e) {
-        canvas.changePixelColor(e.getX(), e.getY());
-        lineDrawer.addPixel(e.getX(), e.getY());
+        canvas.changePixelLinearly(e.getX(), e.getY());
         canvas.updateCanvas();
     }
 
     @Override
     public void released(Canvas canvas, MouseEvent e) {
-        lineDrawer.releasePixels();
+        canvas.releasePixels();
     }
 
     @Override
     public void inputConflictClear(Canvas canvas, MouseEvent e) {
-        lineDrawer.releasePixels();
+        canvas.releasePixels();
     }
 
     @Override
     public void dragged(Canvas canvas, MouseEvent e) {
-        lineDrawer.addPixel(e.getX(), e.getY());
-        lineDrawer.drawLines(canvas);
+        canvas.changePixelLinearly(e.getX(), e.getY());
         canvas.updateCanvas();
     }
 

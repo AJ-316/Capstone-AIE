@@ -12,14 +12,9 @@ public class CanvasManager extends JPanel {
     public CanvasManager() {
         super(null);
         canvasList = new ArrayList<>();
-        CanvasManagerNavigation navigationListener = new CanvasManagerNavigation();
-        addMouseListener(navigationListener);
-        addMouseMotionListener(navigationListener);
-        addMouseWheelListener(navigationListener);
     }
 
     public void addCanvas(Canvas... canvasesToAdd) {
-
         canvasList.addAll(Arrays.asList(canvasesToAdd));
 
         currentCanvasIndex = canvasesToAdd.length-1;

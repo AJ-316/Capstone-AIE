@@ -7,11 +7,13 @@ import com.formdev.flatlaf.FlatDarculaLaf;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class MainFrame extends JFrame {
+public class MainFrame extends JFrame implements ComponentListener {
 
     // TODO: Will need to remove instance and clean up the code so singletons are not needed
     public static CanvasManager CANVAS_MANAGER;
@@ -29,6 +31,7 @@ public class MainFrame extends JFrame {
         PANE.setBackground(new Color(0x303031));
         new WindowMenuBar(this);
 
+        addComponentListener(this);
         this.setSize(width, height);
         this.setLayout(new BorderLayout());
         this.setResizable(true);
@@ -68,4 +71,23 @@ public class MainFrame extends JFrame {
                 BufferedImage.SCALE_SMOOTH));
     }
 
+    @Override
+    public void componentResized(ComponentEvent e) {
+        CanvasManager.getCurrentCanvas().setSize(getWidth(), getHeight());
+    }
+
+    @Override
+    public void componentMoved(ComponentEvent e) {
+
+    }
+
+    @Override
+    public void componentShown(ComponentEvent e) {
+
+    }
+
+    @Override
+    public void componentHidden(ComponentEvent e) {
+
+    }
 }

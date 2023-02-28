@@ -12,7 +12,7 @@ import java.awt.event.*;
 //        ColorPalette.colorPickerWheel.updateColorPicker();
 //        ColorPalette.hexInput.update(invoker);
 //        Brush.getSelected().setColor(ColorChannelSlider.getColor());
-public abstract class CSlider extends JPanel implements PaletteElement {
+public abstract class ColorSlider extends JPanel implements PaletteElement {
 
     private static final int PREFERRED_WIDTH = 100;
     private static final int PREFERRED_HEIGHT = 30;
@@ -21,7 +21,7 @@ public abstract class CSlider extends JPanel implements PaletteElement {
     protected JTextField inputField;
     protected final String ELEMENT_NAME;
 
-    public CSlider(String name, String text, int maxVal, int defaultVal, ColorSliderUI ui) {
+    public ColorSlider(String name, String text, int maxVal, int defaultVal, ColorSliderUI ui) {
         this.ELEMENT_NAME = name;
         this.label = new JLabel(text, SwingConstants.RIGHT);
         add(label);
@@ -88,47 +88,47 @@ public abstract class CSlider extends JPanel implements PaletteElement {
     public abstract void updateColor();
 
     private static class SliderUpdate extends MouseAdapter {
-        private final CSlider cSlider;
+        private final ColorSlider colorSlider;
 
-        public SliderUpdate(CSlider cSlider) {
-            this.cSlider = cSlider;
+        public SliderUpdate(ColorSlider colorSlider) {
+            this.colorSlider = colorSlider;
         }
 
         @Override
         public void mousePressed(MouseEvent e) {
-            cSlider.updateColor();
+            colorSlider.updateColor();
         }
         @Override
         public void mouseDragged(MouseEvent e) {
-            cSlider.updateColor();
+            colorSlider.updateColor();
         }
     }
     private static class InputFieldUpdate extends FocusAdapter implements DocumentListener, ActionListener {
 
         private String lastCorrectValue = "0";
-        private final CSlider cSlider;
+        private final ColorSlider colorSlider;
 
-        public InputFieldUpdate(CSlider cSlider) {
-            this.cSlider = cSlider;
+        public InputFieldUpdate(ColorSlider colorSlider) {
+            this.colorSlider = colorSlider;
         }
 
         private void verifyValue() throws NumberFormatException {
-            String value = cSlider.inputField.getText();
+            String value = colorSlider.inputField.getText();
             if(value.matches(".*[a-zA-Z]+.*")) {
-                cSlider.inputField.setText(lastCorrectValue);
+                colorSlider.inputField.setText(lastCorrectValue);
                 return;
             }
-            cSlider.setText(String.valueOf(Math.max(0,
-                    Math.min(Integer.parseInt(value), cSlider.slider.getMaximum()))));
-            lastCorrectValue = cSlider.inputField.getText();
+            colorSlider.setText(String.valueOf(Math.max(0,
+                    Math.min(Integer.parseInt(value), colorSlider.slider.getMaximum()))));
+            lastCorrectValue = colorSlider.inputField.getText();
 
-            cSlider.updateColor();
+            colorSlider.updateColor();
         }
 
         private void verifyLength() {
-            int length = cSlider.inputField.getText().length();
+            int length = colorSlider.inputField.getText().length();
             if(length > 3 || length == 0)
-                cSlider.inputField.setText(lastCorrectValue);
+                colorSlider.inputField.setText(lastCorrectValue);
         }
 
         @Override

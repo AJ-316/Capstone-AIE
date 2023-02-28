@@ -2,10 +2,10 @@ package com.AIE.WindowPackage.ColorPackage.Sliders.RGBSliders;
 
 import com.AIE.WindowPackage.ColorPackage.ColorPalette;
 import com.AIE.WindowPackage.ColorPackage.MutableColor;
-import com.AIE.WindowPackage.ColorPackage.Sliders.CSlider;
+import com.AIE.WindowPackage.ColorPackage.Sliders.ColorSlider;
 import com.AIE.WindowPackage.ColorPackage.Sliders.UI.RGBChannelUI;
 
-public class BlueChannel extends CSlider {
+public class BlueChannel extends ColorSlider {
 
     public BlueChannel() {
         super("blue", "B:", 255, 0, new RGBChannelUI(2));
