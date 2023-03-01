@@ -1,7 +1,7 @@
 package com.AIE;
 
-import com.AIE.WindowPackage.ToolsPackage.AbstractTool;
-import com.AIE.WindowPackage.ToolsPackage.Toolbar;
+import com.AIE.WindowPackage.ToolPackage.AbstractTool;
+import com.AIE.WindowPackage.ToolPackage.Toolbar;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
@@ -24,6 +24,7 @@ public class CanvasToolInteraction extends MouseAdapter {
             tool.inputConflictClear(canvas, e);
             return;
         }
+        canvas.setBrushType(SwingUtilities.isLeftMouseButton(e) ? 0 : SwingUtilities.isRightMouseButton(e) ? 1 : -1);
         tool.pressed(canvas, e);
     }
 
@@ -48,12 +49,13 @@ public class CanvasToolInteraction extends MouseAdapter {
             tool.inputConflictClear(canvas, e);
             return;
         }
+        canvas.setBrushType(SwingUtilities.isLeftMouseButton(e) ? 0 : SwingUtilities.isRightMouseButton(e) ? 1 : -1);
         tool.dragged(canvas, e);
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        System.out.println("Mouse on canvas x:" + e.getX() + ", y:" + e.getY());
+//        System.out.println("Mouse on canvas x:" + e.getX() + ", y:" + e.getY());
         AbstractTool tool = Toolbar.getCurrentTool();
         if(tool != null)
             tool.moved(canvas, e);

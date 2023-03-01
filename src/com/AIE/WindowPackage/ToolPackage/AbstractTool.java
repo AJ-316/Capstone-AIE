@@ -1,4 +1,4 @@
-package com.AIE.WindowPackage.ToolsPackage;
+package com.AIE.WindowPackage.ToolPackage;
 
 import com.AIE.Canvas;
 import com.AIE.WindowPackage.MainFrame;
@@ -11,7 +11,6 @@ import java.awt.event.MouseEvent;
 
 public abstract class AbstractTool extends JRadioButton implements ItemListener {
 
-    protected LineDrawer lineDrawer;
     protected Cursor cursor;
 
     public AbstractTool(String icon, Cursor cursor) {

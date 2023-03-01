@@ -1,5 +1,8 @@
 package com.AIE;
 
+import com.AIE.WindowPackage.ColorPackage.ColorPalette;
+import com.AIE.WindowPackage.ToolPackage.PixelConnector;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -10,12 +13,15 @@ public class Canvas extends JPanel {
 
     private BufferedImage image;
     private int[] pixels;
-    private float scale;
-    private float width, height;
+
+    private final PixelConnector connector;
+    private int brushType;
+    private int zoom, posX, posY;
 
     public Canvas() {
         super();
-        this.scale = 100;
+        setLocation(0, 0);
+        connector = new PixelConnector(this);
         setBackground(Color.yellow);
         addListeners(new CanvasNavigation(), new CanvasToolInteraction(this));
     }
@@ -29,55 +35,77 @@ public class Canvas extends JPanel {
         addMouseMotionListener(canvasToolInteraction);
     }
 
-    public void createNewImage(int width, int height) {
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        ((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g.drawImage(image, posX, posY, (int) (image.getWidth()/100f*zoom), (int) (image.getHeight()/100f*zoom), null);
+    }
+
+    public void createNewImage(int width, int height, int type) {
         image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
-        this.width = width;
-        this.height = height;
-        setScale(1);
-        Arrays.fill(pixels, 0xffffffff);
+        if(type == 0)
+            Arrays.fill(pixels, 0xffffffff);
+        setZoom(100);
     }
 
-    public void changePixelColor(int x, int y) throws IndexOutOfBoundsException  {
-        System.out.print("xB:"+x+", yB:"+y+", ");
-        x = (int)(x/scale);
-        y = (int)(y/scale);
-        System.out.println("x:"+x+", y:"+y+", scale:"+scale+", multiplier: x["+scale+"],y["+scale+"]");
+    public void releasePixels() {
+        connector.releasePixels();
+    }
+
+    public void changePixelLinearly(int x, int y) throws IndexOutOfBoundsException {
+        float scale = zoom/100f;
+        x = (int) ((x - posX)/scale);
+        y = (int) ((y - posY)/scale);
+
+        connector.addPixel(x, y);
+        changeRawPixel(x, y);
+    }
+
+    public void changeRawPixel(int x, int y) throws IndexOutOfBoundsException  {
         if(x >= image.getWidth() || x < 0 || y >= image.getHeight() || y < 0)
             return;
-        System.out.println(x + y*image.getWidth());
-        pixels[x + y*image.getWidth()] = 0xff000000; //TODO: Black Color
+
+        pixels[x + y*image.getWidth()] = ColorPalette.getBrush(brushType).getColor().getRGB();
     }
-    /*
-    xB:0, yB:0, x:0, y:0, scale:1.0, multiplier: x[1.0],y[1.0]
-    index = 0
 
-    xB:5, yB:1, x:5, y:1, scale:1.0, multiplier: x[1.0],y[1.0]
-    index = 4005
+    // may use later
+    public void changeScaledPixel(int x, int y) throws IndexOutOfBoundsException  {
+        float scale = zoom/100f;
+        changeRawPixel((int) (x/scale), (int) (y/scale));
+    }
 
-    xB:6, yB:4, x:6, y:4, scale:1.0, multiplier: x[1.0],y[1.0]
-    index = 16006
+    public void setBrushType(int brushType) {
+        this.brushType = brushType;
+    }
 
-    xB:1, yB:2, x:1, y:2, scale:1.0, multiplier: x[1.0],y[1.0]
-    index = 8001
-    * */
     public void updateCanvas() {
         repaint();
     }
 
-    public void setScale(float scale) {
-        this.scale = Math.max(1, scale);
-        setSize((int) (width*this.scale), (int) (height*this.scale));
+    public void setPosXY(int posX, int posY) {
+        this.posX = posX;
+        this.posY = posY;
         updateCanvas();
     }
 
-    @Override
-    public void paint(Graphics g) {
-        super.paint(g);
-        g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+    public int getPosX() {
+        return posX;
     }
 
-    public float getScale() {
-        return scale;
+    public int getPosY() {
+        return posY;
+    }
+
+    public int getZoom() {
+        return zoom;
+    }
+
+    public void setZoom(int zoom) {
+        if(zoom < 0 || zoom > 64000)
+            return;
+        this.zoom = zoom;
+        updateCanvas();
     }
 }
