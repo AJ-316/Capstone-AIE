@@ -51,12 +51,7 @@ public class Canvas extends JPanel {
     }
 
     public void setNewImage(BufferedImage newImage) {
-        image = new BufferedImage(
-                newImage.getWidth(), newImage.getHeight(), BufferedImage.TYPE_INT_ARGB);
-
-        Graphics2D g = image.createGraphics();
-        g.drawImage(newImage, 0, 0, null);
-        g.dispose();
+        image = ImageLoader.createImage(newImage, BufferedImage.TYPE_INT_ARGB);
 
         pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
         setZoom(100);
@@ -88,11 +83,11 @@ public class Canvas extends JPanel {
         pixels[x + y*image.getWidth()] = ColorPalette.getBrush(brushType).getColor().getRGB();
     }
 
-    // may use later
-    public void changeScaledPixel(int x, int y) throws IndexOutOfBoundsException  {
-        float scale = zoom/100f;
-        changeRawPixel((int) (x/scale), (int) (y/scale));
-    }
+    // might use later
+    // public void changeScaledPixel(int x, int y) throws IndexOutOfBoundsException  {
+    //     float scale = zoom/100f;
+    //     changeRawPixel((int) (x/scale), (int) (y/scale));
+    // }
 
     public void setBrushType(int brushType) {
         this.brushType = brushType;

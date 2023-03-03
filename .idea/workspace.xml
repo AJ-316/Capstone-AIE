@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Canvas is now working as Intended!">
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/ImageLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/FileMenu.java" afterDir="false" />
+    <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Added Save/load for PNG">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/Canvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/CanvasManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/CanvasNavigation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasNavigation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/CanvasToolInteraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasToolInteraction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/ColorPickerWheel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/ColorPickerWheel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/ColorSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/ColorSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/AbstractTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/AbstractTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/WindowMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/FrameMenuBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/WindowsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/WindowsMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/ImageLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/ImageLoader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +20,7 @@
     </option>
   </component>
   <component name="Git.Rebase.Settings">
-    <option name="NEW_BASE" value="ColorPaletteImplementation" />
+    <option name="NEW_BASE" value="master" />
   </component>
   <component name="Git.Settings">
     <favorite-branches>
@@ -49,7 +38,7 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="SaveLoadImage" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -229,7 +218,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="SaveLoadImage" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
