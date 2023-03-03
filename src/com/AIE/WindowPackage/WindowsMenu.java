@@ -15,13 +15,13 @@ public class WindowsMenu extends JMenu {
         windows = new HashMap<>();
 
         Toolbar toolbar = new Toolbar(mainFrame);
-        addWindow(Toolbar.NAME, toolbar);
+        addMenuItem(Toolbar.NAME, toolbar);
 
         ColorPalette colorPalette = new ColorPalette(mainFrame);
-        addWindow(ColorPalette.NAME, colorPalette);
+        addMenuItem(ColorPalette.NAME, colorPalette);
     }
 
-    private void addWindow(String name, AbstractWindow window) {
+    private void addMenuItem(String name, AbstractWindow window) {
         windows.put(name, window);
         JMenuItem item = new JMenuItem(name);
 

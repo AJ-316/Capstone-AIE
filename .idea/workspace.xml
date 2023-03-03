@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Color Palette Reimplementation">
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/color_palette/mask.png" afterDir="false" />
+    <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Canvas is now working as Intended!">
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/ImageLoader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/FileMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/Canvas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/CanvasManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/CanvasManagerNavigation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasManagerNavigation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/CanvasNavigation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasNavigation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/CanvasToolInteraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasToolInteraction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/CSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/ColorSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/HSVSliders/HueChannel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/HSVSliders/HueChannel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/HSVSliders/SaturationChannel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/HSVSliders/SaturationChannel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/HSVSliders/ValueChannel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/HSVSliders/ValueChannel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/RGBSliders/BlueChannel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/RGBSliders/BlueChannel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/RGBSliders/GreenChannel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/RGBSliders/GreenChannel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/RGBSliders/RedChannel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/RGBSliders/RedChannel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/ColorPickerWheel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/ColorPickerWheel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/ColorSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/ColorSlider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MainFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/AbstractTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/AbstractTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/LineDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/PixelConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Pencil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Pencil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/WindowMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/FrameMenuBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/WindowsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/WindowsMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,14 +88,15 @@
       <recent name="D:\PROgraming\IdeaProjects\Capstone-AIE\src\com\AIE\color_palette" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.AIE.WindowPackage.ColorPackage.Sliders" />
       <recent name="com.AIE.WindowPackage" />
+      <recent name="com.AIE.WindowPackage.ColorPackage.Sliders" />
       <recent name="com.AIE" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
-    <configuration name="AssertionExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="AssertionExample" />
+    <configuration name="AWTControlDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AWTControlDemo" />
+      <module name="Capstone-AIE" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -117,22 +114,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main2 (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main2" />
-      <module name="Capstone-AIE" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main2 (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main2" />
-      <module name="Capstone-AIE" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main2" />
+    <configuration name="SwingTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="SwingTester" />
       <module name="Capstone-AIE" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -141,10 +124,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Main2 (2)" />
-        <item itemvalue="Application.Main2 (1)" />
-        <item itemvalue="Application.Main2" />
-        <item itemvalue="Application.AssertionExample" />
+        <item itemvalue="Application.SwingTester" />
+        <item itemvalue="Application.AWTControlDemo" />
       </list>
     </recent_temporary>
   </component>
@@ -302,7 +283,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Capstone_AIE$VerifierTest.ic" NAME="VerifierTest Coverage Results" MODIFIED="1676969542696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Capstone_AIE$Main.ic" NAME="Main Coverage Results" MODIFIED="1677547441720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Capstone_AIE$Main.ic" NAME="Main Coverage Results" MODIFIED="1677842283244" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.AIE.*</FILTER>
     </SUITE>
   </component>

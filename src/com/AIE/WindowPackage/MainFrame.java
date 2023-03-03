@@ -1,17 +1,13 @@
 package com.AIE.WindowPackage;
 
+import com.AIE.Canvas;
 import com.AIE.CanvasManager;
-import com.AIE.Main;
 import com.formdev.flatlaf.FlatDarculaLaf;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.Objects;
 
 public class MainFrame extends JFrame implements ComponentListener {
 
@@ -20,24 +16,34 @@ public class MainFrame extends JFrame implements ComponentListener {
     public static Container PANE;
     public static int SCREEN_WIDTH;
     public static int SCREEN_HEIGHT;
-    public MainFrame(int width, int height) {
+    public static int SCREEN_CENTER_X;
+    public static int SCREEN_CENTER_Y;
+    public MainFrame(int width, int height, int defaultCanvasWidth, int defaultCanvasHeight) {
         setLookAndFeel();
 
         SCREEN_WIDTH = width;
         SCREEN_HEIGHT = height;
 
-        CANVAS_MANAGER = new CanvasManager();
+        CANVAS_MANAGER = new CanvasManager(width, height);
         PANE = getContentPane();
         PANE.setBackground(new Color(0x303031));
-        new WindowMenuBar(this);
 
-        addComponentListener(this);
-        this.setSize(width, height);
+        new FrameMenuBar(this);
+
         this.setLayout(new BorderLayout());
         this.setResizable(true);
-        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.add(CANVAS_MANAGER, BorderLayout.CENTER);
+        this.add(CANVAS_MANAGER);
+        this.pack();
+        SCREEN_CENTER_X = PANE.getWidth()/2;
+        SCREEN_CENTER_Y = PANE.getHeight()/2;
+        this.setLocationRelativeTo(null);
+        addComponentListener(this);
+
+        Canvas canvas = new Canvas();
+        canvas.createNewImage(defaultCanvasWidth, defaultCanvasHeight, 0);
+        CANVAS_MANAGER.addCanvas(canvas);
+
     }
     private void setLookAndFeel() {
         FlatDarculaLaf.setup();
@@ -51,29 +57,18 @@ public class MainFrame extends JFrame implements ComponentListener {
     public void createWindow() {
         //Finalizing JFrame
         this.setVisible(true);
-    }
 
-    public static BufferedImage loadImage(String file) {
-        try {
-            return ImageIO.read(
-                    Objects.requireNonNull(
-                            Main.class.getResource("resources/" + file + ".png")));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static ImageIcon loadImage(String file, float scale) {
-        BufferedImage img = loadImage(file);
-        return new ImageIcon(img.getScaledInstance(
-                (int)(img.getWidth()*scale),
-                (int)(img.getHeight()*scale),
-                BufferedImage.SCALE_SMOOTH));
     }
 
     @Override
     public void componentResized(ComponentEvent e) {
-        CanvasManager.getCurrentCanvas().setSize(getWidth(), getHeight());
+        SCREEN_CENTER_X = getContentPane().getWidth()/2;
+        SCREEN_CENTER_Y = getContentPane().getHeight()/2;
+        Canvas canvas = CanvasManager.getCurrentCanvas();
+        if(canvas == null)
+            return;
+
+        canvas.setSize(getWidth(), getHeight());
     }
 
     @Override

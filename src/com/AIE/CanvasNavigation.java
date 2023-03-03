@@ -13,8 +13,11 @@ public class CanvasNavigation extends MouseAdapter {
     @Override
     public void mousePressed(MouseEvent e) {
         if(!SwingUtilities.isMiddleMouseButton(e)) return;
-        initNavigation(e.getX(), e.getY(),
-                CanvasManager.getCurrentCanvas().getPosX(), CanvasManager.getCurrentCanvas().getPosY());
+        Canvas canvas = CanvasManager.getCurrentCanvas();
+        if(canvas == null)
+            return;
+
+        initNavigation(e.getX(), e.getY(), canvas.getPosX(), canvas.getPosY());
     }
 
     @Override
@@ -25,14 +28,28 @@ public class CanvasNavigation extends MouseAdapter {
 
     @Override
     public void mouseWheelMoved(MouseWheelEvent e) {
-        CanvasManager.getCurrentCanvas().setZoom(CanvasManager.getCurrentCanvas().getZoom()-e.getWheelRotation()*5);
+        Canvas canvas = CanvasManager.getCurrentCanvas();
+        if(canvas == null)
+            return;
+
+        int addZoom = (int) (-e.getWheelRotation()* Math.pow(canvas.getZoom(), 0.5f));
+        if(!canvas.setZoom(canvas.getZoom() + addZoom))
+            return;
+        System.out.println(e.getWheelRotation());
+        int width = (int) ((canvas.getImage().getWidth()/100f*addZoom)/2);
+        int height = (int) ((canvas.getImage().getHeight()/100f*addZoom)/2);
+        canvas.setPosXY(canvas.getPosX() - width, canvas.getPosY() - height);
     }
 
     protected void navigate(int mx, int my) {
+        Canvas canvas = CanvasManager.getCurrentCanvas();
+        if(canvas == null)
+            return;
+
         int diffX = mx - mousePressedX;
         int diffY = my - mousePressedY;
 
-        CanvasManager.getCurrentCanvas().setPosXY(startX + diffX, startY + diffY);
+        canvas.setPosXY(startX + diffX, startY + diffY);
     }
 
     protected void initNavigation(int mx, int my, int cx, int cy) {

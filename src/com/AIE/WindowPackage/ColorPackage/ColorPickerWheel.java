@@ -1,7 +1,7 @@
 package com.AIE.WindowPackage.ColorPackage;
 
+import com.AIE.ImageLoader;
 import com.AIE.WindowPackage.ColorPackage.Sliders.HSVSliders.HSV;
-import com.AIE.WindowPackage.MainFrame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,7 +33,7 @@ public class ColorPickerWheel extends JPanel implements PaletteElement {
 
         generateColorWheel();
         updateElement(null, null);
-        applyGrayscaleMaskToAlpha(image, MainFrame.loadImage("color_palette/mask"));
+        applyGrayscaleMaskToAlpha(image, ImageLoader.loadImage("color_palette/mask"));
 
         PickerUpdate pickerUpdate = new PickerUpdate();
         addMouseListener(pickerUpdate);
