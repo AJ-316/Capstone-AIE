@@ -1,7 +1,7 @@
 package com.AIE.WindowPackage;
 
-import com.AIE.Canvas;
-import com.AIE.CanvasManager;
+import com.AIE.CanvasPackage.Canvas;
+import com.AIE.CanvasPackage.CanvasManager;
 import com.AIE.ImageLoader;
 
 import javax.swing.*;

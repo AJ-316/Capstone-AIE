@@ -1,4 +1,4 @@
-package com.AIE;
+package com.AIE.CanvasPackage;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public class CanvasManager extends JPanel {
 
-    private static ArrayList<Canvas> canvasList;
+    private static ArrayList<com.AIE.CanvasPackage.Canvas> canvasList;
     public static int currentCanvasIndex;
 
     public CanvasManager(int width, int height) {
@@ -16,7 +16,7 @@ public class CanvasManager extends JPanel {
         canvasList = new ArrayList<>();
     }
 
-    public void addCanvas(Canvas... canvasesToAdd) {
+    public void addCanvas(com.AIE.CanvasPackage.Canvas... canvasesToAdd) {
 
         canvasList.addAll(Arrays.asList(canvasesToAdd));
 

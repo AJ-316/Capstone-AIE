@@ -6,11 +6,11 @@ import com.AIE.WindowPackage.ToolPackage.Toolbar;
 import javax.swing.*;
 import java.util.HashMap;
 
-public class WindowsMenu extends JMenu {
+public class WindowMenu extends JMenu {
 
     private final HashMap<String, AbstractWindow> windows;
 
-    public WindowsMenu(MainFrame mainFrame) {
+    public WindowMenu(MainFrame mainFrame) {
         super("Windows");
         windows = new HashMap<>();
 

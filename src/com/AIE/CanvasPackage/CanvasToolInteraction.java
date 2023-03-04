@@ -1,4 +1,4 @@
-package com.AIE;
+package com.AIE.CanvasPackage;
 
 import com.AIE.WindowPackage.ToolPackage.AbstractTool;
 import com.AIE.WindowPackage.ToolPackage.Toolbar;

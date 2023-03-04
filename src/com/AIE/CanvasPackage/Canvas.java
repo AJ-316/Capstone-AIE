@@ -1,5 +1,6 @@
-package com.AIE;
+package com.AIE.CanvasPackage;
 
+import com.AIE.ImageLoader;
 import com.AIE.WindowPackage.ColorPackage.ColorPalette;
 import com.AIE.WindowPackage.MainFrame;
 import com.AIE.WindowPackage.ToolPackage.PixelConnector;
@@ -48,6 +49,12 @@ public class Canvas extends JPanel {
             Arrays.fill(pixels, 0xffffffff);
         setZoom(100);
         setImageToCenter();
+    }
+
+    public void setImage(BufferedImage newImage) {
+        image = ImageLoader.createImage(newImage, BufferedImage.TYPE_INT_ARGB);
+        pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
+        repaint();
     }
 
     public void setNewImage(BufferedImage newImage) {

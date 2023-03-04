@@ -1,4 +1,4 @@
-package com.AIE;
+package com.AIE.CanvasPackage;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
@@ -35,7 +35,7 @@ public class CanvasNavigation extends MouseAdapter {
         int addZoom = (int) (-e.getWheelRotation()* Math.pow(canvas.getZoom(), 0.5f));
         if(!canvas.setZoom(canvas.getZoom() + addZoom))
             return;
-        System.out.println(e.getWheelRotation());
+
         int width = (int) ((canvas.getImage().getWidth()/100f*addZoom)/2);
         int height = (int) ((canvas.getImage().getHeight()/100f*addZoom)/2);
         canvas.setPosXY(canvas.getPosX() - width, canvas.getPosY() - height);

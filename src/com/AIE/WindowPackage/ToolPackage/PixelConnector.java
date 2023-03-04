@@ -1,6 +1,6 @@
 package com.AIE.WindowPackage.ToolPackage;
 
-import com.AIE.Canvas;
+import com.AIE.CanvasPackage.Canvas;
 
 import java.util.ArrayList;
 
