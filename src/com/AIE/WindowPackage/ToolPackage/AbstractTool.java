@@ -12,18 +12,16 @@ import java.awt.event.MouseEvent;
 public abstract class AbstractTool extends JRadioButton implements ItemListener {
 
     protected Cursor cursor;
+    private static final int ICON_SIZE = 40;
+    private static final int OVERLAY_INSET = 2;
+    private static final int OVERLAY_ARC = 15;
 
-    public AbstractTool(String icon, Cursor cursor) {
+    public AbstractTool(String icon, String tooltip, Cursor cursor) {
         super();
         this.cursor = cursor;
         addItemListener(this);
-        setIcons(icon);
-    }
-
-    private void setIcons(String icon) {
-        setIcon(ImageLoader.loadIcon(icon, 0.5f));
-        setSelectedIcon(ImageLoader.loadIcon(icon+"_pressed", 0.5f));
-        setRolloverIcon(ImageLoader.loadIcon(icon+"_rollover", 0.5f));
+        setIcon(ImageLoader.loadIcon(icon, ICON_SIZE));
+        setToolTipText(tooltip);
     }
 
     @Override
@@ -33,6 +31,39 @@ public abstract class AbstractTool extends JRadioButton implements ItemListener 
         // Change cursor
 
         toolSelected();
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setRenderingHint(
+                RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);
+
+        g2.setRenderingHint(
+                RenderingHints.KEY_INTERPOLATION,
+                RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+
+        int pos = OVERLAY_INSET/2;
+        int width = getWidth()-OVERLAY_INSET;
+        int height = getHeight()-OVERLAY_INSET;
+
+        if(model.isSelected()) {
+            g.setColor(new Color(255, 255, 255, 75));
+            g2.fillRoundRect(pos, pos, width, height, OVERLAY_ARC, OVERLAY_ARC);
+            g.setColor(Color.white);
+            g2.drawRoundRect(pos, pos, width, height, OVERLAY_ARC, OVERLAY_ARC);
+        } else {
+            g.setColor(new Color(255, 255, 255, 15));
+            g2.drawRoundRect(pos, pos, width, height, OVERLAY_ARC, OVERLAY_ARC);
+        }
+
+        if(model.isRollover() && !model.isSelected()) {
+            g.setColor(new Color(255, 255, 255, 50));
+            g2.fillRoundRect(pos, pos, width, height, OVERLAY_ARC, OVERLAY_ARC);
+        }
+
+        super.paint(g2);
     }
 
     protected abstract void toolSelected();

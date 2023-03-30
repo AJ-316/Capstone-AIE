@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Added Save/load - png, jpg, bmp, gif(single frame)">
-      <change afterPath="$PROJECT_DIR$/src/EffectsPackage/Effect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EffectsPackage/GaussianBlur.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/EffectMenu.java" afterDir="false" />
+    <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Added Save/load for PNG">
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/SmoothIcon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/Canvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/CanvasManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/CanvasManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/CanvasNavigation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/CanvasNavigation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/CanvasToolInteraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/CanvasToolInteraction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EffectsPackage/Effect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/Effect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EffectsPackage/GaussianBlur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/GaussianBlur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/Canvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/ImageLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/ImageLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/AbstractWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/AbstractWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/ColorPalette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/ColorPalette.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/EffectMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/EffectMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/FileMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/FileMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/FrameMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/FrameMenuBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MainFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/AbstractTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/AbstractTool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Pencil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Pencil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/PixelConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/PixelConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/WindowsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/WindowMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Toolbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Toolbar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/WindowMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/WindowMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/resources/icons/pencil.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/pencil.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/resources/icons/pencil_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/resources/icons/pencil_rollover.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +52,7 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="SaveLoadImage" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -107,7 +109,7 @@
       <module name="Capstone-AIE" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="EffectsPackage.*" />
+          <option name="PATTERN" value="com.AIE.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -216,14 +218,7 @@
       <option name="project" value="LOCAL" />
       <updated>1677537877901</updated>
     </task>
-    <task id="LOCAL-00012" summary="Added Save/load - png, jpg, bmp, gif(single frame)">
-      <created>1677872626122</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1677872626122</updated>
-    </task>
-    <option name="localTasksCounter" value="13" />
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -287,13 +282,12 @@
     <MESSAGE value="Added ColorPickerWheel.&#10;Additional Classes - HEXInput, HeadLabel" />
     <MESSAGE value="Code Clean Up" />
     <MESSAGE value="Color Palette Reimplementation" />
-    <MESSAGE value="Added Save/load - png, jpg, bmp, gif(single frame)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Save/load - png, jpg, bmp, gif(single frame)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Color Palette Reimplementation" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Capstone_AIE$VerifierTest.ic" NAME="VerifierTest Coverage Results" MODIFIED="1676969542696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Capstone_AIE$Main.ic" NAME="Main Coverage Results" MODIFIED="1677933237864" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>EffectsPackage.*</FILTER>
+    <SUITE FILE_PATH="coverage/Capstone_AIE$Main.ic" NAME="Main Coverage Results" MODIFIED="1680175352911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.AIE.*</FILTER>
     </SUITE>
   </component>
 </project>

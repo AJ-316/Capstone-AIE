@@ -2,16 +2,13 @@ package com.AIE.WindowPackage.ToolPackage;
 
 import com.AIE.CanvasPackage.Canvas;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
 public class Pencil extends AbstractTool {
 
     public Pencil() {
-        super("icons/pencil", new Cursor(Cursor.HAND_CURSOR));
-        setBorder(BorderFactory.createTitledBorder("Pencil"));
-        setBorderPainted(true);
+        super("pencil", "Pencil", new Cursor(Cursor.HAND_CURSOR)); //"Pencil\nShortcut Key: P"
     }
 
     @Override

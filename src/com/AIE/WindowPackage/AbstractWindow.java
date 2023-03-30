@@ -5,7 +5,8 @@ import java.awt.*;
 
 public abstract class AbstractWindow extends JDialog {
 
-    public AbstractWindow(MainFrame mainFrame, int width, int height, int offsetLocX, int offsetLocY) {
+    private final String iconFile;
+    public AbstractWindow(String icon, MainFrame mainFrame, int width, int height, int offsetLocX, int offsetLocY) {
         super(mainFrame);
         setLayout(new FlowLayout());
         setLocation((int) (mainFrame.getLocation().getX() + offsetLocX),
@@ -14,5 +15,10 @@ public abstract class AbstractWindow extends JDialog {
         setResizable(false);
         setFocusable(false);
         setFocusableWindowState(false);
+        iconFile = icon;
+    }
+
+    public String getIconFile() {
+        return iconFile;
     }
 }

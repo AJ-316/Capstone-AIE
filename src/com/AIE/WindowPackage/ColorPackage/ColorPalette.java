@@ -27,7 +27,7 @@ public class ColorPalette extends AbstractWindow {
     private static final MutableColor COLOR = new MutableColor(255, 0, 0);
 
     public ColorPalette(MainFrame mainFrame) {
-        super(mainFrame, DEFAULT_WIDTH, DEFAULT_HEIGHT, MainFrame.SCREEN_WIDTH - 500, 200);
+        super("palette", mainFrame, DEFAULT_WIDTH, DEFAULT_HEIGHT, MainFrame.SCREEN_WIDTH - 500, 200);
         setTitle("ColorPallet");
         setLayout(null);
 

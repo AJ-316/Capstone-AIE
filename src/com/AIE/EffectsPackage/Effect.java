@@ -1,4 +1,4 @@
-package EffectsPackage;
+package com.AIE.EffectsPackage;
 
 import com.AIE.WindowPackage.MainFrame;
 

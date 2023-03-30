@@ -1,4 +1,4 @@
-package EffectsPackage;
+package com.AIE.EffectsPackage;
 
 import com.AIE.CanvasPackage.Canvas;
 import com.AIE.CanvasPackage.CanvasManager;
@@ -6,6 +6,7 @@ import com.AIE.HeadLabel;
 import com.AIE.WindowPackage.MainFrame;
 
 import javax.swing.*;
+import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.event.ActionEvent;
@@ -20,10 +21,20 @@ public class GaussianBlur extends Effect {
     private final JSlider radiusSlider;
     private final JTextField field;
 
+    private BufferedImage cal(Canvas canvas) {
+        if(radiusSlider.getValue() == 0) return null;
+        progress.progress(10);
+        Kernel kernel = createKernel(radiusSlider.getValue());
+        progress.progress(70);
+        ConvolveOp op = new ConvolveOp(kernel, ConvolveOp.EDGE_ZERO_FILL, null); //EDGE_NO_OP
+        progress.progress(100);
+        return op.filter(canvas.getImage(), null);
+    }
+
     public GaussianBlur(MainFrame frame) {
         super(frame, "Gaussian Blur", 320, 150);
 
-        radiusSlider = new JSlider(0, 200);
+        radiusSlider = new JSlider(0, 40);
         field = new JTextField(3);
 
         MouseAdapter sliderListener = new MouseAdapter() {
@@ -36,6 +47,8 @@ public class GaussianBlur extends Effect {
                 this.mousePressed(e);
             }
         };
+        ChangeListener changeListener = e ->
+            CanvasManager.getCurrentCanvas().setPreviewImage(cal(CanvasManager.getCurrentCanvas()));
         DocumentListener fieldListener = new DocumentListener() {
             private void setSliderValue() {
                 if(field.getText().matches("\\d+")) {
@@ -54,31 +67,33 @@ public class GaussianBlur extends Effect {
             @Override
             public void changedUpdate(DocumentEvent e) {}
         };
-        radiusSlider.setMajorTickSpacing(50);
-        radiusSlider.setMinorTickSpacing(10);
+        radiusSlider.setMajorTickSpacing(10);
+        radiusSlider.setMinorTickSpacing(2);
         radiusSlider.setPaintTicks(true);
         radiusSlider.setPaintLabels(true);
         radiusSlider.addMouseListener(sliderListener);
         radiusSlider.addMouseMotionListener(sliderListener);
+        radiusSlider.addChangeListener(changeListener);
         field.getDocument().addDocumentListener(fieldListener);
 
         add(new HeadLabel("Radius", (int) (getWidth()/2.5f)));
         add(radiusSlider);
         add(field);
         setEffectProgress(frame, () -> {
-            if(radiusSlider.getValue() == 0) return;
-            Canvas canvas = CanvasManager.getCurrentCanvas();
-            if(canvas == null)
-                return;
-            progress.progress(10);
-            Kernel kernel = createKernel(radiusSlider.getValue());
-            progress.progress(50);
-            ConvolveOp op = new ConvolveOp(kernel, ConvolveOp.EDGE_ZERO_FILL, null);
-            progress.progress(60);
-            BufferedImage blurredImage = op.filter(canvas.getImage(), null);
-            progress.progress(80);
-            CanvasManager.getCurrentCanvas().setImage(blurredImage);
-            progress.progress(100);
+            CanvasManager.getCurrentCanvas().confirmPreview();
+//            if(radiusSlider.getValue() == 0) return;
+//            Canvas canvas = CanvasManager.getCurrentCanvas();
+//            if(canvas == null)
+//                return;
+//            progress.progress(10);
+//            Kernel kernel = createKernel(radiusSlider.getValue());
+//            progress.progress(50);
+//            ConvolveOp op = new ConvolveOp(kernel, ConvolveOp.EDGE_ZERO_FILL, null); //EDGE_NO_OP
+//            progress.progress(60);
+//            BufferedImage blurredImage = op.filter(canvas.getImage(), null);
+//            progress.progress(80);
+//            CanvasManager.getCurrentCanvas().setImage(blurredImage);
+//            progress.progress(100);
         });
     }
 

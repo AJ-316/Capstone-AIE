@@ -4,6 +4,7 @@ import com.AIE.WindowPackage.AbstractWindow;
 import com.AIE.WindowPackage.MainFrame;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Toolbar extends AbstractWindow {
@@ -13,7 +14,8 @@ public class Toolbar extends AbstractWindow {
     private static ArrayList<AbstractTool> toolList;
 
     public Toolbar(MainFrame mainFrame) {
-        super(mainFrame, 50, 500, 200, 200);
+        super("tools", mainFrame, 140, 500, 200, 200);
+        setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
         setTitle("ToolBar");
         createTools();
         setVisible(true);
@@ -23,6 +25,16 @@ public class Toolbar extends AbstractWindow {
         toolGroup = new ButtonGroup();
         toolList = new ArrayList<>();
 
+        addTool(new Pencil());
+        addTool(new Pencil());
+        addTool(new Pencil());
+        addTool(new Pencil());
+        for(int i =0;i < 4; i++) {
+            Pencil p = new Pencil();
+            p.setEnabled(false);
+            addTool(p);
+        }
+        addTool(new Pencil());
         addTool(new Pencil());
     }
 

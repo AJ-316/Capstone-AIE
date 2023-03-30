@@ -14,6 +14,8 @@ import java.util.Arrays;
 public class Canvas extends JPanel {
 
     private BufferedImage image;
+    private BufferedImage previewImage;
+    private boolean isPreviewMode = false;
     private int[] pixels;
 
     private final PixelConnector connector;
@@ -35,11 +37,22 @@ public class Canvas extends JPanel {
         addMouseMotionListener(canvasToolInteraction);
     }
 
+    public void confirmPreview() {
+        isPreviewMode = false;
+        setImage(previewImage);
+    }
+
+    public void setPreviewImage(BufferedImage image) {
+        if(!isPreviewMode) isPreviewMode = true;
+        this.previewImage = image;
+        repaint();
+    }
+
     @Override
     public void paint(Graphics g) {
         super.paint(g);
         ((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g.drawImage(image, posX, posY, getZoomedWidth(), getZoomedHeight(), null);
+        g.drawImage(isPreviewMode ? previewImage : image, posX, posY, getZoomedWidth(), getZoomedHeight(), null);
     }
 
     public void createNewImage(int width, int height, int type) {
@@ -52,7 +65,7 @@ public class Canvas extends JPanel {
     }
 
     public void setImage(BufferedImage newImage) {
-        image = ImageLoader.createImage(newImage, BufferedImage.TYPE_INT_ARGB);
+        image = ImageLoader.createImage(newImage, image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
         pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
         repaint();
     }

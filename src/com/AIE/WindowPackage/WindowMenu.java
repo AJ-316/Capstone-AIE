@@ -1,5 +1,6 @@
 package com.AIE.WindowPackage;
 
+import com.AIE.ImageLoader;
 import com.AIE.WindowPackage.ColorPackage.ColorPalette;
 import com.AIE.WindowPackage.ToolPackage.Toolbar;
 
@@ -24,7 +25,10 @@ public class WindowMenu extends JMenu {
     private void addMenuItem(String name, AbstractWindow window) {
         windows.put(name, window);
         JMenuItem item = new JMenuItem(name);
+        ImageIcon icon = ImageLoader.loadIcon(window.getIconFile(), ImageLoader.MENU_ICON_SIZE);
+        window.setIconImage(icon.getImage());
 
+        item.setIcon(icon);
         item.addActionListener(e -> window.setVisible(!window.isVisible()));
 
         add(item);

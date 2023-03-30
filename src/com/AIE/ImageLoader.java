@@ -1,6 +1,7 @@
 package com.AIE;
 
 import com.AIE.WindowPackage.MainFrame;
+import com.AIE.WindowPackage.ToolPackage.SmoothIcon;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -15,6 +16,7 @@ public class ImageLoader {
 
     private static JFileChooser chooser;
     private static MainFrame frame;
+    public static int MENU_ICON_SIZE = 16;
 
     public static void init(MainFrame frame) {
         ImageLoader.frame = frame;
@@ -84,11 +86,17 @@ public class ImageLoader {
     public static BufferedImage createImage(BufferedImage newImage, int type) {
         BufferedImage image = new BufferedImage(
                 newImage.getWidth(), newImage.getHeight(), type);
-
         Graphics2D g = image.createGraphics();
         g.drawImage(newImage, 0, 0, null);
         g.dispose();
+        return image;
+    }
 
+    public static BufferedImage createImage(BufferedImage newImage, int width, int height, int type) {
+        BufferedImage image = new BufferedImage(width, height, type);
+        Graphics2D g = image.createGraphics();
+        g.drawImage(newImage, 0, 0, null);
+        g.dispose();
         return image;
     }
 
@@ -137,12 +145,8 @@ public class ImageLoader {
         }
     }
 
-    public static ImageIcon loadIcon(String file, float scale) {
-        BufferedImage img = loadImage(file);
-        return new ImageIcon(img.getScaledInstance(
-                (int)(img.getWidth()*scale),
-                (int)(img.getHeight()*scale),
-                BufferedImage.SCALE_SMOOTH));
+    public static SmoothIcon loadIcon(String file, int size) {
+        return new SmoothIcon(loadImage("icons/" + file), size);
     }
 
 }

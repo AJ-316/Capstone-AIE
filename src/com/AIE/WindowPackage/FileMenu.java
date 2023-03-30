@@ -14,7 +14,7 @@ public class FileMenu extends JMenu {
 
     public FileMenu() {
         super("File");
-        addMenuItem("Load Image", e -> {
+        addMenuItem("Load Image", "load", e -> {
             Canvas canvas = CanvasManager.getCurrentCanvas();
             BufferedImage image = ImageLoader.load();
 
@@ -23,7 +23,7 @@ public class FileMenu extends JMenu {
 
             canvas.setNewImage(image);
         });
-        addMenuItem("Save Image", e -> {
+        addMenuItem("Save Image", "save", e -> {
             Canvas canvas = CanvasManager.getCurrentCanvas();
             if(canvas == null)
                 return;
@@ -34,9 +34,10 @@ public class FileMenu extends JMenu {
         });
     }
 
-    private void addMenuItem(String name, ActionListener listener) {
+    private void addMenuItem(String name, String icon, ActionListener listener) {
         JMenuItem item = new JMenuItem(name);
         item.addActionListener(listener);
+        item.setIcon(ImageLoader.loadIcon(icon, ImageLoader.MENU_ICON_SIZE));
         add(item);
     }
 }

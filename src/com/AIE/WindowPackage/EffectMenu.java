@@ -1,7 +1,8 @@
 package com.AIE.WindowPackage;
 
-import EffectsPackage.Effect;
-import EffectsPackage.GaussianBlur;
+import com.AIE.EffectsPackage.Effect;
+import com.AIE.EffectsPackage.GaussianBlur;
+import com.AIE.ImageLoader;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
@@ -33,6 +34,7 @@ public class EffectMenu extends JMenu {
 
     private void addMenuItemTo(JMenu menu, String name, ActionListener listener) {
         JMenuItem item = new JMenuItem(name);
+        item.setIcon(ImageLoader.loadIcon(name, ImageLoader.MENU_ICON_SIZE));
         item.addActionListener(listener);
         menu.add(item);
     }
