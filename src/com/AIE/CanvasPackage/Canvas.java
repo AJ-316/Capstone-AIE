@@ -38,8 +38,11 @@ public class Canvas extends JPanel {
     }
 
     public void confirmPreview() {
-        isPreviewMode = false;
         setImage(previewImage);
+    }
+
+    public void disablePreviewMode() {
+        isPreviewMode = false;
     }
 
     public void setPreviewImage(BufferedImage image) {

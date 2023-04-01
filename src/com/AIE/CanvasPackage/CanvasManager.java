@@ -33,6 +33,7 @@ public class CanvasManager extends JPanel {
         repaint();
     }
 
+    // Need to change method
     public static Canvas getCurrentCanvas() {
         if(canvasList.size() == 0) return null;
 

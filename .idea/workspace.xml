@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Added Save/load for PNG">
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/SmoothIcon.java" afterDir="false" />
+    <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Reworked Effects and Thread handling">
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/AverageBlur.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/EffectListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/EffectOld.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ValueUpdateListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/Average Blur.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/Gaussian Blur.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/color_wheel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/load.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/palette.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/save.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/tools.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EffectsPackage/Effect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/Effect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EffectsPackage/GaussianBlur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/GaussianBlur.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/Canvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/ImageLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/ImageLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/AbstractWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/AbstractWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/ColorPalette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/ColorPalette.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/CanvasManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/CanvasManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/Effect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/Effect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/GaussianBlur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/GaussianBlur.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/EffectMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/EffectMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/FileMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/FileMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/AbstractTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/AbstractTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Pencil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Pencil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Toolbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Toolbar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/WindowMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/WindowMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/resources/icons/pencil.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/pencil.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/resources/icons/pencil_pressed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/resources/icons/pencil_rollover.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +52,7 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="SaveLoadImage" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -76,7 +76,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/PROgraming/IdeaProjects/Capstone-AIE/lib/flatlaf-3.0.jar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/PROgraming/IdeaProjects/Capstone-AIE/src/com/AIE/resources/icons&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -87,7 +87,11 @@
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.AIE.WindowPackage" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\PROgraming\IdeaProjects\Capstone-AIE\src\com\AIE\resources\icons" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\PROgraming\IdeaProjects\Capstone-AIE\src\com\AIE\resources" />
       <recent name="D:\PROgraming\IdeaProjects\Capstone-AIE\src\com\AIE\color_palette" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -99,6 +103,20 @@
   <component name="RunManager" selected="Application.Main">
     <configuration name="AWTControlDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="AWTControlDemo" />
+      <module name="Capstone-AIE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BlurPreview" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="BlurPreview" />
+      <module name="Capstone-AIE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GaussianBlurExampleWithProgressBar" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GaussianBlurExampleWithProgressBar" />
       <module name="Capstone-AIE" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -127,6 +145,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.BlurPreview" />
+        <item itemvalue="Application.GaussianBlurExampleWithProgressBar" />
         <item itemvalue="Application.SwingTester" />
         <item itemvalue="Application.AWTControlDemo" />
       </list>
@@ -218,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677537877901</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Reworked/Added Icons and added Effects (Need to add threads)">
+      <created>1680180985980</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1680180985980</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -282,11 +309,13 @@
     <MESSAGE value="Added ColorPickerWheel.&#10;Additional Classes - HEXInput, HeadLabel" />
     <MESSAGE value="Code Clean Up" />
     <MESSAGE value="Color Palette Reimplementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Color Palette Reimplementation" />
+    <MESSAGE value="Reworked/Added Icons and added Effects (Need to add threads)" />
+    <MESSAGE value="Reworked Effects and Thread handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reworked Effects and Thread handling" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Capstone_AIE$VerifierTest.ic" NAME="VerifierTest Coverage Results" MODIFIED="1676969542696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Capstone_AIE$Main.ic" NAME="Main Coverage Results" MODIFIED="1680175352911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Capstone_AIE$Main.ic" NAME="Main Coverage Results" MODIFIED="1680348953330" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.AIE.*</FILTER>
     </SUITE>
   </component>

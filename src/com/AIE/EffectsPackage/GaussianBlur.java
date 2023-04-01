@@ -1,25 +1,76 @@
+/* Old Gaussian File
 package com.AIE.EffectsPackage;
 
 import com.AIE.CanvasPackage.Canvas;
 import com.AIE.CanvasPackage.CanvasManager;
 import com.AIE.HeadLabel;
 import com.AIE.WindowPackage.MainFrame;
+import com.AIE.WindowPackage.ValueUpdateListener;
 
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.ConvolveOp;
 import java.awt.image.Kernel;
 
-public class GaussianBlur extends Effect {
+public class GaussianBlur extends EffectOld {
 
     private final JSlider radiusSlider;
     private final JTextField field;
+
+    private BufferedImage cal2(Canvas canvas) {
+        if(radiusSlider.getValue() == 0) return null;
+        BufferedImage image = canvas.getImage();
+        BufferedImage newImage = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_RGB);
+        Graphics g = newImage.getGraphics();
+        g.drawImage(image, 0, 0, null);
+        g.dispose();
+
+        // Apply the Gaussian blur effect to the image in smaller regions
+        float sigma = radiusSlider.getValue()/10f;
+        int radius = 2 * (int) Math.ceil(sigma) + 1;
+        int numRegionsX = 1;
+        int numRegionsY = 1;
+        int regionWidth = newImage.getWidth() / numRegionsX;
+        int regionHeight = newImage.getHeight() / numRegionsY;
+        int numRegions = numRegionsX * numRegionsY;
+
+        for (int y = 0; y < newImage.getHeight(); y += regionHeight) {
+            for (int x = 0; x < newImage.getWidth(); x += regionWidth) {
+                int regionWidthActual = Math.min(regionWidth, newImage.getWidth() - x);
+                int regionHeightActual = Math.min(regionHeight, newImage.getHeight() - y);
+                BufferedImage region = newImage.getSubimage(x, y, regionWidthActual, regionHeightActual);
+                Kernel kernel = makeGaussianKernel(sigma, radius);
+                ConvolveOp op = new ConvolveOp(kernel, ConvolveOp.EDGE_NO_OP, null);
+                BufferedImage blurredRegion = op.filter(region, null);
+                newImage.setRGB(x, y, blurredRegion.getWidth(), blurredRegion.getHeight(), blurredRegion.getRGB(0, 0, blurredRegion.getWidth(), blurredRegion.getHeight(), null, 0, blurredRegion.getWidth()), 0, blurredRegion.getWidth());
+                progress.progress(100 / numRegions);
+            }
+        }
+
+        return newImage;
+    }
+
+    private static Kernel makeGaussianKernel(float sigma, int radius) {
+        int size = radius * 2 + 1;
+        float[] data = new float[size];
+        float sum = 0.0f;
+
+        for (int i = -radius; i <= radius; i++) {
+            float x = i / sigma;
+            float value = (float) Math.exp(-0.5 * x * x);
+            data[i + radius] = value;
+            sum += value;
+        }
+
+        for (int i = 0; i < size; i++) {
+            data[i] /= sum;
+        }
+
+        return new Kernel(size, 1, data);
+    }
 
     private BufferedImage cal(Canvas canvas) {
         if(radiusSlider.getValue() == 0) return null;
@@ -34,47 +85,17 @@ public class GaussianBlur extends Effect {
     public GaussianBlur(MainFrame frame) {
         super(frame, "Gaussian Blur", 320, 150);
 
-        radiusSlider = new JSlider(0, 40);
+        radiusSlider = new JSlider(0, 200);
         field = new JTextField(3);
+        ValueUpdateListener.set(field, radiusSlider);
 
-        MouseAdapter sliderListener = new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                field.setText(String.valueOf(radiusSlider.getValue()));
-            }
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                this.mousePressed(e);
-            }
-        };
         ChangeListener changeListener = e ->
             CanvasManager.getCurrentCanvas().setPreviewImage(cal(CanvasManager.getCurrentCanvas()));
-        DocumentListener fieldListener = new DocumentListener() {
-            private void setSliderValue() {
-                if(field.getText().matches("\\d+")) {
-                    int value = Integer.parseInt(field.getText());
-                    radiusSlider.setValue(Math.max(0, Math.min(radiusSlider.getMaximum(), value)));
-                }
-            }
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                setSliderValue();
-            }
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                setSliderValue();
-            }
-            @Override
-            public void changedUpdate(DocumentEvent e) {}
-        };
-        radiusSlider.setMajorTickSpacing(10);
-        radiusSlider.setMinorTickSpacing(2);
+        radiusSlider.setMajorTickSpacing(50);
+        radiusSlider.setMinorTickSpacing(5);
         radiusSlider.setPaintTicks(true);
         radiusSlider.setPaintLabels(true);
-        radiusSlider.addMouseListener(sliderListener);
-        radiusSlider.addMouseMotionListener(sliderListener);
         radiusSlider.addChangeListener(changeListener);
-        field.getDocument().addDocumentListener(fieldListener);
 
         add(new HeadLabel("Radius", (int) (getWidth()/2.5f)));
         add(radiusSlider);
@@ -127,3 +148,4 @@ public class GaussianBlur extends Effect {
     }
 
 }
+*/
