@@ -2,15 +2,14 @@ package com.AIE.EffectsPackage;
 
 import com.AIE.CanvasPackage.Canvas;
 import com.AIE.CanvasPackage.CanvasManager;
+import com.AIE.ImageLoader;
 import com.AIE.WindowPackage.MainFrame;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public abstract class Effect {
 
@@ -30,6 +29,7 @@ public abstract class Effect {
         this.name = name;
         configWindow = new JDialog(frame);
         configWindow.setTitle(name);
+        configWindow.setIconImage(ImageLoader.loadIcon(name, ImageLoader.MENU_ICON_SIZE).getImage());
         configWindow.setSize(width, height);
         configWindow.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 10));
         configWindow.setLocationRelativeTo(null);
@@ -63,13 +63,8 @@ public abstract class Effect {
                     return;
                 }
 
-                try {
-                    ImageIO.write(canvas.getImage(), "PNG", new File("oldImage.png"));
-                    ImageIO.write(newImg, "PNG", new File("newImage.png"));
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
                 canvas.setPreviewImage(newImg);
+
                 applyBtn.setEnabled(true);
                 previewReq--;
             }
@@ -83,6 +78,7 @@ public abstract class Effect {
         for(Component component : components) {
             configWindow.add(component);
         }
+
         configWindow.add(applyBtn);
         configWindow.add(cancelBtn);
         configWindow.add(progressBar);
@@ -106,10 +102,11 @@ public abstract class Effect {
 
     protected void closeOperation() {
         forceStop = true;
-        CanvasManager.getCurrentCanvas().disablePreviewMode();
+        Objects.requireNonNull(CanvasManager.getCurrentCanvas()).disablePreviewMode();
         setProgress(0);
         configWindow.setVisible(false);
         previewThread.pauseThread();
+        previewReq = 0;
     }
 
     private static class PreviewThread {
@@ -151,18 +148,35 @@ public abstract class Effect {
         }
     }
 
+    protected void progressEffect(int value, float divisor) {
+        setProgress(Math.round(100f * value / divisor));
+    }
+
     protected void setProgress(int value) {
         progressBar.setVisible(value != 0 && value != 100);
         progressBar.setValue(Math.min(value, progressBar.getMaximum()));
+    }
+
+    protected boolean checkForceStop() {
+        if(!forceStop)
+            return false;
+
+        setProgress(0);
+        return true;
     }
 
     public String getName() {
         return name;
     }
 
+    public EffectListener getEffectListener() {
+        return effectListener;
+    }
+
     public static void show(String name) {
         for(Effect effect: effects) {
             if(effect.name.equals(name)) {
+                effect.forceStop = false;
                 effect.configWindow.setVisible(true);
                 effect.previewThread.resumeThread();
                 break;

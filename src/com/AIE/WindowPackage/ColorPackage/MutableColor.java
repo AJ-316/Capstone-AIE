@@ -12,13 +12,15 @@ public class MutableColor extends Color {
     private final int[] rgbaI;
     private int value;
 
-    private MutableColor() {
-        super(0, 0, 0, 0);
+    public MutableColor(int rgba) {
+        super(rgba, true);
         rgbaI = new int[4];
+        setRGBA(rgba);
     }
 
     public MutableColor(int r, int g, int b) {
-        this();
+        super(0, 0, 0, 0);
+        rgbaI = new int[4];
         rgbaI[R] = r;
         rgbaI[G] = b;
         rgbaI[B] = g;
@@ -47,6 +49,14 @@ public class MutableColor extends Color {
         testColorValueRange(rgbaI[R], rgbaI[G], rgbaI[B], rgbaI[A]);
     }
 
+    public void setRGBA(int rgba) {
+        value = rgba;
+        rgbaI[R] = getRed();
+        rgbaI[G] = getGreen();
+        rgbaI[B] = getBlue();
+        rgbaI[A] = super.getAlpha();
+    }
+
     public void setRGB(int r, int g, int b) {
         rgbaI[R] = r;
         rgbaI[G] = g;
@@ -59,7 +69,7 @@ public class MutableColor extends Color {
         rgbaI[R] = (int) (r*255+0.5f);
         rgbaI[G] = (int) (g*255+0.5f);
         rgbaI[B] = (int) (b*255+0.5f);
-        testColorValueRange(rgbaI[R],rgbaI[G],rgbaI[B],255);
+        testColorValueRange(rgbaI[R],rgbaI[G],rgbaI[B],rgbaI[A]);
         setValue();
     }
 
@@ -68,6 +78,7 @@ public class MutableColor extends Color {
         return value;
     }
 
+    // Temp
     @Override
     public int getAlpha() {
         return rgbaI[A];

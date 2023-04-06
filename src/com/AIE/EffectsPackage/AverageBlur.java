@@ -45,10 +45,8 @@ public class AverageBlur extends Effect {
 
                 for (int k = i - radius; k <= i + radius; k++) {
                     for (int l = j - radius; l <= j + radius; l++) {
-                        if(forceStop) {
-                            setProgress(0);
-                            return null;
-                        }
+                        if(checkForceStop()) return null;
+
                         if (k >= 0 && k < height && l >= 0 && l < width) {
                             int pixel = pixels[k * width + l];
                             blurAlpha += (pixel >> 24) & 0xFF;
@@ -69,8 +67,7 @@ public class AverageBlur extends Effect {
 
                 blurredPixels[i * width + j] = (blurAlpha << 24) | (blurRed << 16) | (blurGreen << 8) | blurBlue;
 
-                progress++;
-                setProgress((int) (100f * progress/totalSize));
+                progressEffect(progress++, totalSize);
             }
         }
 

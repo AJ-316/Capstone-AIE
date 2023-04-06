@@ -10,13 +10,17 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Objects;
+import java.net.URL;
+import java.util.HashMap;
 
 public class ImageLoader {
 
     private static JFileChooser chooser;
     private static MainFrame frame;
     public static int MENU_ICON_SIZE = 16;
+
+    private static final String NO_IMAGE = "empty";
+    private static final HashMap<String, BufferedImage> LOADED_IMAGES = new HashMap<>();
 
     public static void init(MainFrame frame) {
         ImageLoader.frame = frame;
@@ -29,6 +33,8 @@ public class ImageLoader {
                 ".gif", "GIF (*.gif)");
         chooser.setAcceptAllFileFilterUsed(false);
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
+        loadImage(NO_IMAGE);
     }
 
     private static void addExtensionFilters(String... extensions) {
@@ -137,9 +143,16 @@ public class ImageLoader {
 
     public static BufferedImage loadImage(String file) {
         try {
-            return ImageIO.read(
-                    Objects.requireNonNull(
-                            Main.class.getResource("resources/" + file + ".png")));
+            BufferedImage image = LOADED_IMAGES.get(file);
+            if(image == null) {
+                URL url = Main.class.getResource("resources/" + file + ".png");
+                if(url == null)
+                    return LOADED_IMAGES.get(NO_IMAGE);
+
+                image = ImageIO.read(url);
+                LOADED_IMAGES.put(file, image);
+            }
+            return image;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
