@@ -31,6 +31,7 @@ public class ValueUpdateListener extends MouseAdapter implements DocumentListene
     @Override
     public void mouseDragged(MouseEvent e) {
         this.mousePressed(e);
+        ((JSlider)e.getSource()).repaint();
     }
 
     private void setSliderValue() {

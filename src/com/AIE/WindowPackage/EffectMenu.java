@@ -1,9 +1,6 @@
 package com.AIE.WindowPackage;
 
-import com.AIE.EffectsPackage.AverageBlur;
-import com.AIE.EffectsPackage.BrightnessContrast;
-import com.AIE.EffectsPackage.Effect;
-import com.AIE.EffectsPackage.Sepia;
+import com.AIE.EffectsPackage.*;
 import com.AIE.ImageLoader;
 
 import javax.swing.*;
@@ -15,6 +12,7 @@ public class EffectMenu extends JMenu implements ActionListener {
     public EffectMenu(MainFrame frame) {
         super("Effects");
         JMenu blurMenu = new JMenu("Blurs");
+        addMenuItemTo(blurMenu, new GaussianBlur(frame));
         addMenuItemTo(blurMenu, new AverageBlur(frame));
         add(blurMenu);
 

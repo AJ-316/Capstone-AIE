@@ -50,6 +50,7 @@ public class MainFrame extends JFrame implements ComponentListener {
         FlatDarculaLaf.setup();
         try {
             UIManager.setLookAndFeel(new FlatDarculaLaf());
+            UIManager.put("Slider.paintThumbArrowShape", Boolean.TRUE);
         } catch (UnsupportedLookAndFeelException e) {
             throw new RuntimeException(e);
         }

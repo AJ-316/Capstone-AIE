@@ -10,31 +10,46 @@ import java.awt.image.BufferedImage;
 public class AverageBlur extends Effect {
 
     private final JSlider radiusSlider;
+    private int progressVal;
 
     public AverageBlur(MainFrame frame) {
         super("Average Blur", frame, 300, 155);
 
-        radiusSlider = new JSlider(1, 20);
+        radiusSlider = new JSlider(0, 50);
         JTextField radiusField = new JTextField(3);
         radiusField.addActionListener(effectListener);
         ValueUpdateListener.set(radiusField, radiusSlider);
 
         radiusSlider.setPaintTicks(true);
-        radiusSlider.setMajorTickSpacing(10);
-        radiusSlider.setMinorTickSpacing(2);
+        radiusSlider.setMajorTickSpacing(radiusSlider.getMaximum()/2);
+        radiusSlider.setMinorTickSpacing(radiusSlider.getMaximum()/10);
         radiusSlider.addMouseListener(effectListener);
         finalizeComponents(new HeadLabel("Radius", (int) (300/2.5f)), radiusSlider, radiusField);
     }
 
     @Override
     protected BufferedImage applyEffect(BufferedImage source) {
+        progressVal = 0;
         int width = source.getWidth();
         int height = source.getHeight();
-        int[] pixels = source.getRGB(0, 0, width, height, null, 0, width);
-        int[] blurredPixels = new int[width * height];
-        int progress = 0, totalSize = width*height;
-        int radius = radiusSlider.getValue();
 
+        int[] blurredPixels = applyHorizontalPass(source.getRGB(0, 0, width, height, null, 0, width),
+                width, height, radiusSlider.getValue()); // Apply horizontal pass
+
+        blurredPixels = applyVerticalPass(blurredPixels,
+                width, height, radiusSlider.getValue()); // Apply vertical pass
+        if(blurredPixels == null)
+            return null;
+
+        BufferedImage blurredImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        blurredImage.setRGB(0, 0, width, height, blurredPixels, 0, width);
+        return blurredImage;
+    }
+
+    private int[] applyHorizontalPass(int[] source, int width, int height, int radius) {
+        if(source == null) return null;
+
+        int[] dest = new int[source.length];
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 int blurRed = 0;
@@ -43,18 +58,16 @@ public class AverageBlur extends Effect {
                 int blurAlpha = 0;
                 int blurCount = 0;
 
-                for (int k = i - radius; k <= i + radius; k++) {
-                    for (int l = j - radius; l <= j + radius; l++) {
-                        if(checkForceStop()) return null;
-
-                        if (k >= 0 && k < height && l >= 0 && l < width) {
-                            int pixel = pixels[k * width + l];
-                            blurAlpha += (pixel >> 24) & 0xFF;
-                            blurRed += (pixel >> 16) & 0xFF;
-                            blurGreen += (pixel >> 8) & 0xFF;
-                            blurBlue += pixel & 0xFF;
-                            blurCount++;
-                        }
+                for (int k = j - radius; k <= j + radius; k++) {
+                    if(checkForceStop())
+                        return null;
+                    if (k >= 0 && k < width) {
+                        int pixel = source[i * width + k];
+                        blurAlpha += (pixel >> 24) & 0xFF;
+                        blurRed += (pixel >> 16) & 0xFF;
+                        blurGreen += (pixel >> 8) & 0xFF;
+                        blurBlue += pixel & 0xFF;
+                        blurCount++;
                     }
                 }
 
@@ -65,65 +78,51 @@ public class AverageBlur extends Effect {
                     blurBlue /= blurCount;
                 }
 
-                blurredPixels[i * width + j] = (blurAlpha << 24) | (blurRed << 16) | (blurGreen << 8) | blurBlue;
-
-                progressEffect(progress++, totalSize);
+                dest[i * width + j] = (blurAlpha << 24) | (blurRed << 16) | (blurGreen << 8) | blurBlue;
+                progressEffect(progressVal++/2, source.length);
             }
         }
-
-        BufferedImage blurredImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-        blurredImage.setRGB(0, 0, width, height, blurredPixels, 0, width);
-        return blurredImage;
+        return dest;
     }
 
-    /*@Override
-    protected BufferedImage applyEffect(BufferedImage source) {
-        int width = source.getWidth();
-        int height = source.getHeight();
-        BufferedImage resultImage = new BufferedImage(width, height, source.getType());
+    private int[] applyVerticalPass(int[] source, int width, int height, int radius) {
+        if(source == null) return null;
 
-        // define the blur radius (the size of the square kernel)
-        int radius = radiusSlider.getValue();
-        int totalPixels = width * height;
-        float progressValue = 0;
+        int[] dest = new int[source.length];
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                int blurRed = 0;
+                int blurGreen = 0;
+                int blurBlue = 0;
+                int blurAlpha = 0;
+                int blurCount = 0;
 
-        // iterate over each pixel in the image
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                if(forceStop) {
-                    setProgress(0);
-                    return null;
-                }
-                // compute the average color of the pixels within the kernel
-                int sumR = 0, sumG = 0, sumB = 0, sumA = 0, count = 0;
-                for (int ky = -radius; ky <= radius; ky++) {
-                    int ny = y + ky;
-                    if (ny >= 0 && ny < height) {
-                        for (int kx = -radius; kx <= radius; kx++) {
-                            int nx = x + kx;
-                            if (nx >= 0 && nx < width) {
-                                int color = source.getRGB(nx, ny);
-                                sumR += (color >> 16) & 0xFF;
-                                sumG += (color >> 8) & 0xFF;
-                                sumB += color & 0xFF;
-                                sumA += (color >> 24) & 0xFF;
-                                count++;
-                            }
-                        }
+                for (int k = i - radius; k <= i + radius; k++) {
+                    if(checkForceStop())
+                        return null;
+                    if (k >= 0 && k < height) {
+                        int pixel = source[k * width + j];
+                        blurAlpha += (pixel >> 24) & 0xFF;
+                        blurRed += (pixel >> 16) & 0xFF;
+                        blurGreen += (pixel >> 8) & 0xFF;
+                        blurBlue += pixel & 0xFF;
+                        blurCount++;
                     }
                 }
-                int avgR = (int) ((float)sumR / count);
-                int avgG = (int) ((float)sumG / count);
-                int avgB = (int) ((float)sumB / count);
-                int avgA = (int) ((float)sumA / count);
 
-                // set the color of the current pixel in the result image
-                int pixel = (avgA << 24) | (avgR << 16) | (avgG << 8) | avgB;
-                resultImage.setRGB(x, y, pixel);
-                progressValue++;
-                setProgress((int) (100.0 * progressValue/totalPixels));
+                if (blurCount > 0) {
+                    blurAlpha /= blurCount;
+                    blurRed /= blurCount;
+                    blurGreen /= blurCount;
+                    blurBlue /= blurCount;
+                }
+
+                dest[i * width + j] = (blurAlpha << 24) | (blurRed << 16) | (blurGreen << 8) | blurBlue;
+                progressEffect(progressVal++/2, source.length);
             }
         }
-        return resultImage;
-    }*/
+        return dest;
+    }
+
+
 }
