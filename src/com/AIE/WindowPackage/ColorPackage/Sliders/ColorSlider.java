@@ -58,7 +58,6 @@ public abstract class ColorSlider extends JPanel implements PaletteElement {
 
     public void updateSliderValue() {
         int newValue = Integer.parseInt(inputField.getText());
-        System.out.println(newValue + ", " + slider.getValue());
         if(slider.getValue() == newValue)
             return;
 

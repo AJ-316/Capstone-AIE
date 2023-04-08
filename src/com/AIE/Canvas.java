@@ -1,6 +1,7 @@
 package com.AIE;
 
 import com.AIE.WindowPackage.ColorPackage.ColorPalette;
+import com.AIE.WindowPackage.MainFrame;
 import com.AIE.WindowPackage.ToolPackage.PixelConnector;
 
 import javax.swing.*;
@@ -20,9 +21,7 @@ public class Canvas extends JPanel {
 
     public Canvas() {
         super();
-        setLocation(0, 0);
         connector = new PixelConnector(this);
-        setBackground(Color.yellow);
         addListeners(new CanvasNavigation(), new CanvasToolInteraction(this));
     }
 
@@ -39,7 +38,7 @@ public class Canvas extends JPanel {
     public void paint(Graphics g) {
         super.paint(g);
         ((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g.drawImage(image, posX, posY, (int) (image.getWidth()/100f*zoom), (int) (image.getHeight()/100f*zoom), null);
+        g.drawImage(image, posX, posY, getZoomedWidth(), getZoomedHeight(), null);
     }
 
     public void createNewImage(int width, int height, int type) {
@@ -48,10 +47,24 @@ public class Canvas extends JPanel {
         if(type == 0)
             Arrays.fill(pixels, 0xffffffff);
         setZoom(100);
+        setImageToCenter();
+    }
+
+    public void setNewImage(BufferedImage newImage) {
+        image = ImageLoader.createImage(newImage, BufferedImage.TYPE_INT_ARGB);
+
+        pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
+        setZoom(100);
+        setImageToCenter();
     }
 
     public void releasePixels() {
         connector.releasePixels();
+    }
+
+    private void setImageToCenter() {
+        this.posX = MainFrame.SCREEN_CENTER_X - image.getWidth()/2;
+        this.posY = MainFrame.SCREEN_CENTER_Y - image.getHeight()/2;
     }
 
     public void changePixelLinearly(int x, int y) throws IndexOutOfBoundsException {
@@ -70,11 +83,11 @@ public class Canvas extends JPanel {
         pixels[x + y*image.getWidth()] = ColorPalette.getBrush(brushType).getColor().getRGB();
     }
 
-    // may use later
-    public void changeScaledPixel(int x, int y) throws IndexOutOfBoundsException  {
-        float scale = zoom/100f;
-        changeRawPixel((int) (x/scale), (int) (y/scale));
-    }
+    // might use later
+    // public void changeScaledPixel(int x, int y) throws IndexOutOfBoundsException  {
+    //     float scale = zoom/100f;
+    //     changeRawPixel((int) (x/scale), (int) (y/scale));
+    // }
 
     public void setBrushType(int brushType) {
         this.brushType = brushType;
@@ -98,14 +111,27 @@ public class Canvas extends JPanel {
         return posY;
     }
 
+    public int getZoomedWidth() {
+        return (int) (image.getWidth()/100f*zoom);
+    }
+
+    public int getZoomedHeight() {
+        return (int) (image.getHeight()/100f*zoom);
+    }
+
     public int getZoom() {
         return zoom;
     }
 
-    public void setZoom(int zoom) {
-        if(zoom < 0 || zoom > 64000)
-            return;
+    public BufferedImage getImage() {
+        return image;
+    }
+
+    public boolean setZoom(int zoom) {
+        if(zoom <= 0 || zoom > 64000)
+            return false;
         this.zoom = zoom;
         updateCanvas();
+        return true;
     }
 }

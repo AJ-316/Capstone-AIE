@@ -1,6 +1,7 @@
 package com.AIE;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -9,12 +10,14 @@ public class CanvasManager extends JPanel {
     private static ArrayList<Canvas> canvasList;
     public static int currentCanvasIndex;
 
-    public CanvasManager() {
+    public CanvasManager(int width, int height) {
         super(null);
+        setPreferredSize(new Dimension(width, height));
         canvasList = new ArrayList<>();
     }
 
     public void addCanvas(Canvas... canvasesToAdd) {
+
         canvasList.addAll(Arrays.asList(canvasesToAdd));
 
         currentCanvasIndex = canvasesToAdd.length-1;
@@ -23,6 +26,7 @@ public class CanvasManager extends JPanel {
     }
 
     public void setCurrentCanvas(int i) {
+
         remove(canvasList.get(currentCanvasIndex));
         add(canvasList.get(i));
         currentCanvasIndex = i;
@@ -30,6 +34,8 @@ public class CanvasManager extends JPanel {
     }
 
     public static Canvas getCurrentCanvas() {
+        if(canvasList.size() == 0) return null;
+
         return canvasList.get(currentCanvasIndex);
     }
 
