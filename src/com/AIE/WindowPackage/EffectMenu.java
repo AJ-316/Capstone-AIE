@@ -14,6 +14,7 @@ public class EffectMenu extends JMenu implements ActionListener {
         JMenu blurMenu = new JMenu("Blurs");
         addMenuItemTo(blurMenu, new GaussianBlur(frame));
         addMenuItemTo(blurMenu, new AverageBlur(frame));
+        addMenuItemTo(blurMenu, new DirectionalBlur(frame));
         add(blurMenu);
 
         addMenuItemTo(this, new BrightnessContrast(frame));
