@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Removed unnecessary MainFrame singleton">
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/CanvasManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/CanvasManagerNavigation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/CanvasNavigation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/CanvasToolInteraction.java" afterDir="false" />
+    <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Added Save/load for PNG">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/Canvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolsPackage/Toolbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolsPackage/Toolbar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/WindowsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/WindowsMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/ImageLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/ImageLoader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +18,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="master" />
   </component>
   <component name="Git.Settings">
     <favorite-branches>
@@ -42,7 +38,7 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="SaveLoadImage" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -66,21 +62,30 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/PROgraming/IdeaProjects/AJP_Microproject&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/PROgraming/IdeaProjects/Capstone-AIE/lib/flatlaf-3.0.jar&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.AIE.WindowPackage" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\PROgraming\IdeaProjects\Capstone-AIE\src\com\AIE\color_palette" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.AIE.WindowPackage" />
+      <recent name="com.AIE.WindowPackage.ColorPackage.Sliders" />
       <recent name="com.AIE" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
-    <configuration name="AssertionExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="AssertionExample" />
+    <configuration name="AWTControlDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AWTControlDemo" />
+      <module name="Capstone-AIE" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -90,7 +95,7 @@
       <module name="Capstone-AIE" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.AIE.CanvasManagerNavigation" />
+          <option name="PATTERN" value="com.AIE.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -98,41 +103,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main2 (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main2" />
+    <configuration name="SwingTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="SwingTester" />
       <module name="Capstone-AIE" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main2 (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main2" />
-      <module name="Capstone-AIE" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main2" />
-      <module name="Capstone-AIE" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Application.AssertionExample" />
-      <item itemvalue="Application.Main2" />
-      <item itemvalue="Application.Main2 (1)" />
-      <item itemvalue="Application.Main2 (2)" />
-      <item itemvalue="Application.Main" />
-    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Main2" />
-        <item itemvalue="Application.Main2 (2)" />
-        <item itemvalue="Application.Main2 (1)" />
-        <item itemvalue="Application.AssertionExample" />
+        <item itemvalue="Application.SwingTester" />
+        <item itemvalue="Application.AWTControlDemo" />
       </list>
     </recent_temporary>
   </component>
@@ -187,7 +169,42 @@
       <option name="project" value="LOCAL" />
       <updated>1676626453373</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added Navigation classes - CanvasNavigation and CanvasManagerNavigation&#10;Separated Toolbar and CanvasToolInteraction classes">
+      <created>1676813792103</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1676813792103</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Added ColorSliders - RGG,HSV&#10;ColorSlider is JSlider with custom UI, and color functionalities.&#10;Including MutableColor for saving object creation/deletion time/memory.">
+      <created>1676972964907</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1676972964907</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added ColorPickerWheel.&#10;Additional Classes - HEXInput, HeadLabel">
+      <created>1677161219054</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1677161219054</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Code Clean Up">
+      <created>1677511973820</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1677511973820</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Color Palette Reimplementation">
+      <created>1677537877901</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1677537877901</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -201,7 +218,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="CanvasFeatures" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -246,10 +263,16 @@
     <MESSAGE value="Added AbstractWindow and AbstractTool.&#10;Followed with ToolBar and Pencil.&#10;Canvas uses an Anonymous listener class - Toolbar.CanvasToolInteraction which passes all the events from canvas to AbstractTool's children.&#10;Added MenuBar for MainFrame (previously called Window class)" />
     <MESSAGE value="Added AbstractWindow and AbstractTool.&#10;Followed with ToolBar and Pencil.&#10;Canvas uses an Anonymous listener class - Toolbar.CanvasToolInteraction which passes all the events from canvas to AbstractTool's children.&#10;Added MenuBar for MainFrame (previously called Window class)&#10;&#10;Above Mentioned Tool-Canvas Interaction was done after WindowsMenu's HashMap&lt;Window name, AbstractWindow&gt; and the static String name in AbstractWindow children" />
     <MESSAGE value="Added CanvasManager" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added CanvasManager" />
+    <MESSAGE value="Added Navigation classes - CanvasNavigation and CanvasManagerNavigation&#10;Separated Toolbar and CanvasToolInteraction classes" />
+    <MESSAGE value="Added ColorSliders - RGG,HSV&#10;ColorSlider is JSlider with custom UI, and color functionalities.&#10;Including MutableColor for saving object creation/deletion time/memory." />
+    <MESSAGE value="Added ColorPickerWheel.&#10;Additional Classes - HEXInput, HeadLabel" />
+    <MESSAGE value="Code Clean Up" />
+    <MESSAGE value="Color Palette Reimplementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Color Palette Reimplementation" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Capstone_AIE$Main.ic" NAME="Main Coverage Results" MODIFIED="1676672329483" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Capstone_AIE$VerifierTest.ic" NAME="VerifierTest Coverage Results" MODIFIED="1676969542696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Capstone_AIE$Main.ic" NAME="Main Coverage Results" MODIFIED="1677842283244" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.AIE.*</FILTER>
     </SUITE>
   </component>

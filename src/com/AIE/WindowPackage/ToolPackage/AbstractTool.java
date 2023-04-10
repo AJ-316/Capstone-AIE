@@ -1,7 +1,7 @@
-package com.AIE.WindowPackage.ToolsPackage;
+package com.AIE.WindowPackage.ToolPackage;
 
 import com.AIE.Canvas;
-import com.AIE.WindowPackage.MainFrame;
+import com.AIE.ImageLoader;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +11,6 @@ import java.awt.event.MouseEvent;
 
 public abstract class AbstractTool extends JRadioButton implements ItemListener {
 
-    protected LineDrawer lineDrawer;
     protected Cursor cursor;
 
     public AbstractTool(String icon, Cursor cursor) {
@@ -22,9 +21,9 @@ public abstract class AbstractTool extends JRadioButton implements ItemListener 
     }
 
     private void setIcons(String icon) {
-        setIcon(MainFrame.loadImage(icon, 0.5f));
-        setSelectedIcon(MainFrame.loadImage(icon+"_pressed", 0.5f));
-        setRolloverIcon(MainFrame.loadImage(icon+"_rollover", 0.5f));
+        setIcon(ImageLoader.loadIcon(icon, 0.5f));
+        setSelectedIcon(ImageLoader.loadIcon(icon+"_pressed", 0.5f));
+        setRolloverIcon(ImageLoader.loadIcon(icon+"_rollover", 0.5f));
     }
 
     @Override

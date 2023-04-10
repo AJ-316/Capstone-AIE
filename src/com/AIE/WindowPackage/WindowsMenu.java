@@ -1,6 +1,7 @@
 package com.AIE.WindowPackage;
 
-import com.AIE.WindowPackage.ToolsPackage.Toolbar;
+import com.AIE.WindowPackage.ColorPackage.ColorPalette;
+import com.AIE.WindowPackage.ToolPackage.Toolbar;
 
 import javax.swing.*;
 import java.util.HashMap;
@@ -14,10 +15,13 @@ public class WindowsMenu extends JMenu {
         windows = new HashMap<>();
 
         Toolbar toolbar = new Toolbar(mainFrame);
-        addWindow(Toolbar.NAME, toolbar);
+        addMenuItem(Toolbar.NAME, toolbar);
+
+        ColorPalette colorPalette = new ColorPalette(mainFrame);
+        addMenuItem(ColorPalette.NAME, colorPalette);
     }
 
-    private void addWindow(String name, AbstractWindow window) {
+    private void addMenuItem(String name, AbstractWindow window) {
         windows.put(name, window);
         JMenuItem item = new JMenuItem(name);
 

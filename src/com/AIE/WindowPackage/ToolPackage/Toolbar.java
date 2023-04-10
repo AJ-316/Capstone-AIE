@@ -1,4 +1,4 @@
-package com.AIE.WindowPackage.ToolsPackage;
+package com.AIE.WindowPackage.ToolPackage;
 
 import com.AIE.WindowPackage.AbstractWindow;
 import com.AIE.WindowPackage.MainFrame;
@@ -13,7 +13,7 @@ public class Toolbar extends AbstractWindow {
     private static ArrayList<AbstractTool> toolList;
 
     public Toolbar(MainFrame mainFrame) {
-        super(mainFrame, 50, 500, 100, 100);
+        super(mainFrame, 50, 500, 200, 200);
         setTitle("ToolBar");
         createTools();
         setVisible(true);
