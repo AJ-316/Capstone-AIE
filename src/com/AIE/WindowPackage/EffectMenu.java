@@ -19,6 +19,7 @@ public class EffectMenu extends JMenu implements ActionListener {
 
         addMenuItemTo(this, new BrightnessContrast(frame));
         addMenuItemTo(this, new Sepia(frame));
+        addMenuItemTo(this, new NegativeFilter(frame));
     }
 
     private void addMenuItemTo(JMenu menu, Effect effect) {
