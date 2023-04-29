@@ -27,16 +27,6 @@ public class HSV {
         float x = c * (1 - Math.abs((hue / 60f) % 2 - 1));
         float m = value - c;
 
-        /* inaccurate method but more efficient
-        switch ((int) (hue/360f * 6)) {
-            case 0 -> convertToUnit(c, x, 0, m);
-            case 1 -> convertToUnit(x, c, 0, m);
-            case 2 -> convertToUnit(0, c, x, m);
-            case 3 -> convertToUnit(0, x, c, m);
-            case 4 -> convertToUnit(x, 0, c, m);
-            case 5 -> convertToUnit(c, 0, x, m);
-        }*/
-
         if (hue <=  60) convertToUnit(c, x, 0, m); else
         if (hue <= 120) convertToUnit(x, c, 0, m); else
         if (hue <= 180) convertToUnit(0, c, x, m); else

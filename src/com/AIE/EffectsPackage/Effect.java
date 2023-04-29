@@ -4,6 +4,7 @@ import com.AIE.CanvasPackage.Canvas;
 import com.AIE.CanvasPackage.CanvasManager;
 import com.AIE.ImageLoader;
 import com.AIE.WindowPackage.MainFrame;
+import com.AIE.WindowPackage.ValueUpdateListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -49,28 +50,30 @@ public abstract class Effect {
 
         progressBar = new JProgressBar();
         progressBar.setSize(progressBar.getHeight(), (int) (configWindow.getWidth()/1.4f));
-        previewThread = new PreviewThread(() -> {
-            if (previewReq > 0) {
-                applyBtn.setEnabled(false);
-                Canvas canvas = CanvasManager.getCurrentCanvas();
-                if (canvas == null)
-                    return;
-                BufferedImage newImg = applyEffect(canvas.getImage());
-
-                if(forceStop) {
-                    forceStop = false;
-                    previewReq--;
-                    return;
-                }
-
-                canvas.setPreviewImage(newImg);
-
-                applyBtn.setEnabled(true);
-                previewReq--;
-            }
-        });
+        previewThread = new PreviewThread(this::previewEffect);
 
         effects.add(this);
+    }
+
+    protected void previewEffect() {
+        if (previewReq > 0) {
+            applyBtn.setEnabled(false);
+            Canvas canvas = CanvasManager.getCurrentCanvas();
+            if (canvas == null)
+                return;
+            BufferedImage newImg = applyEffect(canvas.getImage());
+
+            if(forceStop) {
+                forceStop = false;
+                previewReq--;
+                return;
+            }
+
+            canvas.setPreviewImage(newImg);
+
+            applyBtn.setEnabled(true);
+            previewReq--;
+        }
     }
 
     protected void finalizeComponents(Component... components) {
@@ -182,5 +185,23 @@ public abstract class Effect {
                 break;
             }
         }
+    }
+
+    protected JSlider getSlider(JTextField textField, int tickSpacing, int min, int max, int defaultVal) {
+        JSlider slider = new JSlider(min, max, defaultVal);
+
+        textField.addActionListener(effectListener);
+        textField.setText(String.valueOf(defaultVal));
+
+        ValueUpdateListener.set(textField, slider);
+        slider.setPaintTicks(true);
+        slider.setMajorTickSpacing(tickSpacing);
+        slider.setMinorTickSpacing(tickSpacing/4);
+        slider.addMouseListener(effectListener);
+        return slider;
+    }
+
+    protected static float normalize(float value, int min, int max) {
+        return (value - min) / (max - min);
     }
 }

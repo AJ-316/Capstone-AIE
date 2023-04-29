@@ -3,7 +3,6 @@ package com.AIE.EffectsPackage;
 import com.AIE.SeparatorLabel;
 import com.AIE.WindowPackage.ColorPackage.MutableColor;
 import com.AIE.WindowPackage.MainFrame;
-import com.AIE.WindowPackage.ValueUpdateListener;
 
 import javax.swing.*;
 import java.awt.image.BufferedImage;
@@ -21,23 +20,9 @@ public class Sepia extends Effect {
 
         JTextField dTxtField = new JTextField();
         JTextField iTxtField = new JTextField();
-        depth = getSlider(dTxtField, 20);
-        intensity = getSlider(iTxtField, 30);
+        depth = getSlider(dTxtField, 20, 0, 100, 20);
+        intensity = getSlider(iTxtField, 20, 0, 100, 30);
         finalizeComponents(depth, dTxtField, new SeparatorLabel(250, 3, 0, 0), intensity, iTxtField);
-    }
-
-    private JSlider getSlider(JTextField textField, int defaultVal) {
-        JSlider slider = new JSlider(1, 100, defaultVal);
-
-        textField.addActionListener(effectListener);
-        textField.setText(String.valueOf(defaultVal));
-
-        ValueUpdateListener.set(textField, slider);
-        slider.setPaintTicks(true);
-        slider.setMajorTickSpacing(20);
-        slider.setMinorTickSpacing(5);
-        slider.addMouseListener(effectListener);
-        return slider;
     }
 
     @Override

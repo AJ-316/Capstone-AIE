@@ -2,48 +2,34 @@ package com.AIE.EffectsPackage;
 
 import com.AIE.SeparatorLabel;
 import com.AIE.WindowPackage.MainFrame;
-import com.AIE.WindowPackage.ValueUpdateListener;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class DirectionalBlur extends Effect{
+public class MotionBlur extends Effect {
 
     private final JSlider angleJSlider;
     private final JSlider radiusJSlider;
 
-    public DirectionalBlur(MainFrame frame) {
-        super("Directional Blur", frame, 300, 200);
-
+    public MotionBlur(MainFrame frame) {
+        super("MotionBlur", frame, 300, 200);
         JTextField aTxtField = new JTextField();
         JTextField rTxtField = new JTextField();
-        angleJSlider = getSlider(aTxtField, 90);
-        radiusJSlider = getSlider(rTxtField, 10);
+        angleJSlider = getSlider(aTxtField, 20, 0, 360, 90);
+        radiusJSlider = getSlider(rTxtField, 10, 0, 50, 10);
         finalizeComponents(angleJSlider, aTxtField, new SeparatorLabel(250, 3, 0, 0), radiusJSlider, rTxtField);
     }
-    private JSlider getSlider(JTextField textField, int defaultVal) {
-        JSlider slider = new JSlider(1, 360, defaultVal);
 
-        textField.addActionListener(effectListener);
-        textField.setText(String.valueOf(defaultVal));
 
-        ValueUpdateListener.set(textField, slider);
-        slider.setPaintTicks(true);
-        slider.setMajorTickSpacing(20);
-        slider.setMinorTickSpacing(5);
-        slider.addMouseListener(effectListener);
-        return slider;
-    }
     @Override
     protected BufferedImage applyEffect(BufferedImage inputImage) {
-        int angle = (int) angleJSlider.getValue();
-        int radius = (int) radiusJSlider.getValue();
+        int angle = angleJSlider.getValue();
+        int radius = radiusJSlider.getValue();
         int width = inputImage.getWidth();
         int height = inputImage.getHeight();
-        BufferedImage outputImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        int progressVal = 0;
+        int totalSize = width * height;
+        BufferedImage result = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 
         // calculate blur vector
         double radianAngle = Math.toRadians(angle);
@@ -57,6 +43,7 @@ public class DirectionalBlur extends Effect{
 
                 // sample pixels along blur vector
                 for (int i = -radius; i <= radius; i++) {
+                    if(checkForceStop()) return null;
                     int sampleX = (int) (x + i * dx);
                     int sampleY = (int) (y + i * dy);
                     if (sampleX >= 0 && sampleX < width && sampleY >= 0 && sampleY < height) {
@@ -75,11 +62,12 @@ public class DirectionalBlur extends Effect{
                     b /= count;
                 }
                 int rgb = (r << 16) | (g << 8) | b;
-                outputImage.setRGB(x, y, rgb);
+                result.setRGB(x, y, rgb);
+                progressEffect(progressVal++, totalSize);
             }
         }
 
-        return outputImage;
+        return result;
     }
 }
 

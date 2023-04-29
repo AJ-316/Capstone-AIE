@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="More on Effects; Added Sepia;&#10;MutableColor now supports to store rgba hex; (Unstable Build)">
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/GaussianBlur.java" afterDir="false" />
+    <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Added GaussianBlur (V/H passes); AverageBlur (V/H passes)">
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/BlackAndWhite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/Exposure.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/HSVEffect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/InvertColor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/BlackAndWhite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/MotionBlur.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/AverageBlur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/AverageBlur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/BrightnessContrast.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/BrightnessContrast.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/DirectionalBlur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/MotionBlur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/Effect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/Effect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/Sepia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/Sepia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/HSVSliders/HSV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/HSVSliders/HSV.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/EffectMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/EffectMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ValueUpdateListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ValueUpdateListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/resources/icons/Gaussian Blur.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/Gaussian Blur.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/resources/icons/Directional Blur.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,7 +260,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680809408616</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Added GaussianBlur (V/H passes); AverageBlur (V/H passes)">
+      <created>1680856956979</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1680856956979</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -320,11 +334,12 @@
     <MESSAGE value="Reworked/Added Icons and added Effects (Need to add threads)" />
     <MESSAGE value="Reworked Effects and Thread handling" />
     <MESSAGE value="More on Effects; Added Sepia;&#10;MutableColor now supports to store rgba hex; (Unstable Build)" />
-    <option name="LAST_COMMIT_MESSAGE" value="More on Effects; Added Sepia;&#10;MutableColor now supports to store rgba hex; (Unstable Build)" />
+    <MESSAGE value="Added GaussianBlur (V/H passes); AverageBlur (V/H passes)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added GaussianBlur (V/H passes); AverageBlur (V/H passes)" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Capstone_AIE$VerifierTest.ic" NAME="VerifierTest Coverage Results" MODIFIED="1676969542696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Capstone_AIE$Main.ic" NAME="Main Coverage Results" MODIFIED="1680854202295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Capstone_AIE$Main.ic" NAME="Main Coverage Results" MODIFIED="1682793555972" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.AIE.*</FILTER>
     </SUITE>
   </component>
