@@ -15,11 +15,14 @@ public abstract class AbstractTool extends JRadioButton implements ItemListener 
     private static final int ICON_SIZE = 40;
     private static final int OVERLAY_INSET = 2;
     private static final int OVERLAY_ARC = 15;
+    protected static final Integer[] SIZES = new Integer[] {1,2,3,4,5,6,7,8,9,10,
+            11,12,13,14,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100};
 
     public AbstractTool(String icon, String tooltip, Cursor cursor) {
         super();
         this.cursor = cursor;
         addItemListener(this);
+        setName(icon);
         setIcon(ImageLoader.loadIcon(icon, ICON_SIZE));
         setToolTipText(tooltip);
     }
@@ -29,7 +32,6 @@ public abstract class AbstractTool extends JRadioButton implements ItemListener 
         if(e.getStateChange() == ItemEvent.DESELECTED)
             return;
         // Change cursor
-
         toolSelected();
     }
 

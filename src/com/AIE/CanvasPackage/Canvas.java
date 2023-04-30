@@ -7,6 +7,7 @@ import com.AIE.WindowPackage.ToolPackage.PixelConnector;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.Arrays;
@@ -21,6 +22,7 @@ public class Canvas extends JPanel {
     private final PixelConnector connector;
     private int brushType;
     private int zoom, posX, posY;
+
 
     public Canvas() {
         super();
@@ -91,20 +93,44 @@ public class Canvas extends JPanel {
         this.posY = MainFrame.SCREEN_CENTER_Y - image.getHeight()/2;
     }
 
-    public void changePixelLinearly(int x, int y) throws IndexOutOfBoundsException {
+    public void changePixelLinearly(int x, int y, boolean isFilled, int size, int outline) throws IndexOutOfBoundsException {
         float scale = zoom/100f;
         x = (int) ((x - posX)/scale);
         y = (int) ((y - posY)/scale);
 
-        connector.addPixel(x, y);
-        changeRawPixel(x, y);
+        connector.addPixel(x, y, isFilled, size, outline);
+        if(size == -1) {
+            changeRawPixel(x, y);
+            return;
+        }
+        drawCircle(x, y, isFilled, size, outline);
     }
 
-    public void changeRawPixel(int x, int y) throws IndexOutOfBoundsException  {
+    public void changeRawPixel(int x, int y, int color) throws IndexOutOfBoundsException  {
         if(x >= image.getWidth() || x < 0 || y >= image.getHeight() || y < 0)
             return;
 
-        pixels[x + y*image.getWidth()] = ColorPalette.getBrush(brushType).getColor().getRGB();
+        pixels[x + y*image.getWidth()] = color;
+    }
+
+    public void changeRawPixel(int x, int y) throws IndexOutOfBoundsException  {
+        changeRawPixel(x,y,ColorPalette.getBrush(brushType).getColor().getRGB());
+    }
+
+    public void drawCircle(int x, int y, boolean isFilled, int radius, int outline) {
+        Graphics2D g2d = image.createGraphics();
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setColor(ColorPalette.getBrush(brushType).getColor());
+        System.out.println(radius);
+
+        Ellipse2D.Double circle = new Ellipse2D.Double(x-radius/2f, y-radius/2f, radius, radius);
+        if(isFilled) {
+            g2d.fill(circle);
+            return;
+        }
+
+        g2d.setStroke(new BasicStroke(outline, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+        g2d.draw(circle);
     }
 
     // might use later

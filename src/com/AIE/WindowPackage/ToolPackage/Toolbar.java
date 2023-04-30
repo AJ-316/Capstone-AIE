@@ -1,6 +1,7 @@
 package com.AIE.WindowPackage.ToolPackage;
 
 import com.AIE.WindowPackage.AbstractWindow;
+import com.AIE.WindowPackage.EditorPanels.ToolEditor;
 import com.AIE.WindowPackage.MainFrame;
 
 import javax.swing.*;
@@ -12,11 +13,16 @@ public class Toolbar extends AbstractWindow {
     public static final String NAME = "ToolBar";
     private static ButtonGroup toolGroup;
     private static ArrayList<AbstractTool> toolList;
+    public static ToolEditor EDITOR;
 
     public Toolbar(MainFrame mainFrame) {
         super("tools", mainFrame, 140, 500, 200, 200);
         setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
         setTitle("ToolBar");
+
+        EDITOR = new ToolEditor();
+        mainFrame.add(EDITOR, BorderLayout.NORTH);
+
         createTools();
         setVisible(true);
     }
@@ -26,16 +32,7 @@ public class Toolbar extends AbstractWindow {
         toolList = new ArrayList<>();
 
         addTool(new Pencil());
-        addTool(new Pencil());
-        addTool(new Pencil());
-        addTool(new Pencil());
-        for(int i =0;i < 4; i++) {
-            Pencil p = new Pencil();
-            p.setEnabled(false);
-            addTool(p);
-        }
-        addTool(new Pencil());
-        addTool(new Pencil());
+        addTool(new Brush());
     }
 
     private void addTool(AbstractTool tool) {

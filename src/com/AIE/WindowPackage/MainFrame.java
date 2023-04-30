@@ -30,13 +30,14 @@ public class MainFrame extends JFrame implements ComponentListener {
         PANE = getContentPane();
         PANE.setBackground(new Color(0x303031));
 
-        new FrameMenuBar(this);
-
         this.setLayout(new BorderLayout());
         this.setResizable(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.add(CANVAS_MANAGER);
+        this.add(CANVAS_MANAGER, BorderLayout.CENTER);
         this.pack();
+
+        new FrameMenuBar(this);
+
         SCREEN_CENTER_X = PANE.getWidth()/2;
         SCREEN_CENTER_Y = PANE.getHeight()/2;
         this.setLocationRelativeTo(null);

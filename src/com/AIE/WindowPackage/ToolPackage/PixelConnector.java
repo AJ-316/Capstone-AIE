@@ -14,19 +14,19 @@ public class PixelConnector {
         this.canvas = canvas;
     }
 
-    public void addPixel(int x, int y) {
+    public void addPixel(int x, int y, boolean isFilled, int size, int outline) {
         trackedPixels.add(new Pixel(x, y));
-        connectPixels();
+        connectPixels(isFilled, size, outline);
     }
 
-    public void connectPixels() {
+    public void connectPixels(boolean isFilled, int size, int outline) {
         for(int i = 0; i < trackedPixels.size(); i++) {
             if(trackedPixels.size() <= 1)
                 return;
             Pixel p1 = trackedPixels.get(i);
             Pixel p2 = trackedPixels.get(i+1);
             try {
-                connectPixel(p1.x, p1.y, p2.x, p2.y);
+                connectPixel(p1.x, p1.y, p2.x, p2.y, isFilled, size, outline);
             } catch (IndexOutOfBoundsException e) {
                 e.printStackTrace();
             }
@@ -35,7 +35,7 @@ public class PixelConnector {
         }
     }
 
-    private void connectPixel(int x1, int y1, int x2, int y2) {
+    private void connectPixel(int x1, int y1, int x2, int y2, boolean isFilled, int size, int outline) {
         int dx = Math.abs(x2 - x1);
         int dy = Math.abs(y2 - y1);
         int sx = x1 < x2 ? 1 : -1;
@@ -43,7 +43,11 @@ public class PixelConnector {
         int err = dx - dy;
 
         while (x1 != x2 || y1 != y2) {
-            canvas.changeRawPixel(x1, y1);
+            if(size == -1) {
+                canvas.changeRawPixel(x1, y1);
+            } else
+                canvas.drawCircle(x1, y1, isFilled, size, outline);
+
             int e2 = 2 * err;
             if (e2 > -dy) {
                 err -= dy;
