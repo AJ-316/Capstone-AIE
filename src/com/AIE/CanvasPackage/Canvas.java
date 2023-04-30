@@ -2,6 +2,7 @@ package com.AIE.CanvasPackage;
 
 import com.AIE.ImageLoader;
 import com.AIE.WindowPackage.ColorPackage.ColorPalette;
+import com.AIE.WindowPackage.ColorPackage.MutableColor;
 import com.AIE.WindowPackage.MainFrame;
 import com.AIE.WindowPackage.ToolPackage.PixelConnector;
 
@@ -10,7 +11,9 @@ import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.Deque;
 
 public class Canvas extends JPanel {
 
@@ -22,7 +25,6 @@ public class Canvas extends JPanel {
     private final PixelConnector connector;
     private int brushType;
     private int zoom, posX, posY;
-
 
     public Canvas() {
         super();
@@ -113,6 +115,13 @@ public class Canvas extends JPanel {
         pixels[x + y*image.getWidth()] = color;
     }
 
+    private int getColor(int x, int y) {
+        if(x >= image.getWidth() || x < 0 || y >= image.getHeight() || y < 0)
+            return 0;
+
+        return pixels[x + y*image.getWidth()];
+    }
+
     public void changeRawPixel(int x, int y) throws IndexOutOfBoundsException  {
         changeRawPixel(x,y,ColorPalette.getBrush(brushType).getColor().getRGB());
     }
@@ -131,6 +140,52 @@ public class Canvas extends JPanel {
 
         g2d.setStroke(new BasicStroke(outline, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
         g2d.draw(circle);
+    }
+
+    public void floodFill(int x, int y, int tolerance) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+        float scale = zoom/100f;
+        x = (int) ((x - posX)/scale);
+        y = (int) ((y - posY)/scale);
+
+        int targetRGB = getColor(x, y);
+        int replacementRGB = ColorPalette.getBrush(brushType).getColor().getRGB();
+        int[] pixels = image.getRGB(0, 0, width, height, null, 0, width);
+        boolean[][] processed = new boolean[height][width];
+
+        Deque<Point> stack = new ArrayDeque<>();
+        stack.push(new Point(x, y));
+
+        while (!stack.isEmpty()) {
+            Point p = stack.pop();
+            int px = p.x;
+            int py = p.y;
+            if (px < 0 || px >= width || py < 0 || py >= height || processed[py][px]) {
+                continue;
+            }
+            int pixelRGB = pixels[py * width + px];
+            if (colorWithinTolerance(pixelRGB, targetRGB, tolerance)) {
+                image.setRGB(px, py, replacementRGB);
+                pixels[py * width + px] = replacementRGB;
+                processed[py][px] = true;
+                stack.push(new Point(px + 1, py));
+                stack.push(new Point(px - 1, py));
+                stack.push(new Point(px, py + 1));
+                stack.push(new Point(px, py - 1));
+            }
+        }
+        repaint();
+    }
+
+
+    private static boolean colorWithinTolerance(int rgb1, int rgb2, int tolerance) {
+        int[] color1 = MutableColor.getRGBComponents(rgb1);
+        int[] color2 = MutableColor.getRGBComponents(rgb2);
+        int deltaR = Math.abs(color1[0] - color2[0]);
+        int deltaG = Math.abs(color1[1] - color2[1]);
+        int deltaB = Math.abs(color1[2] - color2[2]);
+        return deltaR <= tolerance && deltaG <= tolerance && deltaB <= tolerance;
     }
 
     // might use later

@@ -7,12 +7,12 @@ import com.AIE.WindowPackage.MainFrame;
 import javax.swing.*;
 import java.awt.image.BufferedImage;
 
-public class Exposure extends Effect {
+public class ExposureEffect extends Effect {
 
     private final MutableColor color;
     private final JSlider expSlider;
 
-    public Exposure(MainFrame frame) {
+    public ExposureEffect(MainFrame frame) {
         super("Exposure", frame, 300, 160);
 
         color = new MutableColor(0);

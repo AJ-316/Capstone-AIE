@@ -8,12 +8,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class GaussianBlur extends Effect {
+public class GaussianBlurEffect extends Effect {
 
     private final JSlider radiusSlider;
     private float[] kernel;
 
-    public GaussianBlur(MainFrame frame) {
+    public GaussianBlurEffect(MainFrame frame) {
         super("Gaussian Blur", frame, 300, 155);
 
         radiusSlider = new JSlider(0, 50);

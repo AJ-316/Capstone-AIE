@@ -130,6 +130,13 @@ public class MutableColor extends Color {
         return resultHue < 0 ? resultHue + 360 : resultHue;
     }
 
+    public static int[] getRGBComponents(int rgb) {
+        int red = (rgb >> 16) & 0xFF;
+        int green = (rgb >> 8) & 0xFF;
+        int blue = rgb & 0xFF;
+        return new int[] {red, green, blue};
+    }
+
     /*
     public void setRed(int r) {
         setRGB(r, rgbaI[G], rgbaI[B]);

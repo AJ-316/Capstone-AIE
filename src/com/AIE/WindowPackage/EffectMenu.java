@@ -12,20 +12,20 @@ public class EffectMenu extends JMenu implements ActionListener {
     public EffectMenu(MainFrame frame) {
         super("Effects");
         JMenu blurMenu = new JMenu("Blurs");
-        addMenuItemTo(blurMenu, new GaussianBlur(frame));
-        addMenuItemTo(blurMenu, new AverageBlur(frame));
-        addMenuItemTo(blurMenu, new MotionBlur(frame));
+        addMenuItemTo(blurMenu, new GaussianBlurEffect(frame));
+        addMenuItemTo(blurMenu, new AverageBlurEffect(frame));
+        addMenuItemTo(blurMenu, new MotionBlurEffect(frame));
         add(blurMenu);
 
         JMenu correctionMenu = new JMenu("Color Corrections");
-        addMenuItemTo(correctionMenu, new BrightnessContrast(frame));
-        addMenuItemTo(correctionMenu, new Sepia(frame));
-        addMenuItemTo(correctionMenu, new Exposure(frame));
+        addMenuItemTo(correctionMenu, new BrightnessContrastEffect(frame));
+        addMenuItemTo(correctionMenu, new SepiaEffect(frame));
+        addMenuItemTo(correctionMenu, new ExposureEffect(frame));
         addMenuItemTo(correctionMenu, new HSVEffect(frame));
         add(correctionMenu);
 
-        addMenuItemTo(this, new BlackAndWhite(frame));
-        addMenuItemTo(this, new InvertColor(frame));
+        addMenuItemTo(this, new BlackAndWhiteEffect(frame));
+        addMenuItemTo(this, new InvertColorEffect(frame));
     }
 
     private void addMenuItemTo(JMenu menu, Effect effect) {

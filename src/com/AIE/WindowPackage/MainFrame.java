@@ -87,4 +87,16 @@ public class MainFrame extends JFrame implements ComponentListener {
     public void componentHidden(ComponentEvent e) {
 
     }
+
+    public static JSlider getSlider(JTextField textField, int tickSpacing, int min, int max, int defaultVal) {
+        JSlider slider = new JSlider(min, max, defaultVal);
+
+        textField.setText(String.valueOf(defaultVal));
+
+        ValueUpdateListener.set(textField, slider);
+        slider.setPaintTicks(true);
+        slider.setMajorTickSpacing(tickSpacing);
+        slider.setMinorTickSpacing(tickSpacing/4);
+        return slider;
+    }
 }

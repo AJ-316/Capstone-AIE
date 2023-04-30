@@ -7,13 +7,13 @@ import com.AIE.WindowPackage.MainFrame;
 import javax.swing.*;
 import java.awt.image.BufferedImage;
 
-public class Sepia extends Effect {
+public class SepiaEffect extends Effect {
 
     private final JSlider depth;
     private final JSlider intensity;
     private final MutableColor color;
 
-    public Sepia(MainFrame frame) {
+    public SepiaEffect(MainFrame frame) {
         super("Sepia", frame, 300, 200);
 
         color = new MutableColor(0);

@@ -7,12 +7,12 @@ import com.AIE.WindowPackage.ValueUpdateListener;
 import javax.swing.*;
 import java.awt.image.BufferedImage;
 
-public class AverageBlur extends Effect {
+public class AverageBlurEffect extends Effect {
 
     private final JSlider radiusSlider;
     private int progressVal;
 
-    public AverageBlur(MainFrame frame) {
+    public AverageBlurEffect(MainFrame frame) {
         super("Average Blur", frame, 300, 155);
 
         radiusSlider = new JSlider(0, 50);

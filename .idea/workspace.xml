@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Added Brush and editor panel for tools">
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/EditorPanels/ToolEditor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Brush.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/brush.png" afterDir="false" />
+    <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Added Bucket Fill">
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/BucketTool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/bucket.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/Canvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/AverageBlur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/AverageBlurEffect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/BlackAndWhite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/BlackAndWhiteEffect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/BrightnessContrast.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/BrightnessContrastEffect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/Exposure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/ExposureEffect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/GaussianBlur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/GaussianBlurEffect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/HSVEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/HSVEffect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/InvertColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/InvertColorEffect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/MotionBlur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/MotionBlurEffect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/Sepia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/SepiaEffect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/MutableColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/MutableColor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/EditorPanels/ToolEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/EditorPanels/ToolEditor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/EffectMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/EffectMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/AbstractTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/AbstractTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Pencil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Pencil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/PixelConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/PixelConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Brush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/BrushTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Pencil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/PencilTool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Toolbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Toolbar.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -271,7 +281,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682796523628</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Added Brush and editor panel for tools">
+      <created>1682851850366</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1682851850366</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -341,7 +358,8 @@
     <MESSAGE value="Added GaussianBlur (V/H passes); AverageBlur (V/H passes)" />
     <MESSAGE value="Effects Branch Merge" />
     <MESSAGE value="Added Brush and editor panel for tools" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Brush and editor panel for tools" />
+    <MESSAGE value="Added Bucket Fill" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Bucket Fill" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Capstone_AIE$VerifierTest.ic" NAME="VerifierTest Coverage Results" MODIFIED="1676969542696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

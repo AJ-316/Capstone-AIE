@@ -6,11 +6,11 @@ import com.AIE.WindowPackage.MainFrame;
 
 import java.awt.image.BufferedImage;
 
-public class BlackAndWhite extends Effect {
+public class BlackAndWhiteEffect extends Effect {
 
     private final MutableColor color;
 
-    public BlackAndWhite(MainFrame frame) {
+    public BlackAndWhiteEffect(MainFrame frame) {
         super("BlackAndWhite", frame, 200, 100);
 
         color = new MutableColor(0);

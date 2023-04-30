@@ -6,12 +6,12 @@ import com.AIE.WindowPackage.MainFrame;
 import java.awt.image.BufferedImage;
 import javax.swing.*;
 
-public class MotionBlur extends Effect {
+public class MotionBlurEffect extends Effect {
 
     private final JSlider angleJSlider;
     private final JSlider radiusJSlider;
 
-    public MotionBlur(MainFrame frame) {
+    public MotionBlurEffect(MainFrame frame) {
         super("MotionBlur", frame, 300, 200);
         JTextField aTxtField = new JTextField();
         JTextField rTxtField = new JTextField();

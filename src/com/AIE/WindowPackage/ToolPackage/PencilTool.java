@@ -7,12 +7,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
-public class Pencil extends AbstractTool {
+public class PencilTool extends AbstractTool {
 
-    public Pencil() {
+    public PencilTool() {
         super("pencil", "Pencil", new Cursor(Cursor.HAND_CURSOR)); //"Pencil\nShortcut Key: P"
 
-        Toolbar.EDITOR.addToolEdits(getName(), ToolEditor.create(new JLabel("Selected Tool: Pencil"), 5));
+        Toolbar.EDITOR.addToolEdits(getName(), ToolEditor.create(new JLabel("Selected Tool: Pencil"), 0));
         setSelected(true);
     }
 

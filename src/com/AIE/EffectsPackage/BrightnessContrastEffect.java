@@ -7,13 +7,13 @@ import com.AIE.WindowPackage.MainFrame;
 import javax.swing.*;
 import java.awt.image.BufferedImage;
 
-public class BrightnessContrast extends Effect {
+public class BrightnessContrastEffect extends Effect {
 
     private final MutableColor color;
     private final JSlider contrast;
     private final JSlider brightness;
 
-    public BrightnessContrast(MainFrame frame) {
+    public BrightnessContrastEffect(MainFrame frame) {
         super("Brightness & Contrast", frame, 300, 285);
         color = new MutableColor(0);
         JTextField contrastField = new JTextField(3);

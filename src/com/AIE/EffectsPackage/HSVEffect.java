@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+
 public class HSVEffect extends Effect {
 
     private final MutableColor color;

@@ -6,11 +6,11 @@ import com.AIE.WindowPackage.MainFrame;
 
 import java.awt.image.BufferedImage;
 
-public class InvertColor extends Effect {
+public class InvertColorEffect extends Effect {
 
     private final MutableColor color;
 
-    public InvertColor(MainFrame frame) {
+    public InvertColorEffect(MainFrame frame) {
         super("InvertColor", frame, 200, 100);
 
         color = new MutableColor(0);
