@@ -64,8 +64,10 @@ public class MainFrame extends JFrame implements ComponentListener {
 
     @Override
     public void componentResized(ComponentEvent e) {
-        SCREEN_CENTER_X = getContentPane().getWidth()/2;
-        SCREEN_CENTER_Y = getContentPane().getHeight()/2;
+        SCREEN_WIDTH = getContentPane().getWidth();
+        SCREEN_HEIGHT = getContentPane().getHeight();
+        SCREEN_CENTER_X = SCREEN_WIDTH/2;
+        SCREEN_CENTER_Y = SCREEN_HEIGHT/2;
         Canvas canvas = CanvasManager.getCurrentCanvas();
         if(canvas == null)
             return;

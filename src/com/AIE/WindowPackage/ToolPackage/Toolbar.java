@@ -32,6 +32,7 @@ public class Toolbar extends AbstractWindow {
         toolList = new ArrayList<>();
 
         addTool(new PencilTool());
+        addTool(new EraserTool());
         addTool(new BrushTool());
         addTool(new BucketTool());
     }

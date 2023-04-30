@@ -5,12 +5,13 @@ import com.AIE.WindowPackage.ColorPackage.MutableColor;
 import com.AIE.WindowPackage.ColorPackage.Sliders.ColorSlider;
 import com.AIE.WindowPackage.ColorPackage.Sliders.UI.RGBChannelUI;
 
-public class GreenChannel extends ColorSlider {
+public class AlphaChannel extends ColorSlider {
 
-    public GreenChannel() {
-        super("green", "G:", 255, 0, new RGBChannelUI(1));
+    public AlphaChannel() {
+        super("alpha", "A:", 255, 255, new RGBChannelUI.AlphaChannelUI());
     }
 
+    @Override
     public void updateColor() {
         ColorPalette.update(RGBA.getColor(), ELEMENT_NAME);
     }
@@ -19,8 +20,8 @@ public class GreenChannel extends ColorSlider {
         if(invoker.equals(ELEMENT_NAME)) {
             repaint();
             updateInputValue();
-            return;
+        } else if(invoker.equals("brush")) {
+            setValue(color.getAlpha());
         }
-        setValue(color.getGreen());
     }
 }

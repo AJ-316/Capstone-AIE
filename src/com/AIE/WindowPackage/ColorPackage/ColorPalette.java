@@ -4,7 +4,7 @@ import com.AIE.HeadLabel;
 import com.AIE.WindowPackage.*;
 import com.AIE.WindowPackage.ColorPackage.Sliders.*;
 import com.AIE.WindowPackage.ColorPackage.Sliders.HSVSliders.HSV;
-import com.AIE.WindowPackage.ColorPackage.Sliders.RGBSliders.RGB;
+import com.AIE.WindowPackage.ColorPackage.Sliders.RGBSliders.RGBA;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +18,7 @@ public class ColorPalette extends AbstractWindow {
 
     private static final int DEFAULT_WIDTH = 330;
     private static final int MORE_WIDTH = 520;
-    private static final int DEFAULT_HEIGHT = 300;
+    private static final int DEFAULT_HEIGHT = 340;
 
     protected static Brush PRIMARY;
     protected static Brush SECONDARY;
@@ -70,7 +70,7 @@ public class ColorPalette extends AbstractWindow {
         sliderPanel.setBounds(315, 0, 200, 300);
 
         sliderPanel.add(new HeadLabel("RGB", 150));
-        RGB.create(sliderPanel);
+        RGBA.create(sliderPanel);
         sliderPanel.add(new HEXInput());
 
         sliderPanel.add(new HeadLabel("HSV", 150));
@@ -96,6 +96,8 @@ public class ColorPalette extends AbstractWindow {
         add(PRIMARY);
         add(SECONDARY);
         add(brushSelection);
+
+        PRIMARY.setSelected(true);
     }
 
     public static void update(MutableColor color, String invoker) {

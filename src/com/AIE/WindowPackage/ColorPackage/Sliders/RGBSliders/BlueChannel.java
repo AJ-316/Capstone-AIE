@@ -13,7 +13,7 @@ public class BlueChannel extends ColorSlider {
 
     @Override
     public void updateColor() {
-        ColorPalette.update(RGB.getColor(), ELEMENT_NAME);
+        ColorPalette.update(RGBA.getColor(), ELEMENT_NAME);
     }
 
     public void updateElement(MutableColor color, String invoker) {

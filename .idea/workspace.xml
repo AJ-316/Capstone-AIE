@@ -2,25 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Added Bucket Fill">
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/BucketTool.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/bucket.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/CanvasBackground.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/RGBSliders/AlphaChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/EraserTool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/canvas/background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/canvas/backgroundSH.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/canvas/backgroundSW.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/eraser.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/eraser2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/Canvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/AverageBlur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/AverageBlurEffect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/BlackAndWhite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/BlackAndWhiteEffect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/BrightnessContrast.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/BrightnessContrastEffect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/Exposure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/ExposureEffect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/GaussianBlur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/GaussianBlurEffect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/HSVEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/HSVEffect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/InvertColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/InvertColorEffect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/MotionBlur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/MotionBlurEffect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/Sepia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/SepiaEffect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/CanvasManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/CanvasManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/ColorPalette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/ColorPalette.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/MutableColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/MutableColor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/EditorPanels/ToolEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/EditorPanels/ToolEditor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/EffectMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/EffectMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/RGBSliders/BlueChannel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/RGBSliders/BlueChannel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/RGBSliders/GreenChannel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/RGBSliders/GreenChannel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/RGBSliders/RGB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/RGBSliders/RGBA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/RGBSliders/RedChannel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/RGBSliders/RedChannel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/UI/RGBChannelUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/UI/RGBChannelUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/UI/ValueChannelUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/UI/ValueChannelUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Brush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/BrushTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Pencil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/PencilTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/BucketTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/BucketTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/PixelConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/PixelConnector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Toolbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Toolbar.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -101,11 +104,11 @@
       <recent name="D:\PROgraming\IdeaProjects\Capstone-AIE\src\com\AIE\color_palette" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.AIE.WindowPackage.ColorPackage.Sliders.RGBSliders" />
       <recent name="com.AIE.WindowPackage.ToolPackage" />
       <recent name="com.AIE.EffectsPackage" />
       <recent name="com.AIE.WindowPackage" />
       <recent name="com.AIE.WindowPackage.ColorPackage.Sliders" />
-      <recent name="com.AIE" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
@@ -288,7 +291,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682851850366</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Added Bucket Fill">
+      <created>1682864934075</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1682864934075</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -363,7 +373,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Capstone_AIE$VerifierTest.ic" NAME="VerifierTest Coverage Results" MODIFIED="1676969542696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Capstone_AIE$Main.ic" NAME="Main Coverage Results" MODIFIED="1682846725172" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Capstone_AIE$Main.ic" NAME="Main Coverage Results" MODIFIED="1682889163899" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.AIE.*</FILTER>
     </SUITE>
   </component>

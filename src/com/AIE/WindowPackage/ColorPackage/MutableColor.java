@@ -38,7 +38,7 @@ public class MutableColor extends Color {
     }
 
     public void set(MutableColor color) {
-        setRGB(color.rgbaI[R], color.rgbaI[G], color.rgbaI[B]);
+        setRGBA(color.rgbaI[R], color.rgbaI[G], color.rgbaI[B], color.rgbaI[A]);
     }
 
     private void setValue() {
@@ -62,6 +62,15 @@ public class MutableColor extends Color {
         rgbaI[G] = g;
         rgbaI[B] = b;
         testColorValueRange(r,g,b,255);
+        setValue();
+    }
+
+    public void setRGBA(int r, int g, int b, int a) {
+        rgbaI[R] = r;
+        rgbaI[G] = g;
+        rgbaI[B] = b;
+        rgbaI[A] = a;
+        testColorValueRange(r,g,b,a);
         setValue();
     }
 

@@ -22,6 +22,7 @@ public class Canvas extends JPanel {
     private boolean isPreviewMode = false;
     private int[] pixels;
 
+    private final CanvasBackground background = new CanvasBackground();
     private final PixelConnector connector;
     private int brushType;
     private int zoom, posX, posY;
@@ -60,6 +61,17 @@ public class Canvas extends JPanel {
     public void paint(Graphics g) {
         super.paint(g);
         ((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        BufferedImage[][] bkgTiles = background.getTiledImages(getZoomedWidth(), getZoomedHeight());
+        for (int x = 0; x < bkgTiles.length; x++) {
+            for (int y = 0; y < bkgTiles[x].length; y++) {
+                g.drawImage(bkgTiles[x][y],
+                        x * bkgTiles[x][y].getWidth() + posX,
+                        y * bkgTiles[x][y].getHeight() + posY,
+                        bkgTiles[x][y].getWidth(), bkgTiles[x][y].getHeight(), null);
+                System.out.println("l: " + x + ", " + y);
+            }
+        }
+
         g.drawImage(isPreviewMode ? previewImage : image, posX, posY, getZoomedWidth(), getZoomedHeight(), null);
     }
 
@@ -96,16 +108,26 @@ public class Canvas extends JPanel {
     }
 
     public void changePixelLinearly(int x, int y, boolean isFilled, int size, int outline) throws IndexOutOfBoundsException {
+        changePixelLinearly(x, y, ColorPalette.getBrush(brushType).getColor(), isFilled, size, outline);
+    }
+
+    public void changePixelLinearly(int x, int y, Color color, boolean isFilled, int size, int outline) throws IndexOutOfBoundsException {
         float scale = zoom/100f;
         x = (int) ((x - posX)/scale);
         y = (int) ((y - posY)/scale);
 
-        connector.addPixel(x, y, isFilled, size, outline);
-        if(size == -1) {
-            changeRawPixel(x, y);
+        if(color == null) {
+            connector.addPixel(x, y, color, isFilled, size, outline);
+            erase(x, y, size);
             return;
         }
-        drawCircle(x, y, isFilled, size, outline);
+
+        connector.addPixel(x, y, color, isFilled, size, outline);
+        if(size == -1) {
+            changeRawPixel(x, y, color.getRGB());
+            return;
+        }
+        drawCircle(x, y, color, isFilled, size, outline);
     }
 
     public void changeRawPixel(int x, int y, int color) throws IndexOutOfBoundsException  {
@@ -122,15 +144,10 @@ public class Canvas extends JPanel {
         return pixels[x + y*image.getWidth()];
     }
 
-    public void changeRawPixel(int x, int y) throws IndexOutOfBoundsException  {
-        changeRawPixel(x,y,ColorPalette.getBrush(brushType).getColor().getRGB());
-    }
-
-    public void drawCircle(int x, int y, boolean isFilled, int radius, int outline) {
+    public void drawCircle(int x, int y, Color color, boolean isFilled, int radius, int outline) {
         Graphics2D g2d = image.createGraphics();
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2d.setColor(ColorPalette.getBrush(brushType).getColor());
-        System.out.println(radius);
+        g2d.setColor(color);
 
         Ellipse2D.Double circle = new Ellipse2D.Double(x-radius/2f, y-radius/2f, radius, radius);
         if(isFilled) {
@@ -186,6 +203,20 @@ public class Canvas extends JPanel {
         int deltaG = Math.abs(color1[1] - color2[1]);
         int deltaB = Math.abs(color1[2] - color2[2]);
         return deltaR <= tolerance && deltaG <= tolerance && deltaB <= tolerance;
+    }
+
+    public void erase(int x, int y, int size) {
+        if (size == -1) {
+            changeRawPixel(x, y, 0);
+            return;
+        }
+
+        for (int x1 = x - size / 2; x1 < x + size / 2; x1++) {
+            for (int y1 = y - size / 2; y1 < y + size / 2; y1++) {
+                changeRawPixel(x1, y1, 0);
+            }
+        }
+        repaint();
     }
 
     // might use later

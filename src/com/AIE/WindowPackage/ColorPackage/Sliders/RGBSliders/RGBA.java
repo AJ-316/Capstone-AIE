@@ -4,11 +4,12 @@ import com.AIE.WindowPackage.ColorPackage.MutableColor;
 
 import java.awt.*;
 
-public class RGB {
+public class RGBA {
 
     private static final RedChannel RED = new RedChannel();
     private static final GreenChannel GREEN = new GreenChannel();
     private static final BlueChannel BLUE = new BlueChannel();
+    private static final AlphaChannel ALPHA = new AlphaChannel();
 
     private static final MutableColor COLOR = new MutableColor(255, 0, 0);
 
@@ -16,6 +17,7 @@ public class RGB {
         container.add(RED);
         container.add(GREEN);
         container.add(BLUE);
+        container.add(ALPHA);
     }
 
     public static int getRedUnit() {
@@ -36,7 +38,7 @@ public class RGB {
     }
 
     private static void updateColor() {
-        COLOR.setRGB(RED.getUnitVal(), GREEN.getUnitVal(), BLUE.getUnitVal());
+        COLOR.setRGBA(RED.getUnitVal(), GREEN.getUnitVal(), BLUE.getUnitVal(), ALPHA.getUnitVal());
     }
 
 }

@@ -1,7 +1,7 @@
 package com.AIE.WindowPackage.ColorPackage.Sliders.UI;
 
 import com.AIE.WindowPackage.ColorPackage.MutableColor;
-import com.AIE.WindowPackage.ColorPackage.Sliders.RGBSliders.RGB;
+import com.AIE.WindowPackage.ColorPackage.Sliders.RGBSliders.RGBA;
 
 import java.awt.*;
 
@@ -11,7 +11,7 @@ public class ValueChannelUI extends ColorSliderUI {
 
     @Override
     public void paintTrack(Graphics g) {
-        gradient[1].set(RGB.getColor());
+        gradient[1].set(RGBA.getColor());
 
         LinearGradientPaint paint = new LinearGradientPaint(
                 trackRect.x, 0, trackRect.width+trackRect.x, 0, FRACTIONS, gradient);

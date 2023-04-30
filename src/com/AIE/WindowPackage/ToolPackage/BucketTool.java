@@ -22,7 +22,6 @@ public class BucketTool extends AbstractTool {
                 ToolEditor.create(new JLabel("Tolerance:"), 5),
                 ToolEditor.create(tolerance, 2),
                 ToolEditor.create(toleranceField, 0));
-        setSelected(true);
     }
 
     @Override
