@@ -14,7 +14,7 @@ public class GaussianBlurEffect extends Effect {
     private float[] kernel;
 
     public GaussianBlurEffect(MainFrame frame) {
-        super("Gaussian Blur", frame, 300, 155);
+        super("Gaussian Blur", frame, 300, 165);
 
         radiusSlider = new JSlider(0, 50);
         JTextField radiusField = new JTextField(3);

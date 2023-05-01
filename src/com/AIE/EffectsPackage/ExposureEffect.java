@@ -13,7 +13,7 @@ public class ExposureEffect extends Effect {
     private final JSlider expSlider;
 
     public ExposureEffect(MainFrame frame) {
-        super("Exposure", frame, 300, 160);
+        super("Exposure", frame, 300, 165);
 
         color = new MutableColor(0);
 

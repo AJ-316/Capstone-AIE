@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 public class ColorPalette extends AbstractWindow {
 
-    public static String NAME = "ColorPallet";
     private static JComboBox<String> brushSelection;
     private static JPanel sliderPanel;
 
@@ -28,8 +27,7 @@ public class ColorPalette extends AbstractWindow {
     private static final MutableColor COLOR = new MutableColor(255, 0, 0);
 
     public ColorPalette(MainFrame mainFrame) {
-        super("palette", mainFrame, DEFAULT_WIDTH, DEFAULT_HEIGHT, MainFrame.SCREEN_WIDTH - 500, 200);
-        setTitle("ColorPallet");
+        super("Color Palette", mainFrame, DEFAULT_WIDTH, DEFAULT_HEIGHT, MainFrame.SCREEN_WIDTH - 200, 400);
         setLayout(null);
 
         createBrush();

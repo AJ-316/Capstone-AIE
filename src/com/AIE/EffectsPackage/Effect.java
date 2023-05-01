@@ -3,7 +3,10 @@ package com.AIE.EffectsPackage;
 import com.AIE.CanvasPackage.Canvas;
 import com.AIE.CanvasPackage.CanvasManager;
 import com.AIE.ImageLoader;
+import com.AIE.StackPackage.SavedData;
+import com.AIE.StackPackage.SavedDataButton;
 import com.AIE.WindowPackage.MainFrame;
+import com.AIE.WindowPackage.PanelsPackage.InfoPanel;
 import com.AIE.WindowPackage.ValueUpdateListener;
 
 import javax.swing.*;
@@ -90,7 +93,11 @@ public abstract class Effect {
     public void confirmEffect() {
         Canvas canvas = CanvasManager.getCurrentCanvas();
         if(canvas == null) return;
+        SavedData appliedEffectUndoData = new SavedData(canvas,
+                ImageLoader.loadIcon(getName(), SavedDataButton.ICON_SIZE), "Effect: "+getName());
         canvas.confirmPreview();
+        appliedEffectUndoData.saveNewImage();
+        InfoPanel.GET.setActivityInfo("Applied " + getName() + " Effect");
         closeOperation();
     }
 
@@ -201,7 +208,7 @@ public abstract class Effect {
         return slider;
     }
 
-    protected static float normalize(float value, int min, int max) {
-        return (value - min) / (max - min);
+    protected static float normalize(float value, int max) {
+        return value / max;
     }
 }

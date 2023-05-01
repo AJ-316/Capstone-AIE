@@ -1,6 +1,7 @@
 package com.AIE.WindowPackage.ToolPackage.Shapes;
 
 import com.AIE.CanvasPackage.Canvas;
+import com.AIE.WindowPackage.PanelsPackage.InfoPanel;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -32,6 +33,8 @@ public class Rectangle extends Shape {
             if(currentConstraints.isFilled())
                 shape.fillRect(x, y, width, height);
             else shape.drawRect(x, y, width, height);
+
+            InfoPanel.GET.setSizeInfo(width, height);
         }
 
         Graphics2D canvasImg = canvasImage.createGraphics();

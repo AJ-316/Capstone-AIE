@@ -3,25 +3,24 @@ package com.AIE.WindowPackage.ToolPackage;
 import com.AIE.CanvasPackage.Canvas;
 import com.AIE.WindowPackage.ColorPackage.ColorPalette;
 import com.AIE.WindowPackage.ColorPackage.MutableColor;
-import com.AIE.WindowPackage.EditorPanels.ToolEditor;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
-public class PickerTool extends AbstractTool {
+public class DropperTool extends AbstractTool {
 
     private final MutableColor color;
 
-    public PickerTool() {
-        super("picker", "Pick Color", new Cursor(Cursor.HAND_CURSOR)); //"Pencil\nShortcut Key: P"
+    public DropperTool() {
+        super("Dropper", new Cursor(Cursor.HAND_CURSOR)); //"Pencil\nShortcut Key: P"
         color = new MutableColor(0);
-        Toolbar.EDITOR.addToolEdits(getName(), ToolEditor.create(new JLabel("Selected Tool: Color Picker"), 0));
+        Toolbar.EDITOR.addToolEdits(getName());
     }
 
     @Override
     protected void toolSelected() {
-        Toolbar.EDITOR.setCurrentEditor(getName());
+        super.toolSelected();
     }
 
     private void selectColor(Canvas canvas, int x, int y, int brushID) {

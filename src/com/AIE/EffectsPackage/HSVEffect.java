@@ -17,7 +17,7 @@ public class HSVEffect extends Effect {
     private final JSlider valSlider;
 
     public HSVEffect(MainFrame frame) {
-        super("HSV", frame, 300, 300);
+        super("HSV", frame, 300, 310);
 
         color = new MutableColor(0);
 
@@ -51,9 +51,9 @@ public class HSVEffect extends Effect {
 
                 color.setRGBA(pixel);
                 Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), hsv);
-                hsv[0] = (hsv[0] + normalize(hueSlider.getValue(), 0, 360)) % 1.0f;
-                hsv[1] = Math.min(hsv[1] * normalize(satSlider.getValue(), 0, 100), 1.0f); // Scale the saturation by the specified amount
-                hsv[2] = Math.min(hsv[2] * normalize(valSlider.getValue() + 100, 0, 100), 1.0f);
+                hsv[0] = (hsv[0] + normalize(hueSlider.getValue(), 360)) % 1.0f;
+                hsv[1] = Math.min(hsv[1] * normalize(satSlider.getValue(), 100), 1.0f); // Scale the saturation by the specified amount
+                hsv[2] = Math.min(hsv[2] * normalize(valSlider.getValue() + 100, 100), 1.0f);
                 int rgbResult = Color.HSBtoRGB(hsv[0], hsv[1], hsv[2]);
 
                 result.setRGB(x, y, rgbResult);

@@ -1,5 +1,7 @@
 package com.AIE.CanvasPackage;
 
+import com.AIE.WindowPackage.PanelsPackage.InfoPanel;
+
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -57,5 +59,14 @@ public class CanvasNavigation extends MouseAdapter {
         mousePressedY = my;
         startX = cx;
         startY = cy;
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        super.mouseMoved(e);
+        Canvas canvas = CanvasManager.getCurrentCanvas();
+        assert canvas != null;
+        canvas.getRootPane().requestFocus();
+        InfoPanel.GET.setPixelCoordinateInfo(canvas.getScaledX(e.getX()), canvas.getScaledY(e.getY()));
     }
 }

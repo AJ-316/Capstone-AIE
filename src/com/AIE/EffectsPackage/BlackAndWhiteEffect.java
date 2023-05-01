@@ -11,7 +11,7 @@ public class BlackAndWhiteEffect extends Effect {
     private final MutableColor color;
 
     public BlackAndWhiteEffect(MainFrame frame) {
-        super("BlackAndWhite", frame, 200, 100);
+        super("BlackAndWhite", frame, 200, 110);
 
         color = new MutableColor(0);
 

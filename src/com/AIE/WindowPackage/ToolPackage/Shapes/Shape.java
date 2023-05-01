@@ -60,4 +60,8 @@ public abstract class Shape {
     public ShapeConstraints getCurrentConstraints() {
         return currentConstraints;
     }
+
+    public String getName() {
+        return name;
+    }
 }

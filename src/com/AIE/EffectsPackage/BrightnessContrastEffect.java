@@ -14,7 +14,7 @@ public class BrightnessContrastEffect extends Effect {
     private final JSlider brightness;
 
     public BrightnessContrastEffect(MainFrame frame) {
-        super("Brightness & Contrast", frame, 300, 285);
+        super("Brightness & Contrast", frame, 300, 235);
         color = new MutableColor(0);
         JTextField contrastField = new JTextField(3);
         JTextField brightnessField = new JTextField(3);
@@ -38,8 +38,8 @@ public class BrightnessContrastEffect extends Effect {
 
                 color.setRGBA(source.getRGB(x,y));
 
-                float contrastFactor = normalize(contrast.getValue() + 100, 0, 100);
-                float brightnessFactor = normalize(brightness.getValue() + 100, 0, 100);
+                float contrastFactor = normalize(contrast.getValue() + 100, 100);
+                float brightnessFactor = normalize(brightness.getValue() + 100, 100);
 
                 int red = (int) (color.getRed() * brightnessFactor + (1 - brightnessFactor) * 128);
                 int green = (int) (color.getGreen() * brightnessFactor + (1 - brightnessFactor) * 128);

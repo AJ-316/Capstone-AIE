@@ -1,28 +1,26 @@
 package com.AIE.WindowPackage.ToolPackage;
 
 import com.AIE.CanvasPackage.Canvas;
-import com.AIE.WindowPackage.EditorPanels.ToolEditor;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
 public class PencilTool extends AbstractTool {
 
     public PencilTool() {
-        super("pencil", "Pencil", new Cursor(Cursor.HAND_CURSOR)); //"Pencil\nShortcut Key: P"
-
-        Toolbar.EDITOR.addToolEdits(getName(), ToolEditor.create(new JLabel("Selected Tool: Pencil"), 0));
+        super("Pencil", new Cursor(Cursor.HAND_CURSOR));
+        Toolbar.EDITOR.addToolEdits(getName());
         setSelected(true);
     }
 
     @Override
     protected void toolSelected() {
-        Toolbar.EDITOR.setCurrentEditor(getName());
+        super.toolSelected();
     }
 
     @Override
     public void pressed(Canvas canvas, MouseEvent e) {
+        saveOld(canvas, true);
         canvas.changePixelLinearly(e.getX(), e.getY(), false, 1, 1);
         canvas.updateCanvas();
     }
@@ -30,6 +28,7 @@ public class PencilTool extends AbstractTool {
     @Override
     public void released(Canvas canvas, MouseEvent e) {
         canvas.releasePixels();
+        saveCurrent();
     }
 
     @Override

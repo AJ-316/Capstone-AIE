@@ -1,6 +1,7 @@
 package com.AIE.WindowPackage.ToolPackage.Shapes;
 
 import com.AIE.CanvasPackage.Canvas;
+import com.AIE.WindowPackage.PanelsPackage.InfoPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,7 +28,7 @@ public class Polygon extends Shape {
         shape.clearRect(0, 0, shapeImage.getWidth(), shapeImage.getHeight());
         shape.setColor(color);
 
-        if (drawing) {
+        if (drawing && currentConstraints != null) {
             shape.setStroke(new BasicStroke(currentConstraints.stroke()));
             Point point = canvas.getScaledPoint(e.getPoint());
             if (vertices.size() > 2) {
@@ -42,9 +43,12 @@ public class Polygon extends Shape {
                             vertices.get(1).x, vertices.get(1).y);
                 }
             }
-            if (previewLine)
-                shape.drawLine(vertices.get(vertices.size() - 1).x, vertices.get(vertices.size() - 1).y,
-                        point.x, point.y);
+            if (previewLine) {
+                int lastX = vertices.get(vertices.size() - 1).x;
+                int lastY = vertices.get(vertices.size() - 1).y;
+                shape.drawLine(lastX, lastY, point.x, point.y);
+                InfoPanel.GET.setSizeInfo(Math.abs(point.x - lastX), Math.abs(point.y - lastY));
+            }
         }
 
         Graphics2D canvasImg = canvasImage.createGraphics();

@@ -1,7 +1,8 @@
 package com.AIE.WindowPackage.ToolPackage;
 
 import com.AIE.CanvasPackage.Canvas;
-import com.AIE.WindowPackage.EditorPanels.ToolEditor;
+import com.AIE.WindowPackage.PanelsPackage.InfoPanel;
+import com.AIE.WindowPackage.PanelsPackage.ToolEditor;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +15,7 @@ public class BrushTool extends AbstractTool {
     private final JComboBox<Integer> outline;
     private final JCheckBox isFilled;
     public BrushTool() {
-        super("brush", "Brush", new Cursor(Cursor.HAND_CURSOR));
+        super("Brush", new Cursor(Cursor.HAND_CURSOR));
 
         size = new JComboBox<>(Arrays.copyOfRange(SIZES, 1, SIZES.length));
         size.setEditable(true);
@@ -22,7 +23,6 @@ public class BrushTool extends AbstractTool {
         outline.setEditable(true);
         isFilled = new JCheckBox();
         Toolbar.EDITOR.addToolEdits(getName(),
-                ToolEditor.create(new JLabel("Selected Tool: Brush"), 20),
                 ToolEditor.create(new JLabel("Size:"), 5),
                 ToolEditor.create(size, 20),
                 ToolEditor.create(new JLabel("Thickness:"), 5),
@@ -34,6 +34,7 @@ public class BrushTool extends AbstractTool {
     @Override
     protected void toolSelected() {
         Toolbar.EDITOR.setCurrentEditor(getName());
+        InfoPanel.GET.setActivityInfo("Selected Tool: Brush");
     }
 
     private void paint(Canvas canvas, int x, int y) {
@@ -47,12 +48,14 @@ public class BrushTool extends AbstractTool {
 
     @Override
     public void pressed(Canvas canvas, MouseEvent e) {
+        saveOld(canvas, true);
         paint(canvas, e.getX(), e.getY());
     }
 
     @Override
     public void released(Canvas canvas, MouseEvent e) {
         canvas.releasePixels();
+        saveCurrent();
     }
 
     @Override

@@ -1,7 +1,7 @@
 package com.AIE.WindowPackage.ToolPackage.Shapes;
 
 import com.AIE.CanvasPackage.Canvas;
-import com.AIE.WindowPackage.EditorPanels.ToolEditor;
+import com.AIE.WindowPackage.PanelsPackage.ToolEditor;
 import com.AIE.WindowPackage.ToolPackage.AbstractTool;
 import com.AIE.WindowPackage.ToolPackage.Toolbar;
 
@@ -16,13 +16,15 @@ public class ShapesTool extends AbstractTool {
     private final JComboBox<Integer> roundedCorners;
     private final JComboBox<Float> outline;
     private Shape currentShape;
+    private boolean leastOncePaint;
+    private int currentButton;
 
     public ShapesTool() {
-        super("shapes", "Multiple Shapes", new Cursor(Cursor.HAND_CURSOR));
+        super("Multiple Shapes", new Cursor(Cursor.HAND_CURSOR));
         shapes = new JComboBox<>(new Shape[]{
                 new Rectangle(),
                 new RoundRectangle(),
-                new Oval(),
+                new Ellipse(),
                 new Polygon()
         });
         outline = new JComboBox<>(SIZES_F);
@@ -33,7 +35,6 @@ public class ShapesTool extends AbstractTool {
         isFilled = new JCheckBox();
         isFilled.setSelected(true);
         Toolbar.EDITOR.addToolEdits(getName(),
-                ToolEditor.create(new JLabel("Selected Tool: Shapes"), 20),
                 ToolEditor.create(new JLabel("Shape: "), 5),
                 ToolEditor.create(shapes, 20),
                 ToolEditor.create(new JLabel("Filled Shape: "), 5),
@@ -46,31 +47,39 @@ public class ShapesTool extends AbstractTool {
 
     @Override
     protected void toolSelected() {
-        Toolbar.EDITOR.setCurrentEditor(getName());
+        super.toolSelected();
     }
 
     @Override
     public void pressed(Canvas canvas, MouseEvent e) {
+        if(Toolbar.LOCKED && currentButton != e.getButton()) return;
+
         if(currentShape == null || currentShape.isNotDrawing()) {
             currentShape = (Shape) shapes.getSelectedItem();
             assert currentShape != null;
             currentShape.createImage(canvas);
+            saveOld(canvas, currentShape.getName());
         }
 
         currentShape.pressed(canvas, e);
         Toolbar.locked(true);
+        currentButton = e.getButton();
     }
 
     @Override
     public void released(Canvas canvas, MouseEvent e) {
-        if(currentShape == null || !currentShape.drawing)
-            return;
+        if(!leastOncePaint) currentShape.paint(canvas, e);
 
         currentShape.released(canvas, e);
+        if(currentShape == null || currentShape.drawing)
+            return;
+
         currentShape.setCurrentConstraints(null);
         canvas.confirmPreview();
         canvas.disablePreviewMode();
         Toolbar.locked(false);
+        saveCurrent();
+        leastOncePaint = false;
     }
 
     @Override
@@ -94,6 +103,7 @@ public class ShapesTool extends AbstractTool {
         currentShape.setCurrentConstraints(new ShapeConstraints(isFilled.isSelected(),
                 rounded, stroke));
         currentShape.paint(canvas, e);
+        leastOncePaint = true;
     }
 
     @Override

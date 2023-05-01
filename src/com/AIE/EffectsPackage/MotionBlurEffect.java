@@ -12,7 +12,7 @@ public class MotionBlurEffect extends Effect {
     private final JSlider radiusJSlider;
 
     public MotionBlurEffect(MainFrame frame) {
-        super("MotionBlur", frame, 300, 200);
+        super("MotionBlur", frame, 300, 210);
         JTextField aTxtField = new JTextField();
         JTextField rTxtField = new JTextField();
         angleJSlider = getSlider(aTxtField, 20, 0, 360, 90);

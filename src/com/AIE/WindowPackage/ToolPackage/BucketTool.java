@@ -1,7 +1,7 @@
 package com.AIE.WindowPackage.ToolPackage;
 
 import com.AIE.CanvasPackage.Canvas;
-import com.AIE.WindowPackage.EditorPanels.ToolEditor;
+import com.AIE.WindowPackage.PanelsPackage.ToolEditor;
 import com.AIE.WindowPackage.MainFrame;
 
 import javax.swing.*;
@@ -13,7 +13,7 @@ public class BucketTool extends AbstractTool {
     private final JSlider tolerance;
 
     public BucketTool() {
-        super("bucket", "Bucket Fill", new Cursor(Cursor.HAND_CURSOR));
+        super("Bucket Fill", new Cursor(Cursor.HAND_CURSOR));
         JTextField toleranceField = new JTextField(3);
         tolerance = MainFrame.getSlider(toleranceField, 50, 0, 100, 50);
         tolerance.setMinorTickSpacing(10);
@@ -26,16 +26,17 @@ public class BucketTool extends AbstractTool {
 
     @Override
     protected void toolSelected() {
-        Toolbar.EDITOR.setCurrentEditor(getName());
+        super.toolSelected();
     }
 
     @Override
     public void pressed(Canvas canvas, MouseEvent e) {
+        saveOld(canvas, true);
         canvas.floodFill(e.getX(), e.getY(), (int)(tolerance.getValue()/100f * 255)); //, (int)(tolerance.getValue()/100f * 255)
     }
 
     @Override
-    public void released(Canvas canvas, MouseEvent e) {}
+    public void released(Canvas canvas, MouseEvent e) {saveCurrent();}
 
     @Override
     public void inputConflictClear(Canvas canvas, MouseEvent e) {}

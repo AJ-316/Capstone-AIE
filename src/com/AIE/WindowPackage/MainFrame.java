@@ -3,6 +3,7 @@ package com.AIE.WindowPackage;
 import com.AIE.CanvasPackage.Canvas;
 import com.AIE.CanvasPackage.CanvasManager;
 import com.AIE.ImageLoader;
+import com.AIE.WindowPackage.PanelsPackage.InfoPanel;
 import com.formdev.flatlaf.FlatDarculaLaf;
 
 import javax.swing.*;
@@ -19,6 +20,7 @@ public class MainFrame extends JFrame implements ComponentListener {
     public static int SCREEN_HEIGHT;
     public static int SCREEN_CENTER_X;
     public static int SCREEN_CENTER_Y;
+
     public MainFrame(int width, int height, int defaultCanvasWidth, int defaultCanvasHeight) {
         setLookAndFeel();
         ImageLoader.init(this);
@@ -37,6 +39,7 @@ public class MainFrame extends JFrame implements ComponentListener {
         this.pack();
 
         new FrameMenuBar(this);
+        InfoPanel.init(this);
 
         SCREEN_CENTER_X = PANE.getWidth()/2;
         SCREEN_CENTER_Y = PANE.getHeight()/2;
@@ -44,8 +47,9 @@ public class MainFrame extends JFrame implements ComponentListener {
         addComponentListener(this);
 
         Canvas canvas = new Canvas();
-        canvas.createNewImage(defaultCanvasWidth, defaultCanvasHeight, 0);
         CANVAS_MANAGER.addCanvas(canvas);
+        canvas.createNewImage(defaultCanvasWidth, defaultCanvasHeight, 0);
+
     }
     private void setLookAndFeel() {
         FlatDarculaLaf.setup();

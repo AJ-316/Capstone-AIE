@@ -5,13 +5,13 @@ import com.AIE.CanvasPackage.Canvas;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
-public class Oval extends Shape {
+public class Ellipse extends Shape {
 
     private Point startPoint;
     private Point endPoint;
 
-    public Oval() {
-        super("Oval");
+    public Ellipse() {
+        super("Ellipse");
     }
 
     @Override
@@ -30,12 +30,11 @@ public class Oval extends Shape {
             int width = Math.abs(endPoint.x - startPoint.x);
             int height = Math.abs(endPoint.y - startPoint.y);
 
-            int arcSize = Math.min(width, height) / currentConstraints.rounded();
             shape.setStroke(new BasicStroke(currentConstraints.stroke()));
 
             if(currentConstraints.isFilled())
-                shape.fillRoundRect(x, y, width, height, arcSize, arcSize);
-            else shape.drawRoundRect(x, y, width, height, arcSize, arcSize);
+                shape.fillOval(x, y, width, height);
+            else shape.drawOval(x, y, width, height);
         }
 
         Graphics2D canvasImg = canvasImage.createGraphics();

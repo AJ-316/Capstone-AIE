@@ -6,8 +6,16 @@ import java.awt.image.BufferedImage;
 
 public class SmoothIcon extends ImageIcon {
 
+    private int rectSize;
+    private Color color;
+
     public SmoothIcon(BufferedImage image, int size) {
         setImage(image.getScaledInstance(size, size, Image.SCALE_SMOOTH));
+    }
+
+    public SmoothIcon(int size, Color color) {
+        this.rectSize = size;
+        this.color = color;
     }
 
     public void paintIcon(Component c, Graphics g, int x, int y) {
@@ -19,6 +27,16 @@ public class SmoothIcon extends ImageIcon {
         g2d.setRenderingHint(
                 RenderingHints.KEY_INTERPOLATION,
                 RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+        if(getImage() == null) {
+            g2d.setColor(color);
+            int arc = 5;
+            g2d.fillRoundRect(x+rectSize/4, y-rectSize/2, rectSize, rectSize, arc, arc);
+            g2d.setColor(Color.white);
+            g2d.drawRoundRect(x+rectSize/4, y-rectSize/2, rectSize, rectSize, arc, arc);
+            g2d.setColor(Color.black);
+            g2d.drawRoundRect(x+rectSize/4-1, y-rectSize/2-1, rectSize+2, rectSize+2, arc, arc);
+            return;
+        }
         g2d.drawImage(getImage(), x, y, c);
     }
 }

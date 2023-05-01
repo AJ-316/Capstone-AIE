@@ -14,7 +14,7 @@ public class SepiaEffect extends Effect {
     private final MutableColor color;
 
     public SepiaEffect(MainFrame frame) {
-        super("Sepia", frame, 300, 200);
+        super("Sepia", frame, 300, 210);
 
         color = new MutableColor(0);
 

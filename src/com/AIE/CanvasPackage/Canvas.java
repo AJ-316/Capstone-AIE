@@ -1,12 +1,18 @@
 package com.AIE.CanvasPackage;
 
 import com.AIE.ImageLoader;
+import com.AIE.StackPackage.SavedData;
+import com.AIE.StackPackage.SavedDataButton;
+import com.AIE.StackPackage.UndoManager;
 import com.AIE.WindowPackage.ColorPackage.ColorPalette;
 import com.AIE.WindowPackage.ColorPackage.MutableColor;
 import com.AIE.WindowPackage.MainFrame;
+import com.AIE.WindowPackage.PanelsPackage.InfoPanel;
+import com.AIE.WindowPackage.ToolPackage.SmoothIcon;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyListener;
 import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
@@ -26,9 +32,11 @@ public class Canvas extends JPanel {
     private final PixelConnector connector;
     private int brushType;
     private int zoom, posX, posY;
+    public UndoManager undoManager;
+    private static final SmoothIcon icon = ImageLoader.loadIcon("Image", SavedDataButton.ICON_SIZE);
 
     public Canvas() {
-        super();
+        super(null);
         connector = new PixelConnector(this);
         addListeners(new CanvasNavigation(), new CanvasToolInteraction(this));
     }
@@ -43,7 +51,10 @@ public class Canvas extends JPanel {
     }
 
     public void confirmPreview() {
-        setImage(previewImage);
+        image = ImageLoader.createImage(previewImage, image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
+        repaint();
+        InfoPanel.GET.setSizeInfo(image.getWidth(), image.getHeight());
     }
 
     public void disablePreviewMode() {
@@ -81,12 +92,18 @@ public class Canvas extends JPanel {
             Arrays.fill(pixels, 0xffffffff);
         setZoom(100);
         setImageToCenter();
+        System.out.println(getRootPane());
+
+        initUndoManager("New Image");
     }
 
-    public void setImage(BufferedImage newImage) {
-        image = ImageLoader.createImage(newImage, image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
-        pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
-        repaint();
+    private void initUndoManager(String action) {
+        if(undoManager != null)
+            undoManager.dispose();
+        undoManager = new UndoManager(this);
+        new SavedData(this, icon, action).saveNewImage();
+        InfoPanel.GET.setActivityInfo(action);
+        InfoPanel.GET.setSizeInfo(image.getWidth(), image.getHeight());
     }
 
     public void setNewImage(BufferedImage newImage) {
@@ -95,6 +112,7 @@ public class Canvas extends JPanel {
         pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
         setZoom(100);
         setImageToCenter();
+        initUndoManager("Loaded Image");
     }
 
     public void releasePixels() {
@@ -192,7 +210,6 @@ public class Canvas extends JPanel {
         repaint();
     }
 
-
     private static boolean colorWithinTolerance(int rgb1, int rgb2, int tolerance) {
         int[] color1 = MutableColor.getRGBComponents(rgb1);
         int[] color2 = MutableColor.getRGBComponents(rgb2);
@@ -259,6 +276,7 @@ public class Canvas extends JPanel {
             return false;
         this.zoom = zoom;
         updateCanvas();
+        InfoPanel.GET.setZoomInfo(zoom);
         return true;
     }
 
@@ -280,4 +298,11 @@ public class Canvas extends JPanel {
         return ColorPalette.getBrush(brushType).getColor();
     }
 
+    public void addKeyListenerToRootPane(KeyListener listener) {
+        getRootPane().addKeyListener(listener);
+    }
+
+    public void removeKeyListenerFromRootPane(KeyListener listener) {
+        getRootPane().removeKeyListener(listener);
+    }
 }
