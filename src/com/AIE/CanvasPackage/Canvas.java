@@ -4,7 +4,6 @@ import com.AIE.ImageLoader;
 import com.AIE.WindowPackage.ColorPackage.ColorPalette;
 import com.AIE.WindowPackage.ColorPackage.MutableColor;
 import com.AIE.WindowPackage.MainFrame;
-import com.AIE.WindowPackage.ToolPackage.PixelConnector;
 
 import javax.swing.*;
 import java.awt.*;
@@ -112,9 +111,8 @@ public class Canvas extends JPanel {
     }
 
     public void changePixelLinearly(int x, int y, Color color, boolean isFilled, int size, int outline) throws IndexOutOfBoundsException {
-        float scale = zoom/100f;
-        x = (int) ((x - posX)/scale);
-        y = (int) ((y - posY)/scale);
+        x = getScaledX(x);
+        y = getScaledY(y);
 
         if(color == null) {
             connector.addPixel(x, y, color, isFilled, size, outline);
@@ -137,7 +135,7 @@ public class Canvas extends JPanel {
         pixels[x + y*image.getWidth()] = color;
     }
 
-    private int getColor(int x, int y) {
+    public int getColor(int x, int y) {
         if(x >= image.getWidth() || x < 0 || y >= image.getHeight() || y < 0)
             return 0;
 
@@ -162,9 +160,8 @@ public class Canvas extends JPanel {
     public void floodFill(int x, int y, int tolerance) {
         int width = image.getWidth();
         int height = image.getHeight();
-        float scale = zoom/100f;
-        x = (int) ((x - posX)/scale);
-        y = (int) ((y - posY)/scale);
+        x = getScaledX(x);
+        y = getScaledY(y);
 
         int targetRGB = getColor(x, y);
         int replacementRGB = ColorPalette.getBrush(brushType).getColor().getRGB();
@@ -219,12 +216,6 @@ public class Canvas extends JPanel {
         repaint();
     }
 
-    // might use later
-    // public void changeScaledPixel(int x, int y) throws IndexOutOfBoundsException  {
-    //     float scale = zoom/100f;
-    //     changeRawPixel((int) (x/scale), (int) (y/scale));
-    // }
-
     public void setBrushType(int brushType) {
         this.brushType = brushType;
     }
@@ -269,5 +260,13 @@ public class Canvas extends JPanel {
         this.zoom = zoom;
         updateCanvas();
         return true;
+    }
+
+    public int getScaledX(int x) {
+        return (int) ((x - posX)/(zoom/100f));
+    }
+
+    public int getScaledY(int y) {
+        return (int) ((y - posY)/(zoom/100f));
     }
 }

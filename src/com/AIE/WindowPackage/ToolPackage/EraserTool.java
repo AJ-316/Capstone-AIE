@@ -44,7 +44,7 @@ public class EraserTool extends AbstractTool {
     }
 
     @Override
-    public void inputConflictClear(Canvas canvas, MouseEvent e) {}
+    public void inputConflictClear(Canvas canvas, MouseEvent e) { canvas.releasePixels(); }
 
     @Override
     public void dragged(Canvas canvas, MouseEvent e) {

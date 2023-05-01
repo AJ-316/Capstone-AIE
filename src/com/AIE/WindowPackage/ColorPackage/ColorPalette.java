@@ -18,7 +18,8 @@ public class ColorPalette extends AbstractWindow {
 
     private static final int DEFAULT_WIDTH = 330;
     private static final int MORE_WIDTH = 520;
-    private static final int DEFAULT_HEIGHT = 340;
+    private static final int DEFAULT_HEIGHT = 300;
+    private static final int MORE_HEIGHT = 320;
 
     protected static Brush PRIMARY;
     protected static Brush SECONDARY;
@@ -48,7 +49,7 @@ public class ColorPalette extends AbstractWindow {
             if(btn.getText().equals(moreText)) {
                 btn.setText(lessText);
                 sliderPanel.setVisible(true);
-                setSize(MORE_WIDTH, DEFAULT_HEIGHT);
+                setSize(MORE_WIDTH, MORE_HEIGHT);
                 setFocusableWindowState(true);
             } else {
                 btn.setText(moreText);
