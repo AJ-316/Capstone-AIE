@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Added Eraser; changed canvas to take alpha in account; add alpha slider in ColorPalette.">
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/PickerTool.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/TextTool.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/picker.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/text.png" afterDir="false" />
+    <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Added PickerTool; Moving on to shapes">
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Shapes/Oval.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Shapes/Polygon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Shapes/Rectangle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Shapes/RoundRectangle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Shapes/Shape.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Shapes/ShapeConstraints.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Shapes/ShapesTool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/shapes.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/Canvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/ColorPalette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/ColorPalette.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/EraserTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/EraserTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/PixelConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/PixelConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/AbstractWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/AbstractWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/HEXInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Sliders/HEXInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/AbstractTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/AbstractTool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Toolbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Toolbar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/resources/canvas/backgroundSH.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/resources/canvas/backgroundSW.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/resources/icons/tools.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/ToolBar.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,18 +69,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "D:/PROgraming/IdeaProjects/Capstone-AIE/src/com/AIE/resources/icons",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/PROgraming/IdeaProjects/Capstone-AIE/src/com/AIE/resources/icons&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.AIE.WindowPackage" />
@@ -93,41 +96,59 @@
       <recent name="D:\PROgraming\IdeaProjects\Capstone-AIE\src\com\AIE\color_palette" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.AIE.WindowPackage.ToolPackage.Shapes" />
       <recent name="com.AIE.WindowPackage.ToolPackage" />
       <recent name="com.AIE.WindowPackage.ColorPackage.Sliders.RGBSliders" />
       <recent name="com.AIE.EffectsPackage" />
       <recent name="com.AIE.WindowPackage" />
-      <recent name="com.AIE.WindowPackage.ColorPackage.Sliders" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
-    <configuration name="BlurPreview" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="BlurPreview" />
-      <module name="Capstone-AIE" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GaussianBlurExampleWithProgressBar" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="GaussianBlurExampleWithProgressBar" />
-      <module name="Capstone-AIE" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ImageAdjustmentDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ImageAdjustmentDemo" />
-      <module name="Capstone-AIE" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.AIE.Main" />
       <module name="Capstone-AIE" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.AIE.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PolygonDrawer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.AIE.WindowPackage.ToolPackage.Shapes.PolygonDrawer" />
+      <module name="Capstone-AIE" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.AIE.WindowPackage.ToolPackage.Shapes.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RectangleDrawer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.AIE.WindowPackage.ToolPackage.Shapes.RectangleDrawer" />
+      <module name="Capstone-AIE" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.AIE.WindowPackage.ToolPackage.Shapes.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RoundedRectangles" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.AIE.WindowPackage.ToolPackage.Shapes.RoundedRectangles" />
+      <module name="Capstone-AIE" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.AIE.WindowPackage.ToolPackage.Shapes.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -145,10 +166,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.PolygonDrawer" />
+        <item itemvalue="Application.RoundedRectangles" />
+        <item itemvalue="Application.RectangleDrawer" />
         <item itemvalue="Application.SoftCircleExample" />
-        <item itemvalue="Application.ImageAdjustmentDemo" />
-        <item itemvalue="Application.BlurPreview" />
-        <item itemvalue="Application.GaussianBlurExampleWithProgressBar" />
       </list>
     </recent_temporary>
   </component>
@@ -294,7 +315,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682893959964</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Added PickerTool; Moving on to shapes">
+      <created>1682916220840</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1682916220840</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -366,12 +394,16 @@
     <MESSAGE value="Added Brush and editor panel for tools" />
     <MESSAGE value="Added Bucket Fill" />
     <MESSAGE value="Added Eraser; changed canvas to take alpha in account; add alpha slider in ColorPalette." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Eraser; changed canvas to take alpha in account; add alpha slider in ColorPalette." />
+    <MESSAGE value="Added PickerTool; Moving on to shapes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added PickerTool; Moving on to shapes" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Capstone_AIE$VerifierTest.ic" NAME="VerifierTest Coverage Results" MODIFIED="1676969542696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Capstone_AIE$Main.ic" NAME="Main Coverage Results" MODIFIED="1682889163899" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Capstone_AIE$Main.ic" NAME="Main Coverage Results" MODIFIED="1682919896356" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.AIE.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Capstone_AIE$RectangleDrawer.ic" NAME="RectangleDrawer Coverage Results" MODIFIED="1682921089805" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.AIE.WindowPackage.ToolPackage.Shapes.*</FILTER>
     </SUITE>
   </component>
 </project>

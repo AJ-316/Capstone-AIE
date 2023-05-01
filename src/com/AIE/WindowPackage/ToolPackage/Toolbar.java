@@ -3,6 +3,7 @@ package com.AIE.WindowPackage.ToolPackage;
 import com.AIE.WindowPackage.AbstractWindow;
 import com.AIE.WindowPackage.EditorPanels.ToolEditor;
 import com.AIE.WindowPackage.MainFrame;
+import com.AIE.WindowPackage.ToolPackage.Shapes.ShapesTool;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,15 +17,21 @@ public class Toolbar extends AbstractWindow {
     public static ToolEditor EDITOR;
 
     public Toolbar(MainFrame mainFrame) {
-        super("tools", mainFrame, 140, 500, 200, 200);
+        super(NAME, mainFrame, 140, 204, 200, 200);
         setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        setTitle("ToolBar");
+        setTitle(NAME);
 
         EDITOR = new ToolEditor();
         mainFrame.add(EDITOR, BorderLayout.NORTH);
 
         createTools();
         setVisible(true);
+    }
+
+    public static void locked(boolean locked) {
+        for(AbstractTool tool : toolList) {
+            tool.setEnabled(!locked);
+        }
     }
 
     private void createTools() {
@@ -36,6 +43,7 @@ public class Toolbar extends AbstractWindow {
         addTool(new BrushTool());
         addTool(new BucketTool());
         addTool(new PickerTool());
+        addTool(new ShapesTool());
     }
 
     private void addTool(AbstractTool tool) {

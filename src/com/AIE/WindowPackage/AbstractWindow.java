@@ -15,9 +15,9 @@ public abstract class AbstractWindow extends JDialog {
         setResizable(false);
         setFocusable(false);
         setFocusableWindowState(false);
+
         iconFile = icon;
     }
-
     public String getIconFile() {
         return iconFile;
     }

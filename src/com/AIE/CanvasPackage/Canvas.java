@@ -16,6 +16,7 @@ import java.util.Deque;
 
 public class Canvas extends JPanel {
 
+    public static Color TRANSPARENT = new Color(0,0,0,0);
     private BufferedImage image;
     private BufferedImage previewImage;
     private boolean isPreviewMode = false;
@@ -67,7 +68,6 @@ public class Canvas extends JPanel {
                         x * bkgTiles[x][y].getWidth() + posX,
                         y * bkgTiles[x][y].getHeight() + posY,
                         bkgTiles[x][y].getWidth(), bkgTiles[x][y].getHeight(), null);
-                System.out.println("l: " + x + ", " + y);
             }
         }
 
@@ -203,7 +203,7 @@ public class Canvas extends JPanel {
     }
 
     public void erase(int x, int y, int size) {
-        if (size == -1) {
+        if (size == 1) {
             changeRawPixel(x, y, 0);
             return;
         }
@@ -262,6 +262,12 @@ public class Canvas extends JPanel {
         return true;
     }
 
+    public Point getScaledPoint(Point point) {
+        point.x = getScaledX(point.x);
+        point.y = getScaledY(point.y);
+        return point;
+    }
+
     public int getScaledX(int x) {
         return (int) ((x - posX)/(zoom/100f));
     }
@@ -269,4 +275,9 @@ public class Canvas extends JPanel {
     public int getScaledY(int y) {
         return (int) ((y - posY)/(zoom/100f));
     }
+
+    public MutableColor getColor() {
+        return ColorPalette.getBrush(brushType).getColor();
+    }
+
 }

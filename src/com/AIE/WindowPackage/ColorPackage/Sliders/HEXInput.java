@@ -37,9 +37,17 @@ public class HEXInput extends JPanel implements PaletteElement, DocumentListener
     public void updateElement(MutableColor color, String invoker) {
         if(invoker.equals(ELEMENT_NAME))
             return;
+        String hex = Integer.toHexString(color.getRGB()).toUpperCase();
+        if(hex.equals("0")) {
+            updateHex("000000");
+            return;
+        }
+        if(hex.length() > 7)
+            hex = hex.substring(2);
+        if(hex.length() > 6)
+            hex = hex.substring(1);
+        updateHex(hex);
 
-        updateHex(Integer.toHexString(
-                color.getRGB()).substring(2).toUpperCase());
     }
 
     public void updateHex(String hex) {

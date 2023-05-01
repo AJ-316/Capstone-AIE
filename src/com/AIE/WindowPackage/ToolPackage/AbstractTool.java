@@ -17,6 +17,9 @@ public abstract class AbstractTool extends JRadioButton implements ItemListener 
     private static final int OVERLAY_ARC = 15;
     protected static final Integer[] SIZES = new Integer[] {1,2,3,4,5,6,7,8,9,10,
             11,12,13,14,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100};
+    protected static final Float[] SIZES_F = new Float[] {.1f,.2f,.3f,.4f,.5f,.6f,
+            .7f,.8f,.9f,1.0f, 1.1f,1.2f,1.3f,1.4f,1.5f,2.0f,2.5f,3.0f,3.5f,4.0f,4.5f,
+            5.0f,5.5f, 6.0f,6.5f,7.0f,7.5f,8.0f,8.5f,9.0f,9.5f,10.0f};
 
     public AbstractTool(String icon, String tooltip, Cursor cursor) {
         super();
