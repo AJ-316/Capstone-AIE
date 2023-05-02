@@ -1,65 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Added Shapes: Rectangle, RoundRectangle, Polygon, (Oval needs algo)">
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/StackPackage/SavedData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/StackPackage/SavedDataButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/StackPackage/SavedDataListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/StackPackage/UndoManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/History.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/PanelsPackage/InfoPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/Activity.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/Coordinate.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/Ellipse.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/History.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/Image.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/Polygon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/Rectangle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/RoundRectangle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/Size.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/Zoom In.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/Zoom Out.png" afterDir="false" />
+    <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Added Undo/Redo;">
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ImageEdit/Crop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ImageEdit/Resize.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ImageMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/crop.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/resize.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/Canvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/CanvasManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/CanvasManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/CanvasNavigation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/CanvasNavigation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/AverageBlurEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/AverageBlurEffect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/BlackAndWhiteEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/BlackAndWhiteEffect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/BrightnessContrastEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/BrightnessContrastEffect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/Effect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/Effect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/ExposureEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/ExposureEffect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/GaussianBlurEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/GaussianBlurEffect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/HSVEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/HSVEffect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/InvertColorEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/InvertColorEffect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/MotionBlurEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/MotionBlurEffect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/SepiaEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/SepiaEffect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/AbstractWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/AbstractWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/ColorPalette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/ColorPalette.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/EditorPanels/ToolEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/PanelsPackage/ToolEditor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/AbstractTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/AbstractTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/BrushTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/BrushTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/BucketTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/BucketTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/EraserTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/EraserTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/PencilTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/PencilTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/PickerTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/DropperTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Shapes/Oval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Shapes/Ellipse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Shapes/Polygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Shapes/Polygon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Shapes/Rectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Shapes/Rectangle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Shapes/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Shapes/Shape.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Shapes/ShapesTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Shapes/ShapesTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/SmoothIcon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/SmoothIcon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Toolbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Toolbar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/WindowMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/WindowMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/resources/icons/brush.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/Brush.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/resources/icons/bucket.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/Bucket Fill.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/resources/icons/eraser.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/Eraser.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/resources/icons/eraser2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/resources/icons/palette.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/Color Palette.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/resources/icons/pencil.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/Pencil.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/resources/icons/picker.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/Dropper.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/resources/icons/shapes.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/Multiple Shapes.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/resources/icons/text.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/Text.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/StackPackage/SavedData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/StackPackage/SavedData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/StackPackage/UndoManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/StackPackage/UndoManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/FileMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/FileMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/FrameMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/FrameMenuBar.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,11 +92,11 @@
       <recent name="D:\PROgraming\IdeaProjects\Capstone-AIE\src\com\AIE\color_palette" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.AIE.WindowPackage.ImageEdit" />
       <recent name="com.AIE.WindowPackage" />
       <recent name="com.AIE.WindowPackage.ToolPackage.Shapes" />
       <recent name="com.AIE.WindowPackage.ToolPackage" />
       <recent name="com.AIE.WindowPackage.ColorPackage.Sliders.RGBSliders" />
-      <recent name="com.AIE.EffectsPackage" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
@@ -372,7 +325,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682931514087</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Added Undo/Redo;">
+      <created>1682982306922</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1682982306922</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -446,7 +406,8 @@
     <MESSAGE value="Added Eraser; changed canvas to take alpha in account; add alpha slider in ColorPalette." />
     <MESSAGE value="Added PickerTool; Moving on to shapes" />
     <MESSAGE value="Added Shapes: Rectangle, RoundRectangle, Polygon, (Oval needs algo)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Shapes: Rectangle, RoundRectangle, Polygon, (Oval needs algo)" />
+    <MESSAGE value="Added Undo/Redo;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Undo/Redo;" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Capstone_AIE$VerifierTest.ic" NAME="VerifierTest Coverage Results" MODIFIED="1676969542696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

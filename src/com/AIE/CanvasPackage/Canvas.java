@@ -51,10 +51,21 @@ public class Canvas extends JPanel {
     }
 
     public void confirmPreview() {
-        image = ImageLoader.createImage(previewImage, image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
-        pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
-        repaint();
+        setImage(previewImage, false);
         InfoPanel.GET.setSizeInfo(image.getWidth(), image.getHeight());
+    }
+
+    public void setImage(BufferedImage newImage, boolean resized) {
+        if(resized) {
+            image = ImageLoader.createImage(newImage, newImage.getWidth(), newImage.getHeight(), BufferedImage.TYPE_INT_ARGB);
+            pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
+            setZoom(100);
+            setImageToCenter();
+        } else {
+            image = ImageLoader.createImage(newImage, image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
+            pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
+        }
+        repaint();
     }
 
     public void disablePreviewMode() {
@@ -92,7 +103,6 @@ public class Canvas extends JPanel {
             Arrays.fill(pixels, 0xffffffff);
         setZoom(100);
         setImageToCenter();
-        System.out.println(getRootPane());
 
         initUndoManager("New Image");
     }

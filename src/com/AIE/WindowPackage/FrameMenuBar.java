@@ -11,6 +11,9 @@ public class FrameMenuBar extends JMenuBar {
         FileMenu fileMenu = new FileMenu();
         add(fileMenu);
 
+        ImageMenu imageMenu = new ImageMenu(frame);
+        add(imageMenu);
+
         WindowMenu windowMenu = new WindowMenu(frame);
         add(windowMenu);
 

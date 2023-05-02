@@ -25,7 +25,7 @@ public class UndoManager extends KeyAdapter {
         History.GET.addButton(new SavedDataButton(data.getIcon(), data.getAction(), undoStack.size(), this));
     }
     public void undo() {
-        if(undoStack.isEmpty()) return;
+        if(undoStack.isEmpty() || undoStack.size() == 1) return;
         int id = undoStack.size();
         SavedDataListener data = undoStack.pop();
         if(data.undo()) {

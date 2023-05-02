@@ -19,7 +19,7 @@ public class SavedData implements SavedDataListener {
         this.canvas = canvas;
         this.icon = icon;
         this.action = action;
-        this.old = copyImage(canvas.getImage(), null);
+        this.old = copyImage(canvas.getImage());
     }
 
     public void saveNewImage() {
@@ -30,15 +30,15 @@ public class SavedData implements SavedDataListener {
     @Override
     public boolean undo() {
         if(!isUndoable) return false;
-        redone = copyImage(canvas.getImage(), null);
-        copyImage(old, canvas.getImage());
+        redone = copyImage(canvas.getImage());
+        changeCurrent(old);
         canvas.repaint();
         return true;
     }
 
     @Override
     public boolean redo() {
-        copyImage(redone, canvas.getImage());
+        changeCurrent(redone);
         canvas.repaint();
         return true;
     }
@@ -53,14 +53,23 @@ public class SavedData implements SavedDataListener {
         return icon;
     }
 
-    private BufferedImage copyImage(BufferedImage imgA, BufferedImage imgB) {
-        if(imgB == null)
-            imgB = new BufferedImage(imgA.getWidth(), imgA.getHeight(), imgA.getType());
+    private BufferedImage copyImage(BufferedImage imgA) {
+        BufferedImage imgB = new BufferedImage(imgA.getWidth(), imgA.getHeight(), imgA.getType());
         Graphics2D g = imgB.createGraphics();
         g.setBackground(new Color(0,0,0,0));
         g.clearRect(0,0, imgB.getWidth(), imgB.getHeight());
         g.drawImage(imgA, 0, 0, null);
         g.dispose();
         return imgB;
+    }
+
+    private void changeCurrent(BufferedImage imgA) {
+        BufferedImage imgB = new BufferedImage(imgA.getWidth(), imgA.getHeight(), imgA.getType());
+        Graphics2D g = imgB.createGraphics();
+        g.setBackground(new Color(0,0,0,0));
+        g.clearRect(0,0, imgB.getWidth(), imgB.getHeight());
+        g.drawImage(imgA, 0, 0, null);
+        g.dispose();
+        canvas.setImage(imgB, false);
     }
 }

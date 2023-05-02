@@ -10,8 +10,6 @@ import java.awt.image.BufferedImage;
 
 public class FileMenu extends JMenu {
 
-//    private final HashMap<String, AbstractWindow> windows;
-
     public FileMenu() {
         super("File");
         addMenuItem("Load Image", "load", e -> {
