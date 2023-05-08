@@ -1,6 +1,7 @@
 package com.AIE.WindowPackage.ToolPackage.Shapes;
 
 import com.AIE.CanvasPackage.Canvas;
+import com.AIE.WindowPackage.ColorPackage.MutableColor;
 import com.AIE.WindowPackage.PanelsPackage.InfoPanel;
 
 import javax.swing.*;
@@ -24,7 +25,7 @@ public class Polygon extends Shape {
         if (vertices.size() == 0) return;
 
         Graphics2D shape = shapeImage.createGraphics();
-        shape.setBackground(Canvas.TRANSPARENT);
+        shape.setBackground(MutableColor.TRANSPARENT);
         shape.clearRect(0, 0, shapeImage.getWidth(), shapeImage.getHeight());
         shape.setColor(color);
 

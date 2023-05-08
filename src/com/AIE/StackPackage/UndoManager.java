@@ -1,6 +1,7 @@
 package com.AIE.StackPackage;
 
 import com.AIE.CanvasPackage.Canvas;
+import com.AIE.CanvasPackage.CanvasManager;
 import com.AIE.WindowPackage.History;
 
 import java.awt.event.KeyAdapter;
@@ -18,19 +19,23 @@ public class UndoManager extends KeyAdapter {
         redoStack = new Stack<>();
         canvas.addKeyListenerToRootPane(this);
     }
+
     public void saveForUndo(SavedDataListener data) {
         undoStack.add(data);
-        History.GET.removeButtons(redoStack.size());
+        History.GET.removeButtons(redoStack.size(), canvas.getIndex());
         redoStack.clear();
-        History.GET.addButton(new SavedDataButton(data.getIcon(), data.getAction(), undoStack.size(), this));
+        History.GET.addButton(new SavedDataButton(data.getIcon(), data.getAction(), undoStack.size(), this), canvas.getIndex());
+        CanvasManager.GET.updateTabComponent(canvas);
+        CanvasManager.GET.repaint();
     }
     public void undo() {
         if(undoStack.isEmpty() || undoStack.size() == 1) return;
         int id = undoStack.size();
         SavedDataListener data = undoStack.pop();
         if(data.undo()) {
-            History.GET.getButton(id).undoHighlight();
+            History.GET.getButton(id, canvas.getIndex()).undoHighlight();
             redoStack.push(data);
+            CanvasManager.GET.updateTabComponent(canvas);
         }
     }
     public void undo(int id) {
@@ -42,25 +47,31 @@ public class UndoManager extends KeyAdapter {
         int id = undoStack.size() + 1;
         SavedDataListener data = redoStack.pop();
         if(data.redo()) {
-            History.GET.getButton(id).redoHighlight();
+            History.GET.getButton(id, canvas.getIndex()).redoHighlight();
             undoStack.push(data);
+            CanvasManager.GET.updateTabComponent(canvas);
         }
     }
     public void redo(int id) {
-        for(int i = 0; i < id-undoStack.size(); i++)
+        int stackSize = undoStack.size();
+        for(int i = 0; i < id-stackSize; i++)
             redo();
     }
-    public void dispose() {
+    public void reuse() {
         undoStack.clear();
         redoStack.clear();
-        History.GET.dispose();
-        canvas.removeKeyListenerFromRootPane(this);
+        History.GET.clear(canvas.getIndex());
     }
     public void keyPressed(KeyEvent e) {
+        if(CanvasManager.GET.isCanvasNotSelected(canvas)) return;
         int key = e.getKeyCode();
         if(e.isControlDown() && key == KeyEvent.VK_Z)
             undo();
         if(e.isControlDown() && key == KeyEvent.VK_Y)
             redo();
+    }
+
+    public boolean isEmpty() {
+        return undoStack.size() < 2 && redoStack.isEmpty();
     }
 }

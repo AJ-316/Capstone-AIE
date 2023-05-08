@@ -22,7 +22,9 @@ import java.util.Deque;
 
 public class Canvas extends JPanel {
 
-    public static Color TRANSPARENT = new Color(0,0,0,0);
+    private static final SmoothIcon imgAddedIcon = ImageLoader.loadIcon("ImageAdded", SavedDataButton.ICON_SIZE);
+    public static final int DEF_WIDTH = 1000;
+    public static final int DEF_HEIGHT = 700;
     private BufferedImage image;
     private BufferedImage previewImage;
     private boolean isPreviewMode = false;
@@ -32,13 +34,23 @@ public class Canvas extends JPanel {
     private final PixelConnector connector;
     private int brushType;
     private int zoom, posX, posY;
+    private boolean isReplaceable;
     public UndoManager undoManager;
-    private static final SmoothIcon icon = ImageLoader.loadIcon("Image", SavedDataButton.ICON_SIZE);
 
     public Canvas() {
         super(null);
         connector = new PixelConnector(this);
         addListeners(new CanvasNavigation(), new CanvasToolInteraction(this));
+    }
+
+    public Canvas(String name, BufferedImage newImage) {
+        this();
+        create(name, newImage, 0, 0);
+    }
+
+    public Canvas(int width, int height) {
+        this();
+        create("Untitled", null, width, height);
     }
 
     private void addListeners(CanvasNavigation navigationListener, CanvasToolInteraction canvasToolInteraction) {
@@ -61,6 +73,7 @@ public class Canvas extends JPanel {
             pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
             setZoom(100);
             setImageToCenter();
+            CanvasManager.GET.updateTabComponent(this);
         } else {
             image = ImageLoader.createImage(newImage, image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
             pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
@@ -96,33 +109,39 @@ public class Canvas extends JPanel {
         g.drawImage(isPreviewMode ? previewImage : image, posX, posY, getZoomedWidth(), getZoomedHeight(), null);
     }
 
-    public void createNewImage(int width, int height, int type) {
-        image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-        pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
-        if(type == 0)
+    public void create(String name, BufferedImage newImage, int width, int height) {
+        setName(name);
+        String action = "New Image";
+        if(newImage != null) {
+            image = new BufferedImage(newImage.getWidth(), newImage.getHeight(), BufferedImage.TYPE_INT_ARGB);
+            Graphics g = image.createGraphics();
+            g.drawImage(newImage, 0, 0, null);
+            g.dispose();
+            pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
+            action = "Loaded Image";
+        } else {
+            image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+            pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
             Arrays.fill(pixels, 0xffffffff);
+        }
+
+        if(!isReplaceable) {
+            CanvasManager.GET.addCanvas(this);
+        } else isReplaceable = false;
+        CanvasManager.GET.updateTabComponent(this);
+
         setZoom(100);
         setImageToCenter();
-
-        initUndoManager("New Image");
+        initUndoManager(action);
     }
 
     private void initUndoManager(String action) {
-        if(undoManager != null)
-            undoManager.dispose();
-        undoManager = new UndoManager(this);
-        new SavedData(this, icon, action).saveNewImage();
+        if(undoManager == null)
+            undoManager = new UndoManager(this);
+        undoManager.reuse();
+        new SavedData(this, imgAddedIcon, action).saveNewImage();
         InfoPanel.GET.setActivityInfo(action);
         InfoPanel.GET.setSizeInfo(image.getWidth(), image.getHeight());
-    }
-
-    public void setNewImage(BufferedImage newImage) {
-        image = ImageLoader.createImage(newImage, BufferedImage.TYPE_INT_ARGB);
-
-        pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
-        setZoom(100);
-        setImageToCenter();
-        initUndoManager("Loaded Image");
     }
 
     public void releasePixels() {
@@ -312,7 +331,19 @@ public class Canvas extends JPanel {
         getRootPane().addKeyListener(listener);
     }
 
-    public void removeKeyListenerFromRootPane(KeyListener listener) {
-        getRootPane().removeKeyListener(listener);
+    public boolean isReplaceable() {
+        return undoManager.isEmpty() && isReplaceable;
+    }
+
+    public void setReplaceable() {
+        this.isReplaceable = true;
+    }
+
+    public void setName(String name) {
+        super.setName(name);
+    }
+
+    public int getIndex() {
+        return CanvasManager.GET.indexOfComponent(this);
     }
 }

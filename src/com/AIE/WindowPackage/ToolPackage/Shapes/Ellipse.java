@@ -1,6 +1,7 @@
 package com.AIE.WindowPackage.ToolPackage.Shapes;
 
 import com.AIE.CanvasPackage.Canvas;
+import com.AIE.WindowPackage.ColorPackage.MutableColor;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -19,7 +20,7 @@ public class Ellipse extends Shape {
         endPoint = canvas.getScaledPoint(e.getPoint());
 
         Graphics2D shape = shapeImage.createGraphics();
-        shape.setBackground(Canvas.TRANSPARENT);
+        shape.setBackground(MutableColor.TRANSPARENT);
         shape.clearRect(0, 0, shapeImage.getWidth(), shapeImage.getHeight());
         shape.setColor(canvas.getColor());
         antiAlias(shape);

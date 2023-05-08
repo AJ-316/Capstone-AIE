@@ -4,6 +4,8 @@ import java.awt.*;
 
 public class MutableColor extends Color {
 
+    public static final MutableColor TRANSPARENT = new MutableColor(0);
+
     private static final int R = 0;
     private static final int G = 1;
     private static final int B = 2;

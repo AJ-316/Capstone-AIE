@@ -1,6 +1,7 @@
 package com.AIE.StackPackage;
 
 import com.AIE.CanvasPackage.Canvas;
+import com.AIE.WindowPackage.ColorPackage.MutableColor;
 import com.AIE.WindowPackage.ToolPackage.SmoothIcon;
 
 import java.awt.*;
@@ -32,14 +33,12 @@ public class SavedData implements SavedDataListener {
         if(!isUndoable) return false;
         redone = copyImage(canvas.getImage());
         changeCurrent(old);
-        canvas.repaint();
         return true;
     }
 
     @Override
     public boolean redo() {
         changeCurrent(redone);
-        canvas.repaint();
         return true;
     }
 
@@ -56,7 +55,7 @@ public class SavedData implements SavedDataListener {
     private BufferedImage copyImage(BufferedImage imgA) {
         BufferedImage imgB = new BufferedImage(imgA.getWidth(), imgA.getHeight(), imgA.getType());
         Graphics2D g = imgB.createGraphics();
-        g.setBackground(new Color(0,0,0,0));
+        g.setBackground(MutableColor.TRANSPARENT);
         g.clearRect(0,0, imgB.getWidth(), imgB.getHeight());
         g.drawImage(imgA, 0, 0, null);
         g.dispose();
@@ -66,10 +65,11 @@ public class SavedData implements SavedDataListener {
     private void changeCurrent(BufferedImage imgA) {
         BufferedImage imgB = new BufferedImage(imgA.getWidth(), imgA.getHeight(), imgA.getType());
         Graphics2D g = imgB.createGraphics();
-        g.setBackground(new Color(0,0,0,0));
+        g.setBackground(MutableColor.TRANSPARENT);
         g.clearRect(0,0, imgB.getWidth(), imgB.getHeight());
         g.drawImage(imgA, 0, 0, null);
         g.dispose();
         canvas.setImage(imgB, false);
+        canvas.repaint();
     }
 }

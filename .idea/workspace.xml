@@ -2,17 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Added Undo/Redo;">
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ImageEdit/Crop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ImageEdit/Resize.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ImageMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/crop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/resize.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/TimingFramework_0_55.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ImageEdit/NewImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/ICanvas.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/New.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Capstone-AIE.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Capstone-AIE.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/Canvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/CanvasManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/CanvasManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/ImageLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/ImageLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/StackPackage/SavedData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/StackPackage/SavedData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/StackPackage/UndoManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/StackPackage/UndoManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/MutableColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/MutableColor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/FileMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/FileMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/FrameMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/FrameMenuBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/History.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/History.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ImageEdit/Crop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ImageEdit/CropImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ImageEdit/Resize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ImageEdit/ResizeImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ImageMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ImageMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/PanelsPackage/InfoPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/PanelsPackage/InfoPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Shapes/Ellipse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Shapes/Ellipse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Shapes/Polygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Shapes/Polygon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Shapes/Rectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Shapes/Rectangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Shapes/RoundRectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Shapes/RoundRectangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/SmoothIcon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/SmoothIcon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/resources/icons/Image.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/ImageAdded.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/resources/icons/crop.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/ICrop.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/resources/icons/load.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/Load.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/resources/icons/resize.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/IResize.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,18 +84,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/PROgraming/IdeaProjects/Capstone-AIE/src/com/AIE/resources/icons&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "D:/PROgraming/IdeaProjects/Capstone-AIE/src/com/AIE/resources/icons",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.AIE.WindowPackage" />
@@ -346,7 +369,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="EffectsInThreads" />
+                        <option value="EvenMoreFeatures" />
                       </list>
                     </value>
                   </entry>
@@ -411,7 +434,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Capstone_AIE$VerifierTest.ic" NAME="VerifierTest Coverage Results" MODIFIED="1676969542696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Capstone_AIE$Main.ic" NAME="Main Coverage Results" MODIFIED="1682974556607" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Capstone_AIE$Main.ic" NAME="Main Coverage Results" MODIFIED="1683571304296" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.AIE.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Capstone_AIE$RectangleDrawer.ic" NAME="RectangleDrawer Coverage Results" MODIFIED="1682921089805" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

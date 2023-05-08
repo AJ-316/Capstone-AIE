@@ -18,6 +18,8 @@ public class SmoothIcon extends ImageIcon {
         this.color = color;
     }
 
+    public SmoothIcon() {}
+
     public void paintIcon(Component c, Graphics g, int x, int y) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(
@@ -38,5 +40,17 @@ public class SmoothIcon extends ImageIcon {
             return;
         }
         g2d.drawImage(getImage(), x, y, c);
+    }
+
+    public SmoothIcon updateImage(BufferedImage image, int size) {
+        double ratio = (double) image.getWidth() / (double) image.getHeight();
+
+        if(image.getWidth() < image.getHeight()) {
+            setImage(image.getScaledInstance((int) (size * ratio),
+                    size, Image.SCALE_SMOOTH));
+        } else
+            setImage(image.getScaledInstance(size,
+                (int) (size / ratio), Image.SCALE_SMOOTH));
+        return this;
     }
 }

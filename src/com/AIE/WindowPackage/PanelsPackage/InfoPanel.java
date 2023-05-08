@@ -15,6 +15,7 @@ public class InfoPanel extends JPanel {
     private final JLabel sizeInfo = new JLabel();
     private final JLabel pixelCoordinateInfo = new JLabel("0, 0");
     private final JLabel zoomInfo = new JLabel();
+    private final JLabel errorInfo = new JLabel();
 
     public InfoPanel() {
         super(new GridBagLayout());
@@ -22,11 +23,17 @@ public class InfoPanel extends JPanel {
         setBorder(new MatteBorder(1, 0, 0, 0, new Color(0x505254)));
         setBackground(new Color(0x303234));
 
+        errorInfo.setForeground(Color.red);
+        errorInfo.setFont(errorInfo.getFont().deriveFont(Font.BOLD));
         activityInfo.setIcon(ImageLoader.loadIcon("Activity", 20));
         sizeInfo.setIcon(ImageLoader.loadIcon("Size", 20));
         zoomInfo.setIcon(ImageLoader.loadIcon("Zoom In", 20));
         pixelCoordinateInfo.setIcon(ImageLoader.loadIcon("Coordinate", 20));
-        addAll(activityInfo, sizeInfo, pixelCoordinateInfo, zoomInfo);
+        addAll(errorInfo, activityInfo, sizeInfo, pixelCoordinateInfo, zoomInfo);
+    }
+
+    public void setErrorInfo(String error) {
+        errorInfo.setText(error);
     }
 
     public void setActivityInfo(String title) {

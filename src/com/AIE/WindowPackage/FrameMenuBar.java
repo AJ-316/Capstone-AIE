@@ -8,7 +8,7 @@ public class FrameMenuBar extends JMenuBar {
         frame.setJMenuBar(this);
         setBounds(0, 0, frame.getWidth(), 50);
 
-        FileMenu fileMenu = new FileMenu();
+        FileMenu fileMenu = new FileMenu(frame);
         add(fileMenu);
 
         ImageMenu imageMenu = new ImageMenu(frame);

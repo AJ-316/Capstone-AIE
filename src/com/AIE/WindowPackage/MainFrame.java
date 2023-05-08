@@ -14,28 +14,28 @@ import java.awt.event.ComponentListener;
 public class MainFrame extends JFrame implements ComponentListener {
 
     // TODO: Will need to remove instance and clean up the code so singletons are not needed
-    public static CanvasManager CANVAS_MANAGER;
     public static Container PANE;
     public static int SCREEN_WIDTH;
     public static int SCREEN_HEIGHT;
     public static int SCREEN_CENTER_X;
     public static int SCREEN_CENTER_Y;
 
-    public MainFrame(int width, int height, int defaultCanvasWidth, int defaultCanvasHeight) {
+    public MainFrame(int width, int height) {
         setLookAndFeel();
         ImageLoader.init(this);
 
         SCREEN_WIDTH = width;
         SCREEN_HEIGHT = height;
 
-        CANVAS_MANAGER = new CanvasManager(width, height);
+        CanvasManager.init(width, height);
+        setComponentFont(CanvasManager.GET.getFont());
         PANE = getContentPane();
         PANE.setBackground(new Color(0x303031));
 
         this.setLayout(new BorderLayout());
         this.setResizable(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.add(CANVAS_MANAGER, BorderLayout.CENTER);
+        this.add(CanvasManager.GET, BorderLayout.CENTER);
         this.pack();
 
         new FrameMenuBar(this);
@@ -46,10 +46,7 @@ public class MainFrame extends JFrame implements ComponentListener {
         this.setLocationRelativeTo(null);
         addComponentListener(this);
 
-        Canvas canvas = new Canvas();
-        CANVAS_MANAGER.addCanvas(canvas);
-        canvas.createNewImage(defaultCanvasWidth, defaultCanvasHeight, 0);
-
+        new Canvas(Canvas.DEF_WIDTH, Canvas.DEF_HEIGHT).setReplaceable();
     }
     private void setLookAndFeel() {
         FlatDarculaLaf.setup();
@@ -59,6 +56,27 @@ public class MainFrame extends JFrame implements ComponentListener {
         } catch (UnsupportedLookAndFeelException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private void setComponentFont(Font componentFont) {
+        Font font = componentFont.deriveFont(14f);
+        UIManager.put("Label.font", font);
+        UIManager.put("TextField.font", font);
+        UIManager.put("PasswordField.font", font);
+        UIManager.put("TextArea.font", font);
+        UIManager.put("ComboBox.font", font);
+        UIManager.put("CheckBox.font", font);
+        UIManager.put("RadioButton.font", font);
+        UIManager.put("Button.font", font);
+        UIManager.put("ToggleButton.font", font);
+        UIManager.put("TabbedPane.font", font);
+        UIManager.put("Table.font", font);
+        UIManager.put("Tree.font", font);
+        UIManager.put("List.font", font);
+        UIManager.put("Menu.font", font);
+        UIManager.put("MenuItem.font", font);
+        UIManager.put("PopupMenu.font", font);
+        UIManager.put("ToolTip.font", font);
     }
 
     public void createWindow() {

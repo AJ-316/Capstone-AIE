@@ -43,17 +43,12 @@ public class ImageLoader {
         }
     }
 
-    public static BufferedImage load() {
+    public static File load() {
         chooser.setDialogTitle("Load Image");
         int state = chooser.showOpenDialog(frame);
         if(state != JFileChooser.APPROVE_OPTION)
             return null;
-
-        try {
-            return ImageIO.read(chooser.getSelectedFile());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        return chooser.getSelectedFile();
     }
 
     public static void save(BufferedImage image) {
