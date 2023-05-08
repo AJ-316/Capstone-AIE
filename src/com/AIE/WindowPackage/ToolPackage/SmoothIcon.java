@@ -53,4 +53,16 @@ public class SmoothIcon extends ImageIcon {
                 (int) (size / ratio), Image.SCALE_SMOOTH));
         return this;
     }
+
+    public void updateImageSize(int size) {
+        Image img = getImage();
+        double ratio = (double) img.getWidth(null) / (double) img.getHeight(null);
+
+        if(img.getWidth(null) < img.getHeight(null)) {
+            setImage(img.getScaledInstance((int) (size * ratio),
+                    size, Image.SCALE_SMOOTH));
+        } else
+            setImage(img.getScaledInstance(size,
+                    (int) (size / ratio), Image.SCALE_SMOOTH));
+    }
 }

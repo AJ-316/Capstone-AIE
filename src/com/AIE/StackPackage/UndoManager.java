@@ -27,6 +27,7 @@ public class UndoManager extends KeyAdapter {
         History.GET.addButton(new SavedDataButton(data.getIcon(), data.getAction(), undoStack.size(), this), canvas.getIndex());
         CanvasManager.GET.updateTabComponent(canvas);
         CanvasManager.GET.repaint();
+        canvas.setLastSaved(false);
     }
     public void undo() {
         if(undoStack.isEmpty() || undoStack.size() == 1) return;
@@ -36,6 +37,7 @@ public class UndoManager extends KeyAdapter {
             History.GET.getButton(id, canvas.getIndex()).undoHighlight();
             redoStack.push(data);
             CanvasManager.GET.updateTabComponent(canvas);
+            canvas.setLastSaved(false);
         }
     }
     public void undo(int id) {
@@ -50,6 +52,7 @@ public class UndoManager extends KeyAdapter {
             History.GET.getButton(id, canvas.getIndex()).redoHighlight();
             undoStack.push(data);
             CanvasManager.GET.updateTabComponent(canvas);
+            canvas.setLastSaved(false);
         }
     }
     public void redo(int id) {

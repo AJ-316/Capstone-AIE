@@ -22,7 +22,7 @@ public class NewImage extends JDialog {
     public NewImage(MainFrame frame, Canvas canvas) {
         super(frame);
         this.canvas = canvas;
-        setSize(300, 300);
+        setSize(300, 230);
         setTitle("New Image");
         setIconImage(icon.getImage());
         setModal(true);
@@ -49,78 +49,6 @@ public class NewImage extends JDialog {
         setLocationRelativeTo(frame);
         setVisible(true);
     }
-
-    /*public CropImage(MainFrame frame, Canvas canvas) {
-        super(frame);
-        this.canvas = canvas;
-        setTitle("Crop");
-        setModal(true);
-        setResizable(false);
-        setUndecorated(false);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setLayout(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.insets = new Insets(5, 20, 5, 5);
-        gbc.anchor = GridBagConstraints.WEST;
-
-        // Add components
-        JLabel header = new HeadLabel("Crop Image", 100);
-        add(header, gbc);
-
-        gbc.gridy++;
-        gbc.insets = new Insets(5, 30, 5, 5);
-        JPanel xPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 0));
-        x = new JTextField(5);
-        xPanel.add(new JLabel("Start X:"));
-        xPanel.add(x);
-        add(xPanel, gbc);
-
-        gbc.insets = new Insets(5, 30, 5, 5);
-        gbc.gridy++;
-        JPanel yPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 0));
-        y = new JTextField(5);
-        yPanel.add(new JLabel("Start Y:"));
-        yPanel.add(y);
-        add(yPanel, gbc);
-
-        gbc.insets = new Insets(5, 30, 5, 5);
-        gbc.gridy++;
-        JPanel widthPanel = new JPanel();
-        width = new JTextField(5);
-        widthPanel.add(new JLabel("Width: "));
-        widthPanel.add(width);
-        add(widthPanel, gbc);
-
-        gbc.insets = new Insets(5, 30, 5, 5);
-        gbc.gridy++;
-        JPanel heightPanel = new JPanel();
-        height = new JTextField(5);
-        heightPanel.add(new JLabel("Height:"));
-        heightPanel.add(height);
-        add(heightPanel, gbc);
-
-        gbc.insets = new Insets(5, 5, 5, 5);
-        gbc.gridy++;
-        gbc.gridx = 0;
-        gbc.gridwidth = 2;
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        JButton okButton = new JButton("OK");
-        JButton cancelButton = new JButton("Cancel");
-
-        cancelButton.addActionListener(e -> dispose());
-        okButton.addActionListener(e -> { cropImage(); dispose(); });
-
-        buttonPanel.add(okButton);
-        buttonPanel.add(cancelButton);
-        add(buttonPanel, gbc);
-
-        // Pack and set location
-        pack();
-        setLocationRelativeTo(frame);
-        setVisible(true);
-    }*/
 
     private void addRow(Component... components) {
         JPanel row = new JPanel(new FlowLayout(FlowLayout.CENTER));

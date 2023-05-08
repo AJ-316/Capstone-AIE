@@ -1,6 +1,7 @@
 package com.AIE.CanvasPackage;
 
 import com.AIE.WindowPackage.ColorPackage.MutableColor;
+import com.AIE.WindowPackage.FileMenu;
 import com.AIE.WindowPackage.History;
 import com.AIE.WindowPackage.ImageMenu;
 import com.AIE.WindowPackage.ToolPackage.SmoothIcon;
@@ -17,12 +18,24 @@ import java.awt.event.MouseEvent;
 
 public class CanvasManager extends JTabbedPane {
 
-    private static final int TAB_ICON_SIZE = 96;
+    private static final int[] SIZES = new int[]{12, 24, 28, 34, 38, 44, 48, 54, 58, 64, 68, 75, 96, 100};
+    private static int currentSizeIndex = 12;
+    private static int TAB_ICON_SIZE = 96;
     public static CanvasManager GET;
 
     private CanvasManager() {
         super(JTabbedPane.TOP, JTabbedPane.SCROLL_TAB_LAYOUT);
         setUI(new MaterialTabbedUI());
+        addMouseWheelListener(e -> {
+            int index = currentSizeIndex + e.getWheelRotation();
+            currentSizeIndex = Math.max(0, Math.min(SIZES.length-1, index));
+            TAB_ICON_SIZE = SIZES[currentSizeIndex];
+            for(int i = 0; i < getTabCount(); i++) {
+                ((VerticalTab)getTabComponentAt(i)).updateSize();
+            }
+            revalidate();
+            repaint();
+        });
     }
 
     public static void init(int width, int height) {
@@ -38,6 +51,7 @@ public class CanvasManager extends JTabbedPane {
     public void addCanvas(Canvas canvas) {
         addTab(null, canvas);
         canvas.addKeyListenerToRootPane(ImageMenu.getKeyAdapter(canvas));
+        canvas.addKeyListenerToRootPane(FileMenu.getKeyAdapter(canvas));
         int index = getTabCount()-1;
         VerticalTab tabComponent = new VerticalTab(canvas, this, index);
         setTabComponentAt(index, tabComponent);
@@ -85,6 +99,15 @@ public class CanvasManager extends JTabbedPane {
                 public void mousePressed(MouseEvent e) {pane.setSelectedIndex(index);}
                 public void mouseDragged(MouseEvent e) {pane.setSelectedIndex(index);}
             });
+        }
+
+        public void updateSize() {
+            setPreferredSize(new Dimension(TAB_ICON_SIZE, TAB_ICON_SIZE));
+            GridBagConstraints constraints = ((GridBagLayout)getLayout()).getConstraints(label);
+            constraints.insets.top = (int) (TAB_ICON_SIZE*scaledSize);
+            ((GridBagLayout)getLayout()).setConstraints(label, constraints);
+            icon.updateImageSize(TAB_ICON_SIZE);
+            label.setVisible(TAB_ICON_SIZE >= 48);
         }
 
         public void update(Canvas canvas) {

@@ -36,11 +36,20 @@ public class Canvas extends JPanel {
     private int zoom, posX, posY;
     private boolean isReplaceable;
     public UndoManager undoManager;
+    private boolean lastSaved;
 
     public Canvas() {
         super(null);
         connector = new PixelConnector(this);
         addListeners(new CanvasNavigation(), new CanvasToolInteraction(this));
+    }
+
+    public boolean isLastSaved() {
+        return lastSaved;
+    }
+
+    public void setLastSaved(boolean lastSaved) {
+        this.lastSaved = lastSaved;
     }
 
     public Canvas(String name, BufferedImage newImage) {

@@ -2,6 +2,7 @@ package com.AIE;
 
 import com.AIE.WindowPackage.MainFrame;
 import com.AIE.WindowPackage.ToolPackage.SmoothIcon;
+import com.AIE.CanvasPackage.Canvas;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -21,6 +22,8 @@ public class ImageLoader {
 
     private static final String NO_IMAGE = "empty";
     private static final HashMap<String, BufferedImage> LOADED_IMAGES = new HashMap<>();
+
+    private static final HashMap<Canvas, String[]> currentlySaved = new HashMap<>();
 
     public static void init(MainFrame frame) {
         ImageLoader.frame = frame;
@@ -51,7 +54,16 @@ public class ImageLoader {
         return chooser.getSelectedFile();
     }
 
-    public static void save(BufferedImage image) {
+    public static void save(Canvas canvas) {
+        if(currentlySaved.get(canvas) != null) {
+            try {
+                saveImage(canvas.getImage(), currentlySaved.get(canvas)[0], currentlySaved.get(canvas)[1]);
+                canvas.setLastSaved(true);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            return;
+        }
         chooser.setDialogTitle("Save Image");
         int state = chooser.showSaveDialog(frame);
 
@@ -65,14 +77,18 @@ public class ImageLoader {
             // Will add more cases later
             try {
                 switch (ext) {
-                    case "png", "gif" ->
-                        saveImage(image, path, ext);
+                    case "png", "gif" -> {
+                        saveImage(canvas.getImage(), path, ext);
+                        canvas.setLastSaved(true);
+                    }
                     case "jpg", "bmp" -> {
-                        image = createImage(image, BufferedImage.TYPE_INT_RGB);
+                        BufferedImage image = createImage(canvas.getImage(), BufferedImage.TYPE_INT_RGB);
                         saveImage(image, path, ext);
+                        canvas.setLastSaved(true);
                     }
                     default -> System.err.println("File did not save: " + path);
                 }
+                currentlySaved.put(canvas, new String[]{path, ext});
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

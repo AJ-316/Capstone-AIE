@@ -17,7 +17,7 @@ public class Toolbar extends AbstractWindow {
     public static boolean LOCKED;
 
     public Toolbar(MainFrame mainFrame) {
-        super("ToolBar", mainFrame, 0, 500, 130, 200);
+        super("ToolBar", mainFrame, 0, 500, 130, 250);
         setLayout(new FlowLayout(FlowLayout.CENTER, 40, 20));
 
         EDITOR = new ToolEditor();

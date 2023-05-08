@@ -3,22 +3,33 @@ package com.AIE.WindowPackage;
 import com.AIE.CanvasPackage.Canvas;
 import com.AIE.CanvasPackage.CanvasManager;
 import com.AIE.ImageLoader;
+import com.AIE.WindowPackage.ImageEdit.ConfirmCanvasClose;
 import com.AIE.WindowPackage.ImageEdit.NewImage;
 import com.AIE.WindowPackage.PanelsPackage.InfoPanel;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
+import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
 
 public class FileMenu extends JMenu {
 
+    private static final ActionListener saveListener = e -> {
+        Canvas canvas = CanvasManager.getCurrentCanvas();
+        if(canvas == null)
+            return;
+        ImageLoader.save(canvas);
+    };
+
     public FileMenu(MainFrame frame) {
         super("File");
         addMenuItem("New Image", "New", e -> {
             Canvas canvas = CanvasManager.getCurrentCanvas();
+            if(canvas == null) {
+                new NewImage(frame, null);
+                return;
+            }
             if(canvas.isReplaceable()) {
                 new NewImage(frame, canvas);
                 return;
@@ -42,15 +53,25 @@ public class FileMenu extends JMenu {
                 InfoPanel.GET.setErrorInfo("Could not load Image:" + imgFile.getName());
             }
         });
-        addMenuItem("Save Image", "save", e -> {
+        addMenuItem("Save Image", "Save", saveListener);
+        addMenuItem("Close Canvas", "Close", e -> {
+            if(CanvasManager.GET.getTabCount() == 1) return;
             Canvas canvas = CanvasManager.getCurrentCanvas();
             if(canvas == null)
                 return;
-            BufferedImage image = canvas.getImage();
-            if(image == null)
-                return;
-            ImageLoader.save(image);
+            new ConfirmCanvasClose(frame, canvas);
         });
+    }
+
+    public static KeyAdapter getKeyAdapter(Canvas canvas) {
+        return new KeyAdapter() {
+            public void keyReleased(KeyEvent e) {
+                if(CanvasManager.GET.isCanvasNotSelected(canvas)) return;
+                int key = e.getKeyCode();
+                if(e.isControlDown() && key == KeyEvent.VK_S)
+                    saveListener.actionPerformed(null);
+            }
+        };
     }
 
     private void addMenuItem(String name, String icon, ActionListener listener) {
