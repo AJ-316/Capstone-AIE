@@ -60,6 +60,8 @@ public class ImageLoader {
                 saveImage(canvas.getImage(), currentlySaved.get(canvas)[0], currentlySaved.get(canvas)[1]);
                 canvas.setLastSaved(true);
             } catch (IOException e) {
+                AppLog.error("ImageLoader", "Could not save Image (" +
+                        currentlySaved.get(canvas)[0]+currentlySaved.get(canvas)[1] + ")", e);
                 throw new RuntimeException(e);
             }
             return;
@@ -90,6 +92,8 @@ public class ImageLoader {
                 }
                 currentlySaved.put(canvas, new String[]{path, ext});
             } catch (IOException e) {
+                AppLog.error("ImageLoader", "Could not save Image (" +
+                        currentlySaved.get(canvas)[0]+currentlySaved.get(canvas)[1] + ")", e);
                 throw new RuntimeException(e);
             }
         }
@@ -165,6 +169,7 @@ public class ImageLoader {
             }
             return image;
         } catch (IOException e) {
+            AppLog.error("ImageLoader", "Could not Load Resource Image (" + file + ")", e);
             throw new RuntimeException(e);
         }
     }

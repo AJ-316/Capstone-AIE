@@ -1,5 +1,7 @@
 package com.AIE.CanvasPackage;
 
+import com.AIE.AppLog;
+
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -28,6 +30,7 @@ public class PixelConnector {
                 connectPixel(p1.x, p1.y, p2.x, p2.y, color,isFilled, size, outline);
             } catch (IndexOutOfBoundsException e) {
                 e.printStackTrace();
+                AppLog.error("PixelConnector", "Math Error while connecting pixels", e);
             }
             trackedPixels.remove(i);
             i--;

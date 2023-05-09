@@ -5,10 +5,8 @@ import com.AIE.WindowPackage.MainFrame;
 public class Main {
 
     public static void main(String[] args) {
-        MainFrame mainFrame = new MainFrame(1280, 720);
-
-        mainFrame.createWindow();
+        Thread.setDefaultUncaughtExceptionHandler((thread, throwable) ->
+                AppLog.uncaughtError(thread.getName(), "Global Exception", throwable));
+        new MainFrame(1280, 720);
     }
-
-
 }

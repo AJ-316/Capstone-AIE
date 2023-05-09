@@ -1,5 +1,6 @@
 package com.AIE.EffectsPackage;
 
+import com.AIE.AppLog;
 import com.AIE.CanvasPackage.Canvas;
 import com.AIE.CanvasPackage.CanvasManager;
 import com.AIE.ImageLoader;
@@ -53,7 +54,7 @@ public abstract class Effect {
 
         progressBar = new JProgressBar();
         progressBar.setSize(progressBar.getHeight(), (int) (configWindow.getWidth()/1.4f));
-        previewThread = new PreviewThread(this::previewEffect);
+        previewThread = new PreviewThread(this::previewEffect, name);
 
         effects.add(this);
     }
@@ -123,8 +124,11 @@ public abstract class Effect {
         private volatile boolean wait = false;
         private final Thread thread;
 
-        public PreviewThread(Runnable task) {
+        public PreviewThread(Runnable task, String effectName) {
             thread = new Thread(() -> {
+                Thread.currentThread().setUncaughtExceptionHandler((thread, throwable) ->
+                        AppLog.uncaughtError(effectName, "Effect Thread", throwable));
+
                 while (true) {
                     if(!wait)
                         task.run();
@@ -139,6 +143,7 @@ public abstract class Effect {
                         Thread.sleep(10);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
+                        AppLog.error(effectName, "Effect Thread", e);
                     }
 
                 }

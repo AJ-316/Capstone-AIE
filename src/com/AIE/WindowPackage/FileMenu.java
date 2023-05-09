@@ -1,5 +1,6 @@
 package com.AIE.WindowPackage;
 
+import com.AIE.AppLog;
 import com.AIE.CanvasPackage.Canvas;
 import com.AIE.CanvasPackage.CanvasManager;
 import com.AIE.ImageLoader;
@@ -50,6 +51,7 @@ public class FileMenu extends JMenu {
                 }
                 new Canvas(imgFile.getName(), ImageIO.read(imgFile));
             } catch (IOException ex) {
+                AppLog.error("FileMenu", "Could not load Image (" + imgFile.getName() + ")", ex);
                 InfoPanel.GET.setErrorInfo("Could not load Image:" + imgFile.getName());
             }
         });

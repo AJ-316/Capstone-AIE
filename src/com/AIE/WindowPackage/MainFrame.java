@@ -1,5 +1,6 @@
 package com.AIE.WindowPackage;
 
+import com.AIE.AppLog;
 import com.AIE.CanvasPackage.Canvas;
 import com.AIE.CanvasPackage.CanvasManager;
 import com.AIE.ImageLoader;
@@ -47,6 +48,8 @@ public class MainFrame extends JFrame implements ComponentListener {
         addComponentListener(this);
 
         new Canvas(Canvas.DEF_WIDTH, Canvas.DEF_HEIGHT).setReplaceable();
+
+        this.setVisible(true);
     }
     private void setLookAndFeel() {
         FlatDarculaLaf.setup();
@@ -54,6 +57,7 @@ public class MainFrame extends JFrame implements ComponentListener {
             UIManager.setLookAndFeel(new FlatDarculaLaf());
             UIManager.put("Slider.paintThumbArrowShape", Boolean.TRUE);
         } catch (UnsupportedLookAndFeelException e) {
+            AppLog.error("MainFrame", "Could not set look and feel (FlatDarculaLaf)", e);
             throw new RuntimeException(e);
         }
     }
@@ -77,11 +81,6 @@ public class MainFrame extends JFrame implements ComponentListener {
         UIManager.put("MenuItem.font", font);
         UIManager.put("PopupMenu.font", font);
         UIManager.put("ToolTip.font", font);
-    }
-
-    public void createWindow() {
-        //Finalizing JFrame
-        this.setVisible(true);
     }
 
     @Override
