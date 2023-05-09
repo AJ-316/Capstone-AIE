@@ -8,7 +8,6 @@
       <element id="library" level="project" name="flatlaf-3.0" />
       <element id="library" level="project" name="log4j-api-2.20.0" />
       <element id="library" level="project" name="log4j-core-2.20.0" />
-      <element id="library" level="project" name="TimingFramework-0.55" />
       <element id="module-output" name="Capstone-AIE" />
     </root>
   </artifact>

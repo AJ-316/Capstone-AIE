@@ -51,7 +51,7 @@ public class MainFrame extends JFrame implements ComponentListener {
 
         new Canvas(Canvas.DEF_WIDTH, Canvas.DEF_HEIGHT).setReplaceable();
 
-        this.setVisible(true);
+        setVisible(true);
     }
     private void setLookAndFeel() {
         FlatDarculaLaf.setup();
@@ -59,7 +59,7 @@ public class MainFrame extends JFrame implements ComponentListener {
             UIManager.setLookAndFeel(new FlatDarculaLaf());
             UIManager.put("Slider.paintThumbArrowShape", Boolean.TRUE);
         } catch (UnsupportedLookAndFeelException e) {
-            AppLog.error("MainFrame", "Could not set look and feel (FlatDarculaLaf)", e);
+            AppLog.error("MainFrame", "Could not setup look and feel (FlatDarculaLaf)", e);
             throw new RuntimeException(e);
         }
     }
