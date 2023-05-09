@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Main-Class: com.AIE.Main
+Class-Path: flatlaf-3.0.jar log4j-api-2.20.0.jar TimingFramework-0.55.ja
+ r log4j-core-2.20.0.jar
+

@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Capstone-AIE" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Quality-Life addition - save/close canvas">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/log4j_api_2_20_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/log4j_core_2_20_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/TimingFramework-0.55.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/log4j-api-2.20.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/log4j-core-2.20.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/AIE/AppLog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/log4j2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/TimingFramework_0_55.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/TimingFramework_0_55.xml" afterDir="false" />
+    <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Added a logger to log errors in .log file.">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Capstone_AIE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/icon100x100.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/icon16x16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/icon32x32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/icon48x48.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/icon64x64.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/icon80x80.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/AIE/resources/icons/icon96x96.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Capstone-AIE.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Capstone-AIE.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/PixelConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/PixelConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/Effect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/EffectsPackage/Effect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/ImageLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/ImageLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/AppLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/AppLog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/FileMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/FileMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MainFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,8 +81,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "D:/PROgraming/IdeaProjects/Capstone-AIE/lib/log4j-api-2.20.0.jar",
-    "project.structure.last.edited": "Libraries",
+    "last_opened_file_path": "D:/PROgraming/IdeaProjects/Capstone-AIE/src/com/AIE/resources/icons",
+    "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pluginManager"
@@ -92,13 +94,14 @@
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\PROgraming\IdeaProjects\Capstone-AIE\src\com\AIE\resources\icons" />
+      <recent name="D:\PROgraming\IdeaProjects\Capstone-AIE\src\com\AIE\resources" />
       <recent name="D:\PROgraming\IdeaProjects\Capstone-AIE" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\PROgraming\IdeaProjects\Capstone-AIE\src\com\AIE\resources\icons" />
       <recent name="D:\PROgraming\IdeaProjects\Capstone-AIE\src" />
       <recent name="D:\PROgraming\IdeaProjects\Capstone-AIE\src\com\AIE" />
       <recent name="D:\PROgraming\IdeaProjects\Capstone-AIE\src\com\AIE\resources" />
-      <recent name="D:\PROgraming\IdeaProjects\Capstone-AIE\src\com\AIE\resources\icons" />
       <recent name="D:\PROgraming\IdeaProjects\Capstone-AIE\src\com\AIE\color_palette" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -109,7 +112,7 @@
       <recent name="com.AIE.WindowPackage.ColorPackage.Sliders.RGBSliders" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.AIE.Main" />
       <module name="Capstone-AIE" />
@@ -123,59 +126,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PolygonDrawer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.AIE.WindowPackage.ToolPackage.Shapes.PolygonDrawer" />
-      <module name="Capstone-AIE" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.AIE.WindowPackage.ToolPackage.Shapes.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RectangleDrawer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.AIE.WindowPackage.ToolPackage.Shapes.RectangleDrawer" />
-      <module name="Capstone-AIE" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.AIE.WindowPackage.ToolPackage.Shapes.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RoundedRectangles" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.AIE.WindowPackage.ToolPackage.Shapes.RoundedRectangles" />
-      <module name="Capstone-AIE" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.AIE.WindowPackage.ToolPackage.Shapes.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SoftCircleExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="SoftCircleExample" />
-      <module name="Capstone-AIE" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.PolygonDrawer" />
-        <item itemvalue="Application.RoundedRectangles" />
-        <item itemvalue="Application.RectangleDrawer" />
-        <item itemvalue="Application.SoftCircleExample" />
       </list>
     </recent_temporary>
   </component>
@@ -356,7 +309,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683576869074</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Added a logger to log errors in .log file.">
+      <created>1683625811487</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1683625811487</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -433,7 +393,8 @@
     <MESSAGE value="Added Undo/Redo;" />
     <MESSAGE value="Added Multiple Canvas Support; CanvasManager overhauled; Added New Image option; Optimized Image Editing Panels" />
     <MESSAGE value="Quality-Life addition - save/close canvas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Quality-Life addition - save/close canvas" />
+    <MESSAGE value="Added a logger to log errors in .log file." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a logger to log errors in .log file." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Capstone_AIE$VerifierTest.ic" NAME="VerifierTest Coverage Results" MODIFIED="1676969542696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

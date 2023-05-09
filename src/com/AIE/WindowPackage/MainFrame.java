@@ -11,6 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.util.ArrayList;
 
 public class MainFrame extends JFrame implements ComponentListener {
 
@@ -24,6 +25,7 @@ public class MainFrame extends JFrame implements ComponentListener {
     public MainFrame(int width, int height) {
         setLookAndFeel();
         ImageLoader.init(this);
+        setIcons();
 
         SCREEN_WIDTH = width;
         SCREEN_HEIGHT = height;
@@ -81,6 +83,18 @@ public class MainFrame extends JFrame implements ComponentListener {
         UIManager.put("MenuItem.font", font);
         UIManager.put("PopupMenu.font", font);
         UIManager.put("ToolTip.font", font);
+    }
+
+    private void setIcons() {
+        ArrayList<Image> icons = new ArrayList<>();
+        icons.add(ImageLoader.loadIcon("icon100x100", 100).getImage());
+        icons.add(ImageLoader.loadIcon("icon96x96", 96).getImage());
+        icons.add(ImageLoader.loadIcon("icon80x80", 80).getImage());
+        icons.add(ImageLoader.loadIcon("icon64x64", 64).getImage());
+        icons.add(ImageLoader.loadIcon("icon48x48", 48).getImage());
+        icons.add(ImageLoader.loadIcon("icon32x32", 32).getImage());
+        icons.add(ImageLoader.loadIcon("icon16x16", 16).getImage());
+        setIconImages(icons);
     }
 
     @Override
