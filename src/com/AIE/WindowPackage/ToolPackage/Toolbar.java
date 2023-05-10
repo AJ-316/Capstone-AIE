@@ -17,7 +17,7 @@ public class Toolbar extends AbstractWindow {
     public static boolean LOCKED;
 
     public Toolbar(MainFrame mainFrame) {
-        super("ToolBar", mainFrame, 0, 500, 130, 250);
+        super("ToolBar", mainFrame, 0, 500);
         setLayout(new FlowLayout(FlowLayout.CENTER, 40, 20));
 
         EDITOR = new ToolEditor();
@@ -25,6 +25,10 @@ public class Toolbar extends AbstractWindow {
 
         createTools();
         setVisible(true);
+    }
+
+    public void setRelativeLocation(MainFrame frame) {
+        setLocation(frame.getLocation().x + 10, frame.getLocation().y + 200);
     }
 
     public static void locked(boolean locked) {

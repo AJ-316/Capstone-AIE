@@ -27,7 +27,7 @@ public class ColorPaletteWindow extends AbstractWindow {
     private static final MutableColor COLOR = new MutableColor(255, 0, 0);
 
     public ColorPaletteWindow(MainFrame mainFrame) {
-        super("Color Palette", mainFrame, DEFAULT_WIDTH, DEFAULT_HEIGHT, MainFrame.SCREEN_WIDTH - 200, 350);
+        super("Color Palette", mainFrame, DEFAULT_WIDTH, DEFAULT_HEIGHT);
         setLayout(null);
 
         createBrush();
@@ -38,6 +38,12 @@ public class ColorPaletteWindow extends AbstractWindow {
         palette.addToWindow(this, 15, 280, DEFAULT_WIDTH-40, 80);
 
         setVisible(true);
+    }
+
+    public void setRelativeLocation(MainFrame frame) {
+        //mainFrame.getLocation().x + MainFrame.WINDOW_WIDTH - DEFAULT_WIDTH, 350
+        setLocation(frame.getLocation().x + MainFrame.WINDOW_WIDTH - DEFAULT_WIDTH,
+                frame.getLocation().y + MainFrame.WINDOW_HEIGHT - DEFAULT_HEIGHT);
     }
 
     private void createSliderButton() {

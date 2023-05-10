@@ -157,8 +157,8 @@ public class Canvas extends JPanel {
     }
 
     private void setImageToCenter() {
-        this.posX = MainFrame.SCREEN_CENTER_X - image.getWidth()/2;
-        this.posY = MainFrame.SCREEN_CENTER_Y - image.getHeight()/2;
+        this.posX = MainFrame.WINDOW_CENTER_X - image.getWidth()/2;
+        this.posY = MainFrame.WINDOW_CENTER_Y - image.getHeight()/2;
     }
 
     public void changePixelLinearly(int x, int y, boolean isFilled, int size, int outline) throws IndexOutOfBoundsException {

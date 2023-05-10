@@ -20,18 +20,18 @@ public class MainFrame extends JFrame implements ComponentListener, WindowListen
 
     // TODO: Will need to remove instance and clean up the code so singletons are not needed
     public static Container PANE;
-    public static int SCREEN_WIDTH;
-    public static int SCREEN_HEIGHT;
-    public static int SCREEN_CENTER_X;
-    public static int SCREEN_CENTER_Y;
+    public static int WINDOW_WIDTH;
+    public static int WINDOW_HEIGHT;
+    public static int WINDOW_CENTER_X;
+    public static int WINDOW_CENTER_Y;
 
     public MainFrame(int width, int height) {
         setLookAndFeel();
         ImageLoader.init(this);
         setIcons();
 
-        SCREEN_WIDTH = width;
-        SCREEN_HEIGHT = height;
+        WINDOW_WIDTH = width;
+        WINDOW_HEIGHT = height;
 
         CanvasManager.init(width, height);
         setComponentFont(CanvasManager.GET.getFont());
@@ -47,8 +47,8 @@ public class MainFrame extends JFrame implements ComponentListener, WindowListen
         new FrameMenuBar(this);
         InfoPanel.init(this);
 
-        SCREEN_CENTER_X = PANE.getWidth()/2;
-        SCREEN_CENTER_Y = PANE.getHeight()/2;
+        WINDOW_CENTER_X = PANE.getWidth()/2;
+        WINDOW_CENTER_Y = PANE.getHeight()/2;
         this.setLocationRelativeTo(null);
         addComponentListener(this);
         addWindowListener(this);
@@ -57,6 +57,7 @@ public class MainFrame extends JFrame implements ComponentListener, WindowListen
 
         setVisible(true);
     }
+
     private void setLookAndFeel() {
         FlatDarculaLaf.setup();
         try {
@@ -111,10 +112,10 @@ public class MainFrame extends JFrame implements ComponentListener, WindowListen
 
     @Override
     public void componentResized(ComponentEvent e) {
-        SCREEN_WIDTH = getContentPane().getWidth();
-        SCREEN_HEIGHT = getContentPane().getHeight();
-        SCREEN_CENTER_X = SCREEN_WIDTH/2;
-        SCREEN_CENTER_Y = SCREEN_HEIGHT/2;
+        WINDOW_WIDTH = getContentPane().getWidth();
+        WINDOW_HEIGHT = getContentPane().getHeight();
+        WINDOW_CENTER_X = WINDOW_WIDTH /2;
+        WINDOW_CENTER_Y = WINDOW_HEIGHT /2;
         Canvas canvas = CanvasManager.getCurrentCanvas();
         if(canvas == null)
             return;

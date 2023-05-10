@@ -8,11 +8,25 @@ import javax.swing.*;
 
 public class WindowMenu extends JMenu {
 
+    private static Toolbar toolbar;
+    private static ColorPaletteWindow colorPaletteWindow;
+    private static History history;
+
     public WindowMenu(MainFrame mainFrame) {
         super("Windows");
-        addMenuItem(new Toolbar(mainFrame));
-        addMenuItem(new ColorPaletteWindow(mainFrame));
-        addMenuItem(new History(mainFrame));
+        toolbar = new Toolbar(mainFrame);
+        colorPaletteWindow = new ColorPaletteWindow(mainFrame);
+        history = new History(mainFrame);
+
+        addMenuItem(toolbar);
+        addMenuItem(colorPaletteWindow);
+        addMenuItem(history);
+    }
+
+    public static void setRelativeLocation(MainFrame frame) {
+        toolbar.setRelativeLocation(frame);
+        colorPaletteWindow.setRelativeLocation(frame);
+        history.setRelativeLocation(frame);
     }
 
     private void addMenuItem(AbstractWindow window) {

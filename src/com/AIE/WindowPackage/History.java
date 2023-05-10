@@ -15,7 +15,7 @@ public class History extends AbstractWindow {
     private final JPanel pane;
 
     public History(MainFrame mainFrame) {
-        super("History", mainFrame, 200, 180, MainFrame.SCREEN_WIDTH - 84, 135);
+        super("History", mainFrame, 200, 180);
         layout = new CardLayout();
         historyPanels = new ArrayList<>();
         pane = new JPanel(layout);
@@ -25,6 +25,11 @@ public class History extends AbstractWindow {
         pack();
         setVisible(true);
         GET = this;
+    }
+
+    public void setRelativeLocation(MainFrame frame) {
+        setLocation(frame.getLocation().x + MainFrame.WINDOW_WIDTH - getWidth(),
+                frame.getLocation().y + getHeight()/2);
     }
 
     private JPanel addHistoryPanel() {
