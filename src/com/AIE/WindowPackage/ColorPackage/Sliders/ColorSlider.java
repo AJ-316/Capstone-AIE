@@ -1,6 +1,6 @@
 package com.AIE.WindowPackage.ColorPackage.Sliders;
 
-import com.AIE.WindowPackage.ColorPackage.ColorPalette;
+import com.AIE.WindowPackage.ColorPackage.ColorPaletteWindow;
 import com.AIE.WindowPackage.ColorPackage.PaletteElement;
 import com.AIE.WindowPackage.ColorPackage.Sliders.UI.ColorSliderUI;
 
@@ -45,7 +45,7 @@ public abstract class ColorSlider extends JPanel implements PaletteElement {
         setLayout(new FlowLayout(FlowLayout.CENTER, 0, -4));
         setVisible(true);
 
-        ColorPalette.ELEMENTS.add(this);
+        ColorPaletteWindow.ELEMENTS.add(this);
     }
 
     public void updateInputValue() {

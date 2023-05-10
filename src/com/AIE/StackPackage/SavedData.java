@@ -69,7 +69,7 @@ public class SavedData implements SavedDataListener {
         g.clearRect(0,0, imgB.getWidth(), imgB.getHeight());
         g.drawImage(imgA, 0, 0, null);
         g.dispose();
-        canvas.setImage(imgB, false);
+        canvas.setImage(imgB, true);
         canvas.repaint();
     }
 }

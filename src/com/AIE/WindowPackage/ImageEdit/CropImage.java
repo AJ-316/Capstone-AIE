@@ -145,9 +145,13 @@ public class CropImage extends JDialog {
         int w = Integer.parseInt(width.getText());
         int h = Integer.parseInt(height.getText());
 
-        if(canvas.getImage().getWidth() == w && canvas.getImage().getHeight() == h && xCoord == 0 && yCoord == 0) {
+        if((canvas.getImage().getWidth() == w && canvas.getImage().getHeight() == h && xCoord == 0 && yCoord == 0) ||
+                xCoord <= 0 || yCoord <= 0) {
             return;
         }
+
+        w = Math.min(canvas.getImage().getWidth(), w);
+        h = Math.min(canvas.getImage().getHeight(), h);
 
         BufferedImage croppedImg = canvas.getImage().getSubimage(xCoord, yCoord, w, h);
 
@@ -158,4 +162,26 @@ public class CropImage extends JDialog {
         InfoPanel.GET.setActivityInfo("Cropped Image");
         data.saveNewImage();
     }
+
+//    private void cropImage() {
+//        if (x.getText().isEmpty() || y.getText().isEmpty() || width.getText().isEmpty() || height.getText().isEmpty())
+//            return;
+//        int xCoord = Integer.parseInt(x.getText());
+//        int yCoord = Integer.parseInt(y.getText());
+//        int w = Integer.parseInt(width.getText());
+//        int h = Integer.parseInt(height.getText());
+//
+//        if(canvas.getImage().getWidth() == w && canvas.getImage().getHeight() == h && xCoord == 0 && yCoord == 0) {
+//            return;
+//        }
+//
+//        BufferedImage croppedImg = canvas.getImage().getSubimage(xCoord, yCoord, w, h);
+//
+//        SavedData data = new SavedData(canvas,
+//                ImageLoader.loadIcon("ICrop", SavedDataButton.ICON_SIZE), "Cropped");
+//        canvas.setImage(croppedImg, true);
+//        InfoPanel.GET.setSizeInfo(canvas.getImage().getWidth(), canvas.getImage().getHeight());
+//        InfoPanel.GET.setActivityInfo("Cropped Image");
+//        data.saveNewImage();
+//    }
 }

@@ -85,6 +85,11 @@ public class Polygon extends Shape {
         vertices.clear();
     }
 
+    @Override
+    public boolean isValidShape() {
+        return true;
+    }
+
     private int[] extractAxis(int axis, Point prePoint) {
         int[] axisPoints = new int[vertices.size() + 1];
         for (int i = 0; i < vertices.size(); i++) {

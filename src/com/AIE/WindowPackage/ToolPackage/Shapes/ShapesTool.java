@@ -68,17 +68,27 @@ public class ShapesTool extends AbstractTool {
 
     @Override
     public void released(Canvas canvas, MouseEvent e) {
-        if(!leastOncePaint) currentShape.paint(canvas, e);
+        if(currentShape != null && currentShape.isValidShape()) {
+            if (currentShape == null) return;
+            if (!leastOncePaint) currentShape.paint(canvas, e);
 
-        currentShape.released(canvas, e);
-        if(currentShape == null || currentShape.drawing)
+            currentShape.released(canvas, e);
+            if (currentShape == null || currentShape.drawing)
+                return;
+
+            releaseShape(canvas, true);
             return;
+        }
+        releaseShape(canvas, false);
+    }
 
+    private void releaseShape(Canvas canvas, boolean confirm) {
         currentShape.setCurrentConstraints(null);
-        canvas.confirmPreview();
+        currentShape = null;
+        if(confirm) canvas.confirmPreview();
         canvas.disablePreviewMode();
         Toolbar.locked(false);
-        saveCurrent();
+        if(confirm) saveCurrent();
         leastOncePaint = false;
     }
 

@@ -39,7 +39,7 @@ public class ColorPickerWheel extends JPanel implements PaletteElement {
         addMouseListener(pickerUpdate);
         addMouseMotionListener(pickerUpdate);
 
-        ColorPalette.ELEMENTS.add(this);
+        ColorPaletteWindow.ELEMENTS.add(this);
     }
 
     @Override
@@ -128,8 +128,8 @@ public class ColorPickerWheel extends JPanel implements PaletteElement {
     private class PickerUpdate extends MouseAdapter {
         @Override
         public void mousePressed(MouseEvent e) {
-            if(SwingUtilities.isRightMouseButton(e)) ColorPalette.selectBrush(1);
-            else if(SwingUtilities.isLeftMouseButton(e)) ColorPalette.selectBrush(0);
+            if(SwingUtilities.isRightMouseButton(e)) ColorPaletteWindow.selectBrush(1);
+            else if(SwingUtilities.isLeftMouseButton(e)) ColorPaletteWindow.selectBrush(0);
 
             final Point p = e.getPoint();
             p.translate((int) -(getWidth()/2f - RADIUS), (int) -(getHeight()/2f - RADIUS));
@@ -140,7 +140,7 @@ public class ColorPickerWheel extends JPanel implements PaletteElement {
             double theta = (Math.atan2(1-x, y) / D_THETA + 0.25) * 360.0;
             theta += theta < 0 ? 360 : 0;
 
-            ColorPalette.update(HSV.toRGB((int)theta, (float) r, HSV.getValue()), ELEMENT_NAME);
+            ColorPaletteWindow.update(HSV.toRGB((int)theta, (float) r, HSV.getValue()), ELEMENT_NAME);
         }
 
         @Override

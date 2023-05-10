@@ -5,13 +5,10 @@ import com.AIE.WindowPackage.FileMenu;
 import com.AIE.WindowPackage.History;
 import com.AIE.WindowPackage.ImageMenu;
 import com.AIE.WindowPackage.ToolPackage.SmoothIcon;
-import org.jdesktop.animation.timing.Animator;
-import org.jdesktop.animation.timing.TimingTarget;
-import org.jdesktop.animation.timing.interpolation.PropertySetter;
+import com.formdev.flatlaf.ui.FlatTabbedPaneUI;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicBorders;
-import javax.swing.plaf.metal.MetalTabbedPaneUI;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -94,11 +91,22 @@ public class CanvasManager extends JTabbedPane {
             add(label, gbc);
 
             setPreferredSize(new Dimension(TAB_ICON_SIZE, TAB_ICON_SIZE));
+            MouseAdapter adapter = new MouseAdapter() {
+                public void mousePressed(MouseEvent e) {
+                    pane.setSelectedIndex(index);
+                    pane.setEnabledAt(index, true);
+                    pane.requestFocus();
+                }
+                public void mouseDragged(MouseEvent e) {mousePressed(e);}
 
-            addMouseListener(new MouseAdapter() {
-                public void mousePressed(MouseEvent e) {pane.setSelectedIndex(index);}
-                public void mouseDragged(MouseEvent e) {pane.setSelectedIndex(index);}
-            });
+                @Override
+                public void mouseMoved(MouseEvent e) {
+                    pane.setEnabledAt(index, true);
+                    pane.requestFocus();
+                }
+            };
+            addMouseListener(adapter);
+            addMouseMotionListener(adapter);
         }
 
         public void updateSize() {
@@ -125,89 +133,32 @@ public class CanvasManager extends JTabbedPane {
         }
     }
 
-    public static class MaterialTabbedUI extends MetalTabbedPaneUI {
-
-        private Animator animator;
-        private Rectangle currentRectangle;
-        private TimingTarget target;
-
-        @Override
-        public void installUI(JComponent jc) {
-            super.installUI(jc);
-            animator = new Animator(150);
-            animator.setResolution(0);
-            animator.setAcceleration(.5f);
-            animator.setDeceleration(.5f);
-            tabPane.addChangeListener(ce -> {
-                int selected = tabPane.getSelectedIndex();
-                if (selected != -1) {
-                    if (currentRectangle != null) {
-                        if (animator.isRunning()) {
-                            animator.stop();
-                        }
-                        animator.removeTarget(target);
-                        target = new PropertySetter(MaterialTabbedUI.this, "currentRectangle", currentRectangle, getTabBounds(selected, calcRect));
-                        animator.addTarget(target);
-                        animator.start();
-                    }
-                }
-            });
-        }
+    public static class MaterialTabbedUI extends FlatTabbedPaneUI {
+        private static final float[] fractions = new float[]{0, 0.5f, 1};
+        private final Color[] border = new Color[]{new Color(0x505254), new Color(0x3C3F41), new Color(0x505254)};
+        private final Color[] selection = new Color[]{MutableColor.TRANSPARENT, Color.white, MutableColor.TRANSPARENT};
 
         @Override
-        protected Insets getTabInsets(int tabPlacement, int tabIndex) {
-            return new Insets(5, 5, 5, 5);
-        }
-
-        @Override
-        protected void paintTabBorder(Graphics g, int tabPlacement, int tabIndex, int x, int y, int w, int h, boolean isSelected) {
+        protected void paintTab(Graphics g, int tabPlacement, Rectangle[] rects, int tabIndex, Rectangle iconRect, Rectangle textRect) {
+            super.paintTab(g, tabPlacement, rects, tabIndex, iconRect, textRect);
             Graphics2D g2 = (Graphics2D) g.create();
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            if (currentRectangle == null || !animator.isRunning()) {
-                if (isSelected) {
-                    currentRectangle = new Rectangle(x, y, w, h);
-                }
-            }
-            LinearGradientPaint paint = new LinearGradientPaint(0, 0, 0, h,
-                    new float[]{0, 0.5f, 1},
-                    new Color[]{new Color(0x505254), tabPane.getBackground(), new Color(0x505254)});
-            g2.setPaint(paint);
+            g2.setPaint(new LinearGradientPaint(0, 0, 0, rects[tabIndex].height, fractions, border));
+            g2.fillRect(tabIndex * rects[tabIndex].width + rects[tabIndex].width, 0, 1, rects[tabIndex].height);
+            g2.fillRect(tabIndex * rects[tabIndex].width, 0, 1, rects[tabIndex].height);
+        }
+
+        @Override
+        protected void paintTabSelection(Graphics g, int tabPlacement, int tabIndex, int x, int y, int w, int h) {
+            Graphics2D g2 = (Graphics2D) g.create();
+            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            g2.setPaint(new LinearGradientPaint(0, 0, 0, rects[tabIndex].height, fractions, border));
             g2.fillRect(tabIndex * w + w, 0, 1, h);
             g2.fillRect(tabIndex * w, 0, 1, h);
-            if (currentRectangle != null) {
-                paint = new LinearGradientPaint(currentRectangle.x, 0, currentRectangle.x+currentRectangle.width, 0,
-                        new float[]{0, 0.5f, 1},
-                        new Color[]{MutableColor.TRANSPARENT, Color.white, MutableColor.TRANSPARENT});
-                g2.setPaint(paint);
-                g2.fillRect(currentRectangle.x, currentRectangle.y + currentRectangle.height - 2, currentRectangle.width, 2);
-                g2.fillRect(currentRectangle.x, 0, currentRectangle.width, 2);
-            }
+            g2.setPaint(new LinearGradientPaint(x, 0, x+w, 0, fractions, selection));
+            g2.fillRect(x, y + h - 2, w, 2);
+            g2.fillRect(x, 0, w, 2);
             g2.dispose();
-        }
-
-        @Override
-        protected void paintContentBorder(Graphics g, int tabPlacement, int selectedIndex) {
-            Graphics2D g2 = (Graphics2D) g.create();
-            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            g2.setColor(new Color(0x505254));
-            Insets insets = getTabAreaInsets(tabPlacement);
-                int tabHeight = calculateTabAreaHeight(tabPlacement, runCount, maxTabHeight);
-                g2.drawLine(insets.left, tabHeight, tabPane.getWidth() - insets.right - 1, tabHeight);
-            g2.dispose();
-        }
-
-        @Override
-        protected void paintFocusIndicator(Graphics g, int i, Rectangle[] rctngls, int i1, Rectangle rctngl, Rectangle rctngl1, boolean bln) {}
-
-        @Override
-        protected void paintTabBackground(Graphics g, int tabPlacement, int tabIndex, int x, int y, int w, int h, boolean isSelected) {
-            if(tabPane.isOpaque())
-                super.paintTabBackground(g, tabPlacement, tabIndex, x, y, w, h, isSelected);
-        }
-
-        public void setCurrentRectangle(Rectangle currentRectangle) {
-            this.currentRectangle = currentRectangle;
-            tabPane.repaint();
         }
     }
 }

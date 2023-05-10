@@ -67,6 +67,7 @@ public class ImageLoader {
             return;
         }
         chooser.setDialogTitle("Save Image");
+        chooser.setSelectedFile(new File(canvas.getName()+".png"));
         int state = chooser.showSaveDialog(frame);
 
         if(state == JFileChooser.APPROVE_OPTION) {
@@ -96,6 +97,7 @@ public class ImageLoader {
                         currentlySaved.get(canvas)[0]+currentlySaved.get(canvas)[1] + ")", e);
                 throw new RuntimeException(e);
             }
+            chooser.setSelectedFile(null);
         }
     }
 

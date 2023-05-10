@@ -4,6 +4,7 @@ import com.AIE.AppLog;
 import com.AIE.CanvasPackage.Canvas;
 import com.AIE.CanvasPackage.CanvasManager;
 import com.AIE.ImageLoader;
+import com.AIE.WindowPackage.ColorPackage.Palette;
 import com.AIE.WindowPackage.PanelsPackage.InfoPanel;
 import com.formdev.flatlaf.FlatDarculaLaf;
 
@@ -11,9 +12,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
 
-public class MainFrame extends JFrame implements ComponentListener {
+public class MainFrame extends JFrame implements ComponentListener, WindowListener {
 
     // TODO: Will need to remove instance and clean up the code so singletons are not needed
     public static Container PANE;
@@ -48,6 +51,7 @@ public class MainFrame extends JFrame implements ComponentListener {
         SCREEN_CENTER_Y = PANE.getHeight()/2;
         this.setLocationRelativeTo(null);
         addComponentListener(this);
+        addWindowListener(this);
 
         new Canvas(Canvas.DEF_WIDTH, Canvas.DEF_HEIGHT).setReplaceable();
 
@@ -83,6 +87,11 @@ public class MainFrame extends JFrame implements ComponentListener {
         UIManager.put("MenuItem.font", font);
         UIManager.put("PopupMenu.font", font);
         UIManager.put("ToolTip.font", font);
+        GradientPaint gradient = new GradientPaint(0, 0, Color.RED, 100, 0, Color.BLUE);
+
+        // Customize the underline color with the gradient
+        UIManager.put("TabbedPane.underlineColor", gradient);
+        UIManager.put("TabbedPane.inactiveUnderlineColor", gradient);
     }
 
     private void setIcons() {
@@ -92,7 +101,10 @@ public class MainFrame extends JFrame implements ComponentListener {
         icons.add(ImageLoader.loadIcon("icon80x80", 80).getImage());
         icons.add(ImageLoader.loadIcon("icon64x64", 64).getImage());
         icons.add(ImageLoader.loadIcon("icon48x48", 48).getImage());
+        icons.add(ImageLoader.loadIcon("icon40x40", 40).getImage());
         icons.add(ImageLoader.loadIcon("icon32x32", 32).getImage());
+        icons.add(ImageLoader.loadIcon("icon24x24", 24).getImage());
+        icons.add(ImageLoader.loadIcon("icon20x20", 20).getImage());
         icons.add(ImageLoader.loadIcon("icon16x16", 16).getImage());
         setIconImages(icons);
     }
@@ -110,21 +122,6 @@ public class MainFrame extends JFrame implements ComponentListener {
         canvas.setSize(getWidth(), getHeight());
     }
 
-    @Override
-    public void componentMoved(ComponentEvent e) {
-
-    }
-
-    @Override
-    public void componentShown(ComponentEvent e) {
-
-    }
-
-    @Override
-    public void componentHidden(ComponentEvent e) {
-
-    }
-
     public static JSlider getSlider(JTextField textField, int tickSpacing, int min, int max, int defaultVal) {
         JSlider slider = new JSlider(min, max, defaultVal);
 
@@ -136,4 +133,36 @@ public class MainFrame extends JFrame implements ComponentListener {
         slider.setMinorTickSpacing(tickSpacing/4);
         return slider;
     }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        Palette.savePalette();
+    }
+
+    @Override
+    public void componentMoved(ComponentEvent e) {}
+
+    @Override
+    public void componentShown(ComponentEvent e) {}
+
+    @Override
+    public void componentHidden(ComponentEvent e) {}
+
+    @Override
+    public void windowOpened(WindowEvent e) {}
+
+    @Override
+    public void windowClosed(WindowEvent e) {}
+
+    @Override
+    public void windowIconified(WindowEvent e) {}
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {}
+
+    @Override
+    public void windowActivated(WindowEvent e) {}
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {}
 }

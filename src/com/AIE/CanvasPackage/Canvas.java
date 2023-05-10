@@ -4,7 +4,7 @@ import com.AIE.ImageLoader;
 import com.AIE.StackPackage.SavedData;
 import com.AIE.StackPackage.SavedDataButton;
 import com.AIE.StackPackage.UndoManager;
-import com.AIE.WindowPackage.ColorPackage.ColorPalette;
+import com.AIE.WindowPackage.ColorPackage.ColorPaletteWindow;
 import com.AIE.WindowPackage.ColorPackage.MutableColor;
 import com.AIE.WindowPackage.MainFrame;
 import com.AIE.WindowPackage.PanelsPackage.InfoPanel;
@@ -77,16 +77,15 @@ public class Canvas extends JPanel {
     }
 
     public void setImage(BufferedImage newImage, boolean resized) {
+        int width = image.getWidth();
+        int height = image.getHeight();
         if(resized) {
-            image = ImageLoader.createImage(newImage, newImage.getWidth(), newImage.getHeight(), BufferedImage.TYPE_INT_ARGB);
-            pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
-            setZoom(100);
-            setImageToCenter();
-            CanvasManager.GET.updateTabComponent(this);
-        } else {
-            image = ImageLoader.createImage(newImage, image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
-            pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
+            width = newImage.getWidth();
+            height = newImage.getHeight();
         }
+
+        image = ImageLoader.createImage(newImage, width, height, BufferedImage.TYPE_INT_ARGB);
+        pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
         repaint();
     }
 
@@ -163,7 +162,7 @@ public class Canvas extends JPanel {
     }
 
     public void changePixelLinearly(int x, int y, boolean isFilled, int size, int outline) throws IndexOutOfBoundsException {
-        changePixelLinearly(x, y, ColorPalette.getBrush(brushType).getColor(), isFilled, size, outline);
+        changePixelLinearly(x, y, ColorPaletteWindow.getBrush(brushType).getColor(), isFilled, size, outline);
     }
 
     public void changePixelLinearly(int x, int y, Color color, boolean isFilled, int size, int outline) throws IndexOutOfBoundsException {
@@ -185,14 +184,14 @@ public class Canvas extends JPanel {
     }
 
     public void changeRawPixel(int x, int y, int color) throws IndexOutOfBoundsException  {
-        if(x >= image.getWidth() || x < 0 || y >= image.getHeight() || y < 0)
+        if(isOutsideCanvas(x, y))
             return;
 
         pixels[x + y*image.getWidth()] = color;
     }
 
     public int getColor(int x, int y) {
-        if(x >= image.getWidth() || x < 0 || y >= image.getHeight() || y < 0)
+        if(isOutsideCanvas(x, y))
             return 0;
 
         return pixels[x + y*image.getWidth()];
@@ -220,7 +219,7 @@ public class Canvas extends JPanel {
         y = getScaledY(y);
 
         int targetRGB = getColor(x, y);
-        int replacementRGB = ColorPalette.getBrush(brushType).getColor().getRGB();
+        int replacementRGB = ColorPaletteWindow.getBrush(brushType).getColor().getRGB();
         int[] pixels = image.getRGB(0, 0, width, height, null, 0, width);
         boolean[][] processed = new boolean[height][width];
 
@@ -318,6 +317,12 @@ public class Canvas extends JPanel {
         return true;
     }
 
+    public boolean isOutsideCanvas(int x, int y) {
+        x = getScaledX(x);
+        y = getScaledY(y);
+        return x >= image.getWidth() || x < 0 || y >= image.getHeight() || y < 0;
+    }
+
     public Point getScaledPoint(Point point) {
         point.x = getScaledX(point.x);
         point.y = getScaledY(point.y);
@@ -333,7 +338,7 @@ public class Canvas extends JPanel {
     }
 
     public MutableColor getColor() {
-        return ColorPalette.getBrush(brushType).getColor();
+        return ColorPaletteWindow.getBrush(brushType).getColor();
     }
 
     public void addKeyListenerToRootPane(KeyListener listener) {
@@ -350,6 +355,7 @@ public class Canvas extends JPanel {
 
     public void setName(String name) {
         super.setName(name);
+        CanvasManager.GET.updateTabComponent(this);
     }
 
     public int getIndex() {

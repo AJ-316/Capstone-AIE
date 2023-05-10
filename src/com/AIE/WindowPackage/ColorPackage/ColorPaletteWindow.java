@@ -10,15 +10,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class ColorPalette extends AbstractWindow {
+public class ColorPaletteWindow extends AbstractWindow {
 
     private static JComboBox<String> brushSelection;
     private static JPanel sliderPanel;
 
     private static final int DEFAULT_WIDTH = 330;
     private static final int MORE_WIDTH = 520;
-    private static final int DEFAULT_HEIGHT = 300;
-    private static final int MORE_HEIGHT = 320;
+    private static final int DEFAULT_HEIGHT = 400;
+    private static final int MORE_HEIGHT = 400;//320;
 
     protected static Brush PRIMARY;
     protected static Brush SECONDARY;
@@ -26,14 +26,16 @@ public class ColorPalette extends AbstractWindow {
     public static final ArrayList<PaletteElement> ELEMENTS = new ArrayList<>();
     private static final MutableColor COLOR = new MutableColor(255, 0, 0);
 
-    public ColorPalette(MainFrame mainFrame) {
-        super("Color Palette", mainFrame, DEFAULT_WIDTH, DEFAULT_HEIGHT, MainFrame.SCREEN_WIDTH - 200, 400);
+    public ColorPaletteWindow(MainFrame mainFrame) {
+        super("Color Palette", mainFrame, DEFAULT_WIDTH, DEFAULT_HEIGHT, MainFrame.SCREEN_WIDTH - 200, 350);
         setLayout(null);
 
         createBrush();
         createSliders();
         createColorPickerWheel();
         createSliderButton();
+        Palette palette = new Palette();
+        palette.addToWindow(this, 15, 280, DEFAULT_WIDTH-40, 80);
 
         setVisible(true);
     }
@@ -48,11 +50,13 @@ public class ColorPalette extends AbstractWindow {
                 btn.setText(lessText);
                 sliderPanel.setVisible(true);
                 setSize(MORE_WIDTH, MORE_HEIGHT);
+                setLocation(getLocation().x - (MORE_WIDTH-DEFAULT_WIDTH), getLocation().y);
                 setFocusableWindowState(true);
             } else {
                 btn.setText(moreText);
                 sliderPanel.setVisible(false);
                 setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+                setLocation(getLocation().x + (MORE_WIDTH-DEFAULT_WIDTH), getLocation().y);
                 setFocusableWindowState(false);
             }
         });
@@ -66,13 +70,19 @@ public class ColorPalette extends AbstractWindow {
 
     private void createSliders() {
         sliderPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 5));
-        sliderPanel.setBounds(315, 0, 200, 300);
+        sliderPanel.setBounds(315, 0, 200, 320);
 
-        sliderPanel.add(new HeadLabel("RGB", 150));
+        HeadLabel rgb = new HeadLabel("RGBA", 150);
+        rgb.setPreferredSize(new Dimension(rgb.getPreferredSize().width, rgb.getPreferredSize().height + 20));
+        rgb.setVerticalAlignment(SwingConstants.BOTTOM);
+        sliderPanel.add(rgb);
         RGBA.create(sliderPanel);
         sliderPanel.add(new HEXInput());
 
-        sliderPanel.add(new HeadLabel("HSV", 150));
+        HeadLabel hsv = new HeadLabel("HSV", 150);
+        hsv.setPreferredSize(new Dimension(hsv.getPreferredSize().width, hsv.getPreferredSize().height + 20));
+        hsv.setVerticalAlignment(SwingConstants.BOTTOM);
+        sliderPanel.add(hsv);
         HSV.create(sliderPanel);
         add(sliderPanel);
     }
@@ -101,9 +111,16 @@ public class ColorPalette extends AbstractWindow {
 
     public static void update(MutableColor color, String invoker) {
         COLOR.set(color);
+        if(!invoker.equals("alpha"))
+            COLOR.setRGBA(COLOR.getRed(), COLOR.getGreen(), COLOR.getBlue(), RGBA.getAlphaUnit());
         for(PaletteElement element : ELEMENTS) {
             element.updateElement(COLOR, invoker);
         }
+    }
+
+    public static boolean isBrushSelected(int id) {
+        if(id == 0 && PRIMARY.isSelected()) return true;
+        return id == 1 && SECONDARY.isSelected();
     }
 
     public static void selectBrush(int id) {
@@ -113,11 +130,11 @@ public class ColorPalette extends AbstractWindow {
         switch (id) {
             case 0 -> {
                 PRIMARY.setSelected(true);
-                ColorPalette.update(PRIMARY.getColor(), invoker);
+                ColorPaletteWindow.update(PRIMARY.getColor(), invoker);
             }
             case 1 -> {
                 SECONDARY.setSelected(true);
-                ColorPalette.update(SECONDARY.getColor(), invoker);
+                ColorPaletteWindow.update(SECONDARY.getColor(), invoker);
             }
         }
     }

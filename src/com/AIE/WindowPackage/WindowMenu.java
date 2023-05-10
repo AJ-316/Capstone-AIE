@@ -1,7 +1,7 @@
 package com.AIE.WindowPackage;
 
 import com.AIE.ImageLoader;
-import com.AIE.WindowPackage.ColorPackage.ColorPalette;
+import com.AIE.WindowPackage.ColorPackage.ColorPaletteWindow;
 import com.AIE.WindowPackage.ToolPackage.Toolbar;
 
 import javax.swing.*;
@@ -11,7 +11,7 @@ public class WindowMenu extends JMenu {
     public WindowMenu(MainFrame mainFrame) {
         super("Windows");
         addMenuItem(new Toolbar(mainFrame));
-        addMenuItem(new ColorPalette(mainFrame));
+        addMenuItem(new ColorPaletteWindow(mainFrame));
         addMenuItem(new History(mainFrame));
     }
 

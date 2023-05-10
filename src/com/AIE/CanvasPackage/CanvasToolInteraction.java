@@ -19,6 +19,8 @@ public class CanvasToolInteraction extends MouseAdapter {
     public void mousePressed(MouseEvent e) {
         AbstractTool tool = Toolbar.getCurrentTool();
         if(tool == null) return;
+        if(canvas.isOutsideCanvas(e.getX(), e.getY()))
+            return;
 
         if(invalidInput(e)) {
             tool.inputConflictClear(canvas, e);

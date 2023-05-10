@@ -74,7 +74,7 @@ public class NewImage extends JDialog {
 
         if(canvas == null) {
             canvas = new Canvas(w, h);
-            setName(fileName);
+            canvas.setName(fileName);
         } else canvas.create(fileName, null, w, h);
 
         InfoPanel.GET.setSizeInfo(canvas.getImage().getWidth(), canvas.getImage().getHeight());

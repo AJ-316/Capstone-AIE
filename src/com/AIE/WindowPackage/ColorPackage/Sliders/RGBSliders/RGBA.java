@@ -32,6 +32,10 @@ public class RGBA {
         return BLUE.getUnitVal();
     }
 
+    public static int getAlphaUnit() {
+        return ALPHA.getUnitVal();
+    }
+
     public static MutableColor getColor() {
         updateColor();
         return COLOR;

@@ -44,6 +44,8 @@ public abstract class Shape {
 
     public abstract void moved(Canvas canvas, MouseEvent e);
 
+    public abstract boolean isValidShape();
+
     @Override
     public String toString() {
         return name;

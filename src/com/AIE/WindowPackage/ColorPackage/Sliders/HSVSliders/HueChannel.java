@@ -1,6 +1,6 @@
 package com.AIE.WindowPackage.ColorPackage.Sliders.HSVSliders;
 
-import com.AIE.WindowPackage.ColorPackage.ColorPalette;
+import com.AIE.WindowPackage.ColorPackage.ColorPaletteWindow;
 import com.AIE.WindowPackage.ColorPackage.MutableColor;
 import com.AIE.WindowPackage.ColorPackage.Sliders.ColorSlider;
 import com.AIE.WindowPackage.ColorPackage.Sliders.UI.HueChannelUI;
@@ -12,7 +12,7 @@ public class HueChannel extends ColorSlider {
 
     @Override
     public void updateColor() {
-        ColorPalette.update(HSV.toRGB(), ELEMENT_NAME);
+        ColorPaletteWindow.update(HSV.toRGB(), ELEMENT_NAME);
     }
 
     @Override

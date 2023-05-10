@@ -1,6 +1,6 @@
 package com.AIE.WindowPackage.ColorPackage.Sliders;
 
-import com.AIE.WindowPackage.ColorPackage.ColorPalette;
+import com.AIE.WindowPackage.ColorPackage.ColorPaletteWindow;
 import com.AIE.WindowPackage.ColorPackage.MutableColor;
 import com.AIE.WindowPackage.ColorPackage.PaletteElement;
 
@@ -30,7 +30,7 @@ public class HEXInput extends JPanel implements PaletteElement, DocumentListener
         updateHex("FF0000");
         add(inputField);
 
-        ColorPalette.ELEMENTS.add(this);
+        ColorPaletteWindow.ELEMENTS.add(this);
     }
 
     @Override
@@ -61,7 +61,7 @@ public class HEXInput extends JPanel implements PaletteElement, DocumentListener
             inputField.setText(inputField.getText().toUpperCase());
             lastTyped = inputField.getText();
             color.setRGB(Integer.decode("0x"+lastTyped));
-            ColorPalette.update(color, ELEMENT_NAME);
+            ColorPaletteWindow.update(color, ELEMENT_NAME);
         } else {
             inputField.setText(lastTyped);
         }

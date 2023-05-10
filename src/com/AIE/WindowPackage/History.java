@@ -15,7 +15,7 @@ public class History extends AbstractWindow {
     private final JPanel pane;
 
     public History(MainFrame mainFrame) {
-        super("History", mainFrame, 200, 180, MainFrame.SCREEN_WIDTH - 100, 150);
+        super("History", mainFrame, 200, 180, MainFrame.SCREEN_WIDTH - 84, 135);
         layout = new CardLayout();
         historyPanels = new ArrayList<>();
         pane = new JPanel(layout);
@@ -33,6 +33,8 @@ public class History extends AbstractWindow {
 
         JScrollPane scrollPane = new JScrollPane(panel);
         scrollPane.setPreferredSize(new Dimension(getWidth(), getHeight()));
+        scrollPane.getVerticalScrollBar().setUnitIncrement(12);
+        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         pane.add(scrollPane, Integer.toString(historyPanels.size()));
         historyPanels.add(panel);
         return panel;

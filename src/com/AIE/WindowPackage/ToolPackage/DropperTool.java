@@ -1,7 +1,7 @@
 package com.AIE.WindowPackage.ToolPackage;
 
 import com.AIE.CanvasPackage.Canvas;
-import com.AIE.WindowPackage.ColorPackage.ColorPalette;
+import com.AIE.WindowPackage.ColorPackage.ColorPaletteWindow;
 import com.AIE.WindowPackage.ColorPackage.MutableColor;
 
 import javax.swing.*;
@@ -26,8 +26,8 @@ public class DropperTool extends AbstractTool {
     private void selectColor(Canvas canvas, int x, int y, int brushID) {
         int picked = canvas.getColor(canvas.getScaledX(x), canvas.getScaledY(y));
         color.setRGBA(picked);
-        ColorPalette.selectBrush(brushID);
-        ColorPalette.update(color, "brush");
+        ColorPaletteWindow.selectBrush(brushID);
+        ColorPaletteWindow.update(color, "brush");
     }
 
     @Override

@@ -17,9 +17,9 @@ public class Brush extends JRadioButton implements PaletteElement {
         setSize(new Dimension(SIZE, SIZE));
         addItemListener(e -> {
             if(e.getStateChange() == ItemEvent.SELECTED)
-                ColorPalette.selectBrush(((Brush)e.getItem()).id);
+                ColorPaletteWindow.selectBrush(((Brush)e.getItem()).id);
         });
-        ColorPalette.ELEMENTS.add(this);
+        ColorPaletteWindow.ELEMENTS.add(this);
     }
 
     @Override

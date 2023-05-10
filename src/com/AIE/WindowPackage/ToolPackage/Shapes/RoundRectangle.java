@@ -10,6 +10,7 @@ public class RoundRectangle extends Shape {
 
     private Point startPoint;
     private Point endPoint;
+    private int width, height;
 
     public RoundRectangle() {
         super("RoundRectangle");
@@ -28,8 +29,8 @@ public class RoundRectangle extends Shape {
         if (drawing) {
             int x = Math.min(startPoint.x, endPoint.x);
             int y = Math.min(startPoint.y, endPoint.y);
-            int width = Math.abs(endPoint.x - startPoint.x);
-            int height = Math.abs(endPoint.y - startPoint.y);
+            width = Math.abs(endPoint.x - startPoint.x);
+            height = Math.abs(endPoint.y - startPoint.y);
 
             int arcSize = Math.min(width, height) / currentConstraints.rounded();
             shape.setStroke(new BasicStroke(currentConstraints.stroke()));
@@ -61,6 +62,12 @@ public class RoundRectangle extends Shape {
         shapeImage = null;
         backgroundImage = null;
         canvasImage = null;
+    }
+
+
+    @Override
+    public boolean isValidShape() {
+        return width != 0 && height != 0;
     }
 
     public void moved(Canvas canvas, MouseEvent e){}
