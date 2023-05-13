@@ -21,7 +21,7 @@ public class PencilTool extends AbstractTool {
     @Override
     public void pressed(Canvas canvas, MouseEvent e) {
         saveOld(canvas, true);
-        canvas.changePixelLinearly(e.getX(), e.getY(), false, 1, 1);
+        canvas.changePixelLinearly(e.getX(), e.getY(), false, 1, -1);
         canvas.updateCanvas();
     }
 
@@ -38,7 +38,7 @@ public class PencilTool extends AbstractTool {
 
     @Override
     public void dragged(Canvas canvas, MouseEvent e) {
-        canvas.changePixelLinearly(e.getX(), e.getY(), false, -1, 1);
+        canvas.changePixelLinearly(e.getX(), e.getY(), false, 1, -1);
         canvas.updateCanvas();
     }
 

@@ -6,18 +6,16 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Added Palettes to ColorPaletteWindow; Solved minor bugs.">
+    <list default="true" id="8d0d568e-5395-472d-b283-37888f1e1f6d" name="Changes" comment="Changed the Windows Relative Location settings.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AIE.palette" beforeDir="false" afterPath="$PROJECT_DIR$/AIE.palette" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/Canvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/AbstractWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/AbstractWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/PixelConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/CanvasPackage/PixelConnector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/ColorPaletteWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/ColorPaletteWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/FrameMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/FrameMenuBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Palette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ColorPackage/Palette.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/History.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/History.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/PencilTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/PencilTool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Toolbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/ToolPackage/Toolbar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AIE/WindowPackage/WindowMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AIE/WindowPackage/WindowMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,22 +68,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/PROgraming/IdeaProjects/Capstone-AIE/out/artifacts/Capstone_AIE&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "D:/PROgraming/IdeaProjects/PixelEditorApplication",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "inlay.hints"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.AIE.WindowPackage" />
@@ -324,7 +322,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683682264030</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Changed the Windows Relative Location settings.">
+      <created>1683694345191</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1683694345191</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -377,7 +382,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Separate Input thread Added.&#10;Did not think about how would I update the components.&#10;Unnecessary addition. (Could be useful in future)" />
     <MESSAGE value="Cleaning up code." />
     <MESSAGE value="Added AbstractWindow and AbstractTool.&#10;Followed with ToolBar and Pencil.&#10;Canvas uses an Anonymous listener class - Toolbar.CanvasToolInteraction which passes all the events from canvas to AbstractTool's children.&#10;Added MenuBar for MainFrame (previously called Window class)" />
     <MESSAGE value="Added AbstractWindow and AbstractTool.&#10;Followed with ToolBar and Pencil.&#10;Canvas uses an Anonymous listener class - Toolbar.CanvasToolInteraction which passes all the events from canvas to AbstractTool's children.&#10;Added MenuBar for MainFrame (previously called Window class)&#10;&#10;Above Mentioned Tool-Canvas Interaction was done after WindowsMenu's HashMap&lt;Window name, AbstractWindow&gt; and the static String name in AbstractWindow children" />
@@ -402,11 +406,12 @@
     <MESSAGE value="Quality-Life addition - save/close canvas" />
     <MESSAGE value="Added a logger to log errors in .log file." />
     <MESSAGE value="Added Palettes to ColorPaletteWindow; Solved minor bugs." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Palettes to ColorPaletteWindow; Solved minor bugs." />
+    <MESSAGE value="Changed the Windows Relative Location settings." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed the Windows Relative Location settings." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Capstone_AIE$VerifierTest.ic" NAME="VerifierTest Coverage Results" MODIFIED="1676969542696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Capstone_AIE$Main.ic" NAME="Main Coverage Results" MODIFIED="1683571304296" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Capstone_AIE$Main.ic" NAME="Main Coverage Results" MODIFIED="1683694308623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.AIE.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Capstone_AIE$RectangleDrawer.ic" NAME="RectangleDrawer Coverage Results" MODIFIED="1682921089805" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

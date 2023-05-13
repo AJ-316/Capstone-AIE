@@ -25,7 +25,7 @@ public class Palette extends JPanel implements MouseListener {
         createDefaultChips();
         ArrayList<PaletteChip> loadedChips = PaletteChipSerialization.load(defaultChips);
         for(PaletteChip button : loadedChips)
-            addChip(button);
+            addChip(new PaletteChip(button, this));
     }
 
     private void createDefaultChips() {
@@ -149,6 +149,10 @@ public class Palette extends JPanel implements MouseListener {
         private static final BasicStroke[] strokes = new BasicStroke[] {
                 new BasicStroke(1), new BasicStroke(2), new BasicStroke(8)};
 
+        public PaletteChip(PaletteChip chip, Palette palette) {
+            this(chip.color, palette);
+        }
+
         public PaletteChip(MutableColor color, Palette palette) {
             this.color = color;
             if(color == null) {
@@ -164,8 +168,10 @@ public class Palette extends JPanel implements MouseListener {
         }
 
         public PaletteChip(Palette palette) {
-            this(null, palette);
+            this((MutableColor) null, palette);
         }
+
+
 
         @Override
         public void paint(Graphics g) {

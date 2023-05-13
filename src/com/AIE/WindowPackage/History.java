@@ -23,13 +23,13 @@ public class History extends AbstractWindow {
 
         addHistoryPanel();
         pack();
-        setVisible(true);
         GET = this;
     }
 
     public void setRelativeLocation(MainFrame frame) {
         setLocation(frame.getLocation().x + MainFrame.WINDOW_WIDTH - getWidth(),
                 frame.getLocation().y + getHeight()/2);
+        setVisible(true);
     }
 
     private JPanel addHistoryPanel() {

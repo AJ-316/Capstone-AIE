@@ -37,13 +37,14 @@ public class ColorPaletteWindow extends AbstractWindow {
         Palette palette = new Palette();
         palette.addToWindow(this, 15, 280, DEFAULT_WIDTH-40, 80);
 
-        setVisible(true);
+
     }
 
     public void setRelativeLocation(MainFrame frame) {
         //mainFrame.getLocation().x + MainFrame.WINDOW_WIDTH - DEFAULT_WIDTH, 350
         setLocation(frame.getLocation().x + MainFrame.WINDOW_WIDTH - DEFAULT_WIDTH,
                 frame.getLocation().y + MainFrame.WINDOW_HEIGHT - DEFAULT_HEIGHT);
+        setVisible(true);
     }
 
     private void createSliderButton() {

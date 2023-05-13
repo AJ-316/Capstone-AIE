@@ -24,11 +24,12 @@ public class Toolbar extends AbstractWindow {
         mainFrame.add(EDITOR, BorderLayout.NORTH);
 
         createTools();
-        setVisible(true);
+
     }
 
     public void setRelativeLocation(MainFrame frame) {
         setLocation(frame.getLocation().x + 10, frame.getLocation().y + 200);
+        setVisible(true);
     }
 
     public static void locked(boolean locked) {

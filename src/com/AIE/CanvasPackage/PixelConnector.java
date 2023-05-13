@@ -48,7 +48,7 @@ public class PixelConnector {
             if(color == null) {
                 canvas.erase(x1, y1, size);
             } else {
-                if (size == -1) {
+                if (outline == -1) {
                     canvas.changeRawPixel(x1, y1, color.getRGB());
                 } else
                     canvas.drawCircle(x1, y1, color, isFilled, size, outline);

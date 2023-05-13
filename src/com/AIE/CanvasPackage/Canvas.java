@@ -169,14 +169,14 @@ public class Canvas extends JPanel {
         x = getScaledX(x);
         y = getScaledY(y);
 
+        connector.addPixel(x, y, color, isFilled, size, outline);
+
         if(color == null) {
-            connector.addPixel(x, y, color, isFilled, size, outline);
             erase(x, y, size);
             return;
         }
 
-        connector.addPixel(x, y, color, isFilled, size, outline);
-        if(size == -1) {
+        if(outline == -1) {
             changeRawPixel(x, y, color.getRGB());
             return;
         }
@@ -184,7 +184,7 @@ public class Canvas extends JPanel {
     }
 
     public void changeRawPixel(int x, int y, int color) throws IndexOutOfBoundsException  {
-        if(isOutsideCanvas(x, y))
+        if(x >= image.getWidth() || x < 0 || y >= image.getHeight() || y < 0)
             return;
 
         pixels[x + y*image.getWidth()] = color;
